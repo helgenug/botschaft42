@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTSCHAFT 42 | Operative Souveränität & Hybride Workflows</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        anthracite: '#1a202c',
+                        signalred: '#EF4444', 
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1a202c; background-color: #ffffff; }
+        .text-display { font-size: clamp(2.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.04em; font-weight: 900; }
+        .vertical-label { writing-mode: vertical-rl; text-orientation: mixed; }
+        
+        .b42-signet {
+            background-color: #000000;
+            height: 1.1em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0.4em;
+            margin-right: 0.75rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #ffffff;
+        }
+
+        .section-spacing { padding-top: clamp(4rem, 10vh, 12rem); padding-bottom: clamp(4rem, 10vh, 12rem); }
+        ::selection { background-color: #EF4444; color: white; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(255,255,255,0.98);
+        }
+        .modal-content {
+            margin: 5% auto;
+            padding: 40px;
+            max-width: 900px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-signalred selection:text-white">
+
+    <!-- Sticky Navigation -->
+    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b border-gray-100 py-6 px-6 md:px-12 flex justify-between items-center transition-all duration-300 text-anthracite">
+        <div>
+            <a href="#" class="flex items-center">
+                <div class="b42-signet text-sm md:text-lg">
+                    B<span class="text-signalred">42</span>
+                </div>
+                <div class="text-lg md:text-xl font-black tracking-tighter uppercase">
+                    BOTSCHAFT<span class="text-signalred ml-0.5">42</span>
+                </div>
+            </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-12 text-[10px] font-bold uppercase tracking-[0.3em]">
+            <a href="#antrieb" class="hover:text-signalred transition-colors">Antrieb</a>
+            <a href="#expertise" class="hover:text-signalred transition-colors">Expertise</a>
+            <a href="#loesungen" class="hover:text-signalred transition-colors">Lösungen</a>
+            <a href="#team" class="hover:text-signalred transition-colors">Team</a>
+            <a href="#kontakt" class="bg-signalred text-white px-6 py-3 rounded-sm hover:bg-anthracite transition-all shadow-lg shadow-signalred/10">Zukunft gestalten</a>
+        </div>
+        <button id="menu-btn" class="md:hidden text-anthracite">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center px-6 md:px-12 pt-24 overflow-hidden text-anthracite">
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <div class="mb-12 inline-block border-l-4 border-signalred pl-6">
+                <span class="text-xs uppercase tracking-[0.5em] font-bold text-signalred">Souveränität durch Technologie</span>
+            </div>
+            <h1 class="text-display mb-12 max-w-5xl">
+                Neue Wege entstehen,<br>indem man <span class="text-signalred">sie geht.</span>
+            </h1>
+            
+            <div class="grid md:grid-cols-12 gap-8 items-end">
+                <div class="md:col-span-6">
+                    <p class="text-xl md:text-2xl leading-relaxed text-anthracite/70 font-light italic serif">
+                        Wir entwickeln intelligente Programme und hybride Workflows zur Prozessoptimierung. Sichern Sie sich die technologische Souveränität für Ihr Unternehmen in Mecklenburg-Vorpommern.
+                    </p>
+                </div>
+                <div class="md:col-start-9 md:col-span-4">
+                    <a href="#kontakt" class="group flex items-center gap-4 text-sm font-bold uppercase tracking-[0.2em] border-b-2 border-gray-100 pb-4 hover:border-signalred transition-all">
+                        Analysegespräch vereinbaren
+                        <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform text-signalred"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -bottom-20 -right-20 opacity-[0.02] select-none pointer-events-none hidden lg:block">
+            <span class="text-[50rem] font-black leading-none">42</span>
+        </div>
+    </header>
+
+    <!-- Section: Antrieb -->
+    <section id="antrieb" class="section-spacing bg-anthracite text-white px-6 md:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-1 hidden md:block">
+                    <span class="vertical-label text-[10px] uppercase tracking-[0.5em] font-bold text-white/20">Mission</span>
+                </div>
+                <div class="md:col-span-11">
+                    <h2 class="text-4xl md:text-7xl font-black mb-12 tracking-tight">
+                        Intelligenz, die Arbeit <span class="italic font-serif font-light text-white/40">einfacher macht für Ihre Unternehmen.</span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <p class="text-xl leading-relaxed text-white/70">
+                            Wir verstehen KI als Werkzeug für neue Freiräume. Unser Ziel ist es, Ihre operative Leistungsfähigkeit zu erweitern und wertvolle Fachkräfte von Routineaufgaben zu entlasten. 
+                        </p>
+                        <p class="text-xl leading-relaxed text-white/70 border-l border-white/10 pl-8">
+                            Für mehr Zeit, mehr Qualität und echte Wertschöpfung. Wir schaffen Systeme, die Souveränität ermöglichen und modernes Arbeiten in Mecklenburg-Vorpommern definieren.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: High-End Content & Globale Expertise -->
+    <section id="expertise" class="section-spacing px-6 md:px-12 bg-white text-anthracite">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-32 border-b border-gray-100 pb-12">
+                <div class="max-w-3xl">
+                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">High-End Content & Globale Expertise.</h2>
+                    <p class="text-xl md:text-2xl text-anthracite/50 serif italic">Von der analogen Exzellenz zur digitalen Souveränität.</p>
+                </div>
+                <p class="text-xs uppercase tracking-[0.4em] font-bold text-signalred pb-2 hidden md:block">Produktion & Strategie</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-16 mb-40">
+                <div class="space-y-8 group">
+                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
+                        <i data-lucide="video" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">Videografie & Film</h3>
+                    <p class="text-lg text-anthracite/60 leading-relaxed">
+                        Wir konzipieren und produzieren komplette <strong>Videografie</strong> & Film-Projekte sowie Werbeproduktionen. Unsere Erfahrung reicht von lokalen Projekten bis hin zu weltweiten Produktionen mit internationalem Anspruch.
+                    </p>
+                </div>
+
+                <div class="space-y-8 group text-anthracite">
+                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
+                        <i data-lucide="layers" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">Imagekampagnen</h3>
+                    <p class="text-lg text-anthracite/60 leading-relaxed">
+                        Ganzheitliche <strong>Imagekampagnen</strong>-Führung, die Markenidentität und Botschaft präzise vereint. Wir entwickeln Bildsprachen, die weltweit funktionieren und lokal wirken.
+                    </p>
+                </div>
+
+                <div class="space-y-8 group text-anthracite">
+                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
+                        <i data-lucide="zap" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">KI-Schnittstelle</h3>
+                    <p class="text-lg text-anthracite/60 leading-relaxed">
+                        Wir nutzen unseren High-End Content als Basis für intelligente Systeme. Durch die Verbindung von realem Filmmaterial und KI-gestützter Prozessoptimierung skalieren wir Ihre Kommunikation ohne Qualitätsverlust.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-8 md:p-16 border-l-8 border-signalred">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-4 text-anthracite">
+                        <p class="text-3xl font-black tracking-tight leading-none uppercase">
+                            Weltweite Referenzen.<br>Erprobtes Handwerk.<br><span class="text-signalred">Digitale Zukunft.</span>
+                        </p>
+                    </div>
+                    <div class="md:col-span-8 text-anthracite/70 font-light serif italic leading-relaxed text-xl">
+                        Unsere langjährige <strong>Weltweite Referenzen</strong>-Erfahrung in der Erstellung von High-End Content bildet das Fundament für die Entwicklung der heutigen Optimierungsprogramme. Erst das Verständnis für erstklassiges Handwerk erlaubt uns die präzise digitale Skalierung Ihrer operativen Prozesse.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Lösungen -->
+    <section id="loesungen" class="section-spacing px-6 md:px-12 bg-gray-50 text-anthracite">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-32 border-b border-gray-200 pb-12">
+                <div class="max-w-2xl text-anthracite">
+                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Lösungen.</h2>
+                    <p class="text-xl md:text-2xl text-anthracite/50 serif italic">Moderne Strategien für Mecklenburg-Vorpommern.</p>
+                </div>
+                <p class="text-xs uppercase tracking-[0.4em] font-bold text-signalred pb-2 hidden md:block">Process Optimization</p>
+            </div>
+
+            <div class="space-y-40 text-anthracite">
+                <!-- 01 Tourismus -->
+                <div class="grid md:grid-cols-12 gap-12 items-center group">
+                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">01</div>
+                    <div class="md:col-span-6 space-y-6">
+                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Der perfekte Gastgeber-Service</h4>
+                        <p class="text-lg text-anthracite/60 leading-relaxed">
+                            Implementierung des 'Digitalen Concierge'. Wir ermöglichen 24/7 Erreichbarkeit in mehreren Sprachen. Durch die Entwicklung maßgeschneiderter proprietärer Systeme sichern wir maximale Service-Exzellenz bei gleichzeitiger Entlastung Ihres Teams.
+                        </p>
+                        <div class="flex gap-4">
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Custom Software</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Proprietär</span>
+                        </div>
+                    </div>
+                    <div class="md:col-start-9 md:col-span-4 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
+                        <img src="MZ7_6611.jpg" alt="Tourismus Expertise" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- 02 Gesundheit -->
+                <div class="grid md:grid-cols-12 gap-12 items-center group">
+                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">02</div>
+                    <div class="md:col-span-6 md:order-2 space-y-6">
+                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Fokus auf den Menschen</h4>
+                        <p class="text-lg text-anthracite/60 leading-relaxed">
+                            Administrative Entlastung durch DSGVO-konforme Assistenz-Systeme. Automatisierte Terminierung und Rezeptwünsche über prozessspezifische Eigenentwicklungen sorgen für ein entspanntes Team und erstklassige Patientenbetreuung.
+                        </p>
+                        <div class="flex gap-4">
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">In-House Entwicklung</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">DSGVO-Konform</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 md:order-1 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
+                        <img src="HMS01146_1.jpg" alt="Gesundheitswesen Innovation" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- 03 Logistik -->
+                <div class="grid md:grid-cols-12 gap-12 items-center group">
+                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">03</div>
+                    <div class="md:col-span-6 space-y-6">
+                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Intelligenter Flow</h4>
+                        <p class="text-lg text-anthracite/60 leading-relaxed">
+                            Beschleunigung durch Intelligent Document Processing (IDP). Wir automatisieren die Verarbeitung von Fracht- und Zolldokumenten durch eigene Optimierungsalgorithmen, um reibungslose, digitale Abläufe in Hafen & Logistik zu garantieren.
+                        </p>
+                        <div class="flex gap-4">
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">IDP Solutions</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Zoll-Automation</span>
+                        </div>
+                    </div>
+                    <div class="md:col-start-9 md:col-span-4 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
+                        <img src="MHS08251.jpg" alt="Logistik Prozessoptimierung" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Team (ZIRKULÄRE BILDER) -->
+    <section id="team" class="section-spacing bg-white px-6 md:px-12 text-anthracite">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-24 text-center">
+                <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase">Die Köpfe</h2>
+                <p class="text-signalred text-xs font-bold uppercase tracking-[0.5em]">Hinter der Vision</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-24">
+                <!-- Holger Martens -->
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-full md:w-1/2 aspect-square bg-gray-50 border border-gray-100 p-1 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden shadow-sm rounded-full flex-shrink-0">
+                         <img src="martens.png" alt="Holger Martens" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                         <div class="hidden w-full h-full bg-gray-100 items-center justify-center font-serif italic text-gray-400 text-center px-4 rounded-full">[martens.png]</div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-2xl font-black uppercase tracking-tighter mb-1">Holger Martens</h4>
+                        <p class="text-signalred text-[10px] font-bold tracking-widest mb-6 uppercase">Head of Vision & Creative AI</p>
+                        <p class="text-sm text-anthracite/70 leading-relaxed italic border-l-2 border-signalred pl-4">
+                            Vordenker und kreativer Architekt. Entwicklung spezialisierter Programme zur Prozessoptimierung. Synergetische Verbindung von analoger High-End Produktion und digitaler Skalierung. Experte für kreative Systemvernetzung.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Torsten Ries -->
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-full md:w-1/2 aspect-square bg-gray-50 border border-gray-100 p-1 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden shadow-sm rounded-full flex-shrink-0">
+                        <img src="ries.png" alt="Torsten Ries" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gray-100 items-center justify-center font-serif italic text-gray-400 text-center px-4 rounded-full">[ries.png]</div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-anthracite">
+                        <h4 class="text-2xl font-black uppercase tracking-tighter mb-1">Torsten Ries</h4>
+                        <p class="text-signalred text-[10px] font-bold tracking-widest mb-6 uppercase">Head of Strategy & Operations</p>
+                        <p class="text-sm text-anthracite/70 leading-relaxed italic border-l-2 border-signalred pl-4">
+                            Strategische Integration von KI in Wertschöpfungsketten. Über 30 Jahre kaufmännische Erfahrung. Fokus auf wirtschaftliche Rentabilität und den Brückenbau zwischen Technologie und kaufmännischer Praxis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Kontakt -->
+    <section id="kontakt" class="section-spacing bg-white px-6 md:px-12 border-t border-gray-100 text-anthracite">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase">Lassen Sie uns starten</h2>
+                <p class="text-anthracite/50 text-xl font-light serif italic">Gemeinsam definieren wir die Souveränität Ihres Unternehmens.</p>
+            </div>
+
+            <form action="https://formsubmit.co/info@holger-martens.com" method="POST" class="space-y-10 text-anthracite">
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_subject" value="Neue Anfrage via BOTSCHAFT 42">
+                
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Vorname</label>
+                        <input type="text" name="vorname" required class="w-full py-4 bg-transparent outline-none text-lg">
+                    </div>
+                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Name</label>
+                        <input type="text" name="name" required class="w-full py-4 bg-transparent outline-none text-lg">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred text-anthracite">Telefon</label>
+                        <input type="tel" name="telefon" class="w-full py-4 bg-transparent outline-none text-lg">
+                    </div>
+                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors text-anthracite">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred text-anthracite">E-Mail</label>
+                        <input type="email" name="email" required class="w-full py-4 bg-transparent outline-none text-lg">
+                    </div>
+                </div>
+
+                <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Unternehmen</label>
+                    <input type="text" name="unternehmen" class="w-full py-4 bg-transparent outline-none text-lg">
+                </div>
+
+                <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Ihr Kontaktwunsch</label>
+                    <textarea name="nachricht" rows="1" required class="w-full py-4 bg-transparent outline-none text-lg resize-none"></textarea>
+                </div>
+
+                <div class="pt-12 text-center text-anthracite">
+                    <button type="submit" class="w-full md:w-auto bg-signalred text-white px-12 py-6 text-xl font-bold uppercase tracking-widest hover:bg-anthracite transition-all shadow-xl shadow-signalred/10">
+                        Zukunft gemeinsam gestalten
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-gray-100 px-6 md:px-12 text-anthracite">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="flex items-center">
+                <div class="b42-signet text-xs">
+                    B<span class="text-signalred">42</span>
+                </div>
+                <div class="font-black text-xl tracking-tighter uppercase text-anthracite">
+                    BOTSCHAFT<span class="text-signalred ml-0.5">42</span>
+                </div>
+            </div>
+            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <button onclick="toggleModal('impressum')" class="hover:text-anthracite transition-colors text-anthracite">Impressum</button>
+                <button onclick="toggleModal('datenschutz')" class="hover:text-anthracite transition-colors text-anthracite">Datenschutz</button>
+                <a href="https://www.linkedin.com/in/holger-martens-13a8083a/" target="_blank" class="hover:text-anthracite transition-colors text-anthracite">LinkedIn</a>
+            </div>
+            <div class="text-[10px] text-gray-400 uppercase tracking-widest">
+                © 2026 BOTSCHAFT 42
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal: Impressum -->
+    <div id="impressum" class="modal">
+        <div class="modal-content text-anthracite">
+            <button onclick="toggleModal('impressum')" class="float-right text-4xl font-light">&times;</button>
+            <h2 class="text-4xl font-black uppercase mb-8">Impressum</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-bold uppercase text-signalred text-xs tracking-widest mb-4">Verantwortlich gemäß § 5 TMG</h3>
+                    <p class="mb-2 font-bold">Holger Martens</p>
+                    <p>Dehmelstraße 7, 18055 Rostock</p>
+                    <p>Telefon: 0170 7991910</p>
+                    <p>E-Mail: info@holger-martens.com</p>
+                    <p class="mt-4">UST-IdNr. DE203988874</p>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase text-signalred text-xs tracking-widest mb-4">Kooperationspartner</h3>
+                    <p class="mb-2 font-bold">Thorsten Ries (Ries Consulting)</p>
+                    <p>Seestraße 1, 18211 Börgerende-Rethwisch</p>
+                    <p>Telefon: 0170 3542038</p>
+                    <p>E-Mail: kontakt@ries-consulting.de</p>
+                </div>
+            </div>
+            <div class="mt-12 text-sm text-gray-500 space-y-4">
+                <p><strong>Streitschlichtung:</strong> Plattform zur Online-Streitbeilegung (OS) der EU: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="underline">https://ec.europa.eu/consumers/odr/</a>.</p>
+                <p><strong>Haftung:</strong> Wir haften nicht für Schäden durch Nutzung dieser Seite, es sei denn, es liegt vorsätzliches oder grob fahrlässiges Verschulden vor. Externe Links liegen in der Verantwortung der jeweiligen Betreiber.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Datenschutz -->
+    <div id="datenschutz" class="modal">
+        <div class="modal-content text-anthracite">
+            <button onclick="toggleModal('datenschutz')" class="float-right text-4xl font-light">&times;</button>
+            <h2 class="text-4xl font-black uppercase mb-8">Datenschutz­erklärung</h2>
+            <div class="space-y-6 text-sm md:text-base">
+                <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften.</p>
+                <h3 class="font-bold text-lg border-b border-gray-100 pt-4">1. Verantwortliche Stelle</h3>
+                <p>Thorsten Ries, Seestraße 1, 18211 Börgerende-Rethwisch<br>E-Mail: kontakt@ries-consulting.de</p>
+                <h3 class="font-bold text-lg border-b border-gray-100 pt-4">2. Datenerfassung</h3>
+                <p><strong>Kontaktformular:</strong> Daten aus dem Formular werden ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert. Eine Weitergabe an Dritte erfolgt nicht ohne Einwilligung.</p>
+                <p><strong>Hosting:</strong> Die Seite wird durch Schaber Onlinemarketing (Dirk Schaber, Papendorf) gehostet. Ein AV-Vertrag liegt vor.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Layer -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-anthracite z-[150] hidden flex flex-col items-center justify-center p-12 text-white">
+        <button id="close-menu" class="absolute top-8 right-6">
+            <i data-lucide="x" class="w-12 h-12"></i>
+        </button>
+        <div class="flex flex-col space-y-12 text-4xl font-black uppercase tracking-tighter text-center">
+            <a href="#antrieb" class="mobile-link">Antrieb</a>
+            <a href="#expertise" class="mobile-link">Expertise</a>
+            <a href="#loesungen" class="mobile-link">Lösungen</a>
+            <a href="#team" class="mobile-link text-white">Team</a>
+            <a href="#kontakt" class="mobile-link text-signalred">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-menu');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => overlay.classList.remove('hidden'));
+        closeBtn.addEventListener('click', () => overlay.classList.add('hidden'));
+        mobileLinks.forEach(l => l.addEventListener('click', () => overlay.classList.add('hidden')));
+
+        // Modal Logic
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            } else {
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Auto-resize textarea
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        // Sticky Nav Shadow
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (nav) {
+                if (window.scrollY > 20) {
+                    nav.classList.add('py-4', 'shadow-sm');
+                    nav.classList.remove('py-6');
+                } else {
+                    nav.classList.add('py-6');
+                    nav.classList.remove('py-4', 'shadow-sm');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
