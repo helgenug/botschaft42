@@ -2,511 +2,1260 @@
 <html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOTSCHAFT 42 | Operative Souveränität & Hybride Workflows</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#f8f7f4">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter & Playfair Display -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- SEO Meta -->
+    <title>BOTSCHAFT 42 | KI-Prozessoptimierung & Hybride Workflows für Mecklenburg-Vorpommern</title>
+    <meta name="description" content="BOTSCHAFT 42 entwickelt intelligente KI-Programme und hybride Workflows zur Prozessoptimierung für Unternehmen in Mecklenburg-Vorpommern. Digitaler Concierge, IDP, DSGVO-konforme Lösungen.">
+    <meta name="keywords" content="KI Prozessoptimierung, Hybride Workflows, Mecklenburg-Vorpommern, Digitaler Concierge, Intelligent Document Processing, DSGVO, Rostock, Videografie, Imagekampagnen">
+    <meta name="author" content="Holger Martens, Torsten Ries">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://botschaft42.de/">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        anthracite: '#1a202c',
-                        signalred: '#EF4444', 
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
+    <!-- Open Graph -->
+    <meta property="og:title" content="BOTSCHAFT 42 | Operative Souveränität durch KI">
+    <meta property="og:description" content="Intelligente Programme und hybride Workflows zur Prozessoptimierung in Mecklenburg-Vorpommern.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://botschaft42.de/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="BOTSCHAFT 42">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BOTSCHAFT 42 | KI-Prozessoptimierung">
+    <meta name="twitter:description" content="Operative Souveränität durch intelligente Systeme für Unternehmen in MV.">
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BOTSCHAFT 42",
+        "description": "KI-Agentur für Prozessoptimierung und hybride Workflows in Mecklenburg-Vorpommern",
+        "url": "https://botschaft42.de",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dehmelstraße 7",
+            "addressLocality": "Rostock",
+            "postalCode": "18055",
+            "addressRegion": "Mecklenburg-Vorpommern",
+            "addressCountry": "DE"
+        },
+        "telephone": "+491707991910",
+        "email": "info@holger-martens.com",
+        "founder": [
+            {"@type": "Person", "name": "Holger Martens", "jobTitle": "Head of Vision & Creative AI"},
+            {"@type": "Person", "name": "Torsten Ries", "jobTitle": "Head of Strategy & Operations"}
+        ],
+        "knowsAbout": ["Künstliche Intelligenz", "Prozessoptimierung", "Hybride Workflows", "Videografie", "Imagekampagnen", "Intelligent Document Processing"],
+        "areaServed": {
+            "@type": "State",
+            "name": "Mecklenburg-Vorpommern"
+        },
+        "sameAs": ["https://www.linkedin.com/in/holger-martens-13a8083a/"]
+    }
+    </script>
+
+    <!-- Structured Data: Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "KI-Prozessoptimierung",
+        "provider": {
+            "@type": "Organization",
+            "name": "BOTSCHAFT 42"
+        },
+        "areaServed": "Mecklenburg-Vorpommern",
+        "description": "Entwicklung intelligenter Programme und hybrider Workflows zur Prozessoptimierung. Digitaler Concierge, DSGVO-konforme Assistenzsysteme, Intelligent Document Processing.",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "KI-Lösungen",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digitaler Concierge", "description": "24/7 mehrsprachiger Gastgeber-Service für Tourismus und Hotellerie"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DSGVO-konforme Assistenzsysteme", "description": "Administrative Entlastung im Gesundheitswesen"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Intelligent Document Processing", "description": "Automatisierte Fracht- und Zolldokumentenverarbeitung für Hafen und Logistik"}}
+            ]
+        }
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Was macht BOTSCHAFT 42?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BOTSCHAFT 42 entwickelt intelligente KI-Programme und hybride Workflows zur Prozessoptimierung für Unternehmen in Mecklenburg-Vorpommern. Die Lösungen reichen vom Digitalen Concierge für den Tourismus über DSGVO-konforme Assistenzsysteme im Gesundheitswesen bis hin zu Intelligent Document Processing in der Logistik."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Für welche Branchen bietet BOTSCHAFT 42 Lösungen an?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BOTSCHAFT 42 bietet maßgeschneiderte KI-Lösungen für Tourismus und Hotellerie, das Gesundheitswesen sowie Hafen und Logistik in Mecklenburg-Vorpommern."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Sind die Lösungen von BOTSCHAFT 42 DSGVO-konform?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja, alle Systeme von BOTSCHAFT 42 werden als proprietäre In-House-Entwicklungen realisiert und sind vollständig DSGVO-konform."
                 }
             }
-        }
+        ]
+    }
     </script>
+
+    <!-- Fonts: Instrument Serif (Display) + DM Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Inter', sans-serif; color: #1a202c; background-color: #ffffff; }
-        .text-display { font-size: clamp(2.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.04em; font-weight: 900; }
-        .vertical-label { writing-mode: vertical-rl; text-orientation: mixed; }
-        
+        :root {
+            --black: #0a0a0a;
+            --white: #f8f7f4;
+            --red: #e63328;
+            --red-dark: #c42a20;
+            --gray-100: #f0efec;
+            --gray-200: #e0deda;
+            --gray-400: #999590;
+            --gray-600: #666260;
+            --gray-800: #333130;
+            --sans: 'DM Sans', sans-serif;
+            --serif: 'Instrument Serif', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection { background: var(--red); color: white; }
+
+        /* ── Typography ── */
+        .t-display {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 9vw, 8rem);
+            line-height: 0.95;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .t-headline {
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 5.5vw, 5rem);
+            line-height: 1.0;
+            letter-spacing: -0.01em;
+        }
+
+        .t-section-label {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .t-body { font-size: 1.1rem; line-height: 1.75; color: var(--gray-600); }
+        .t-body-lg { font-size: 1.25rem; line-height: 1.7; color: var(--gray-600); }
+
+        /* ── Layout ── */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+        .section { padding: clamp(5rem, 12vh, 10rem) 0; }
+
+        /* ── B42 Signet ── */
         .b42-signet {
-            background-color: #000000;
-            height: 1.1em;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0 0.4em;
-            margin-right: 0.75rem;
+            background: var(--black);
+            color: white;
+            font-family: var(--sans);
             font-weight: 900;
             letter-spacing: -0.05em;
-            color: #ffffff;
+            padding: 0.15em 0.4em;
+            font-size: 1rem;
+        }
+        .b42-signet .red { color: var(--red); }
+
+        /* ── Navigation ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav.scrolled {
+            background: rgba(248, 247, 244, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+        .nav-brand-text {
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+        .nav-brand-text .red { color: var(--red); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gray-600);
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--black); }
+        .nav-cta {
+            background: var(--red) !important;
+            color: white !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 2px;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--black) !important; }
+
+        /* ── Burger ── */
+        .burger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .burger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--black);
+            margin: 6px 0;
+            transition: all 0.3s;
         }
 
-        .section-spacing { padding-top: clamp(4rem, 10vh, 12rem); padding-bottom: clamp(4rem, 10vh, 12rem); }
-        ::selection { background-color: #EF4444; color: white; }
+        /* ── Mobile Menu ── */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--red); }
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+        }
 
-        /* Modal Styles */
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: clamp(4rem, 8vh, 8rem);
+            padding-top: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg-num {
+            position: absolute;
+            right: -5%;
+            bottom: -15%;
+            font-family: var(--serif);
+            font-size: clamp(20rem, 50vw, 55rem);
+            font-weight: 400;
+            color: var(--black);
+            opacity: 0.025;
+            line-height: 0.8;
+            pointer-events: none;
+            user-select: none;
+        }
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-label-line {
+            width: 3rem;
+            height: 2px;
+            background: var(--red);
+        }
+        .hero h1 { margin-bottom: 3rem; max-width: 900px; }
+        .hero h1 em {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--red);
+        }
+        .hero-sub {
+            max-width: 600px;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            border-bottom: 2px solid var(--gray-200);
+            padding-bottom: 1rem;
+            transition: all 0.4s;
+        }
+        .hero-cta:hover { border-color: var(--red); }
+        .hero-cta svg { transition: transform 0.4s; }
+        .hero-cta:hover svg { transform: translateX(6px); }
+
+        /* ── Scroll Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ── Mission Section ── */
+        .mission { background: var(--black); color: white; }
+        .mission-text {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            line-height: 1.35;
+            color: rgba(255,255,255,0.4);
+            max-width: 1000px;
+        }
+        .mission-text strong { color: white; font-weight: 400; }
+
+        /* ── Expertise Cards ── */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            padding: 2.5rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+        .card:hover::before { transform: scaleX(1); }
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            border: 2px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transition: all 0.4s;
+        }
+        .card:hover .card-icon { background: var(--red); border-color: var(--red); }
+        .card:hover .card-icon svg { stroke: white; }
+        .card h3 {
+            font-family: var(--sans);
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Solutions ── */
+        .solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .solution:last-child { border-bottom: none; }
+        .solution-num {
+            font-family: var(--serif);
+            font-size: 5rem;
+            font-style: italic;
+            color: var(--gray-200);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: color 0.5s;
+        }
+        .solution:hover .solution-num { color: var(--red); }
+        .solution h4 {
+            font-family: var(--sans);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+        .solution-tags { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-200);
+            color: var(--gray-400);
+            font-style: italic;
+        }
+        .solution-img {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+        }
+        .solution-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .solution:hover .solution-img img { filter: grayscale(0%); transform: scale(1.03); }
+
+        /* ── Reference Bar ── */
+        .ref-bar {
+            background: var(--black);
+            color: white;
+            padding: clamp(3rem, 6vh, 5rem) 0;
+        }
+        .ref-bar-inner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .ref-bar h3 {
+            font-family: var(--sans);
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        .ref-bar h3 span { color: var(--red); }
+        .ref-bar p {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.5);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 2rem;
+        }
+
+        /* ── Team ── */
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .team-member { display: flex; gap: 2rem; align-items: flex-start; }
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            filter: grayscale(100%);
+            transition: filter 0.7s;
+            border: 3px solid var(--gray-200);
+        }
+        .team-member:hover .team-photo { filter: grayscale(0%); }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .team-info h4 {
+            font-family: var(--sans);
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .team-role {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        .team-desc {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--gray-600);
+            font-style: italic;
+            border-left: 2px solid var(--red);
+            padding-left: 1rem;
+        }
+
+        /* ── Contact ── */
+        .contact { background: var(--gray-100); }
+        .contact-form { max-width: 700px; margin: 0 auto; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .form-group { position: relative; }
+        .form-group label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        .form-group:focus-within label { color: var(--red); }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid var(--gray-200);
+            background: transparent;
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            color: var(--black);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus { border-color: var(--red); }
+        .form-group textarea { resize: none; min-height: 1.5rem; }
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--red);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        .submit-btn:hover { background: var(--black); }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray-200);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-links button,
+        .footer-links a {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links button:hover,
+        .footer-links a:hover { color: var(--black); }
+        .footer-copy {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+        }
+
+        /* ── Modal ── */
         .modal {
             display: none;
             position: fixed;
-            z-index: 200;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(255,255,255,0.98);
+            inset: 0;
+            z-index: 300;
+            background: rgba(248, 247, 244, 0.98);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        .modal-content {
+        .modal-inner {
+            max-width: 800px;
             margin: 5% auto;
-            padding: 40px;
-            max-width: 900px;
-            line-height: 1.6;
+            padding: 3rem clamp(1.5rem, 4vw, 3rem);
+        }
+        .modal-close {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--black);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+        .modal-close:hover { color: var(--red); }
+        .modal h2 {
+            font-family: var(--sans);
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+        .modal h3 {
+            font-weight: 700;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.5rem 0 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .modal p { font-size: 0.95rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 0.75rem; }
+
+        /* ── Responsive ── */
+
+        /* Safe area support for iPhone notch/dynamic island */
+        @supports (padding: env(safe-area-inset-top)) {
+            .nav { padding-left: max(clamp(1.5rem, 4vw, 4rem), env(safe-area-inset-left)); padding-right: max(clamp(1.5rem, 4vw, 4rem), env(safe-area-inset-right)); }
+            .footer { padding-bottom: max(3rem, env(safe-area-inset-bottom)); }
+            .mobile-menu { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+        }
+
+        /* Fix: Safari 100vh includes address bar */
+        @supports (-webkit-touch-callout: none) {
+            .hero { min-height: -webkit-fill-available; }
+        }
+
+        /* Prevent iOS zoom on input focus (requires 16px minimum) */
+        @media screen and (max-width: 900px) {
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px;
+            }
+        }
+
+        /* Tablet & smaller */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .burger { display: block; }
+            .solution { grid-template-columns: 1fr; gap: 2rem; }
+            .solution-img { order: -1; }
+            .solution-num { font-size: 3.5rem; }
+            .team-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .team-member { flex-direction: column; align-items: center; text-align: center; }
+            .team-photo { width: 150px; height: 150px; }
+            .team-desc { border-left: none; padding-left: 0; border-top: 2px solid var(--red); padding-top: 1rem; }
+            .form-row { grid-template-columns: 1fr; gap: 1.5rem; }
+            .ref-bar-inner { grid-template-columns: 1fr; }
+            .ref-bar p { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .card-grid { grid-template-columns: 1fr; }
+            .modal-inner { margin: 0; padding: 2rem 1.5rem; min-height: 100vh; }
+            .modal-inner > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+        }
+
+        /* Phone-specific (<480px) */
+        @media (max-width: 480px) {
+            .t-display { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+            .t-headline { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+            .hero { padding-top: 6rem; padding-bottom: 3rem; }
+            .hero-sub { font-size: 1.05rem; }
+            .hero-cta { font-size: 0.7rem; padding-bottom: 0.75rem; }
+            .section { padding: clamp(3rem, 8vh, 6rem) 0; }
+            .mission-text { font-size: clamp(1.2rem, 4.5vw, 1.6rem); }
+            .card { padding: 2rem 1.5rem; }
+            .solution h4 { font-size: 1.3rem; }
+            .solution-tags { gap: 0.4rem; }
+            .tag { padding: 0.4rem 0.75rem; font-size: 0.55rem; }
+            .ref-bar h3 { font-size: 1.1rem; }
+            .submit-btn { width: 100%; justify-content: center; padding: 1.25rem 2rem; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
+            .mobile-menu a { font-size: 2rem; }
+            .t-section-label { font-size: 0.6rem; letter-spacing: 0.25em; }
+        }
+
+        /* Ensure touch targets >= 44px (Apple HIG) */
+        @media (pointer: coarse) {
+            .nav-cta { min-height: 44px; display: inline-flex; align-items: center; }
+            .burger { min-width: 44px; min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+            .hero-cta { min-height: 44px; }
+            .submit-btn { min-height: 48px; }
+            .footer-links button,
+            .footer-links a { min-height: 44px; display: inline-flex; align-items: center; }
+            .mobile-menu a { min-height: 48px; display: inline-flex; align-items: center; }
+            .modal-close { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .ticker-inner { animation: none; }
+            .card, .card::before, .solution-img img, .team-photo { transition: none; }
+        }
+
+        /* Dark mode hint (optional, respects system) */
+        @media (prefers-color-scheme: dark) {
+            /* Keeps light theme but adjusts meta theme-color */
+        }
+
+        /* ── Horizontal Rule Accent ── */
+        .accent-line {
+            width: 4rem;
+            height: 3px;
+            background: var(--red);
+            margin-bottom: 2rem;
+        }
+
+        /* ── Marquee ticker ── */
+        .ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.25rem 0;
+        }
+        .ticker-inner {
+            display: inline-flex;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            padding: 0 3rem;
+        }
+        .ticker-item .dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--red);
+            border-radius: 50%;
+            margin-right: 2rem;
+            vertical-align: middle;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-signalred selection:text-white">
+<body>
 
-    <!-- Sticky Navigation -->
-    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b border-gray-100 py-6 px-6 md:px-12 flex justify-between items-center transition-all duration-300 text-anthracite">
-        <div>
-            <a href="#" class="flex items-center">
-                <div class="b42-signet text-sm md:text-lg">
-                    B<span class="text-signalred">42</span>
-                </div>
-                <div class="text-lg md:text-xl font-black tracking-tighter uppercase">
-                    BOTSCHAFT<span class="text-signalred ml-0.5">42</span>
-                </div>
-            </a>
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+        <a href="#" class="nav-brand" aria-label="BOTSCHAFT 42 – Startseite">
+            <div class="b42-signet">B<span class="red">42</span></div>
+            <div class="nav-brand-text">Botschaft<span class="red">42</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#mission">Mission</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#loesungen">Lösungen</a>
+            <a href="#team">Team</a>
+            <a href="#kontakt" class="nav-cta">Kontakt</a>
         </div>
-        <div class="hidden md:flex items-center space-x-12 text-[10px] font-bold uppercase tracking-[0.3em]">
-            <a href="#antrieb" class="hover:text-signalred transition-colors">Antrieb</a>
-            <a href="#expertise" class="hover:text-signalred transition-colors">Expertise</a>
-            <a href="#loesungen" class="hover:text-signalred transition-colors">Lösungen</a>
-            <a href="#team" class="hover:text-signalred transition-colors">Team</a>
-            <a href="#kontakt" class="bg-signalred text-white px-6 py-3 rounded-sm hover:bg-anthracite transition-all shadow-lg shadow-signalred/10">Zukunft gestalten</a>
-        </div>
-        <button id="menu-btn" class="md:hidden text-anthracite">
-            <i data-lucide="menu" class="w-8 h-8"></i>
+        <button class="burger" id="burger" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center px-6 md:px-12 pt-24 overflow-hidden text-anthracite">
-        <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="mb-12 inline-block border-l-4 border-signalred pl-6">
-                <span class="text-xs uppercase tracking-[0.5em] font-bold text-signalred">Souveränität durch Technologie</span>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile Navigation">
+        <button class="mobile-menu-close" id="mobileClose" aria-label="Menü schließen">&times;</button>
+        <a href="#mission" class="mob-link">Mission</a>
+        <a href="#expertise" class="mob-link">Expertise</a>
+        <a href="#loesungen" class="mob-link">Lösungen</a>
+        <a href="#team" class="mob-link">Team</a>
+        <a href="#kontakt" class="mob-link" style="color:var(--red)">Kontakt</a>
+    </div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <header class="hero" role="banner">
+        <div class="hero-bg-num" aria-hidden="true">42</div>
+        <div class="container" style="position:relative; z-index:2;">
+            <div class="hero-label reveal">
+                <div class="hero-label-line"></div>
+                <span class="t-section-label">Souveränität durch Technologie</span>
             </div>
-            <h1 class="text-display mb-12 max-w-5xl">
-                Neue Wege entstehen,<br>indem man <span class="text-signalred">sie geht.</span>
+            <h1 class="t-display reveal reveal-delay-1">
+                Neue Wege<br>entstehen, indem<br>man <em>sie geht.</em>
             </h1>
-            
-            <div class="grid md:grid-cols-12 gap-8 items-end">
-                <div class="md:col-span-6">
-                    <p class="text-xl md:text-2xl leading-relaxed text-anthracite/70 font-light italic serif">
-                        Wir entwickeln intelligente Programme und hybride Workflows zur Prozessoptimierung. Sichern Sie sich die technologische Souveränität für Ihr Unternehmen in Mecklenburg-Vorpommern.
-                    </p>
-                </div>
-                <div class="md:col-start-9 md:col-span-4">
-                    <a href="#kontakt" class="group flex items-center gap-4 text-sm font-bold uppercase tracking-[0.2em] border-b-2 border-gray-100 pb-4 hover:border-signalred transition-all">
-                        Analysegespräch vereinbaren
-                        <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform text-signalred"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="absolute -bottom-20 -right-20 opacity-[0.02] select-none pointer-events-none hidden lg:block">
-            <span class="text-[50rem] font-black leading-none">42</span>
+            <p class="hero-sub reveal reveal-delay-2">
+                Intelligente Programme und hybride Workflows zur Prozessoptimierung. Technologische Souveränität für Ihr Unternehmen in Mecklenburg-Vorpommern.
+            </p>
+            <a href="#kontakt" class="hero-cta reveal reveal-delay-3">
+                Analysegespräch vereinbaren
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </header>
 
-    <!-- Section: Antrieb -->
-    <section id="antrieb" class="section-spacing bg-anthracite text-white px-6 md:px-12">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-1 hidden md:block">
-                    <span class="vertical-label text-[10px] uppercase tracking-[0.5em] font-bold text-white/20">Mission</span>
-                </div>
-                <div class="md:col-span-11">
-                    <h2 class="text-4xl md:text-7xl font-black mb-12 tracking-tight">
-                        Intelligenz, die Arbeit <span class="italic font-serif font-light text-white/40">einfacher macht für Ihre Unternehmen.</span>
-                    </h2>
-                    <div class="grid md:grid-cols-2 gap-16">
-                        <p class="text-xl leading-relaxed text-white/70">
-                            Wir verstehen KI als Werkzeug für neue Freiräume. Unser Ziel ist es, Ihre operative Leistungsfähigkeit zu erweitern und wertvolle Fachkräfte von Routineaufgaben zu entlasten. 
-                        </p>
-                        <p class="text-xl leading-relaxed text-white/70 border-l border-white/10 pl-8">
-                            Für mehr Zeit, mehr Qualität und echte Wertschöpfung. Wir schaffen Systeme, die Souveränität ermöglichen und modernes Arbeiten in Mecklenburg-Vorpommern definieren.
-                        </p>
+    <!-- ═══════ TICKER ═══════ -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-inner">
+            <span class="ticker-item"><span class="dot"></span>KI-Prozessoptimierung</span>
+            <span class="ticker-item"><span class="dot"></span>Hybride Workflows</span>
+            <span class="ticker-item"><span class="dot"></span>Digitaler Concierge</span>
+            <span class="ticker-item"><span class="dot"></span>DSGVO-Konform</span>
+            <span class="ticker-item"><span class="dot"></span>Proprietäre Systeme</span>
+            <span class="ticker-item"><span class="dot"></span>Mecklenburg-Vorpommern</span>
+            <span class="ticker-item"><span class="dot"></span>Videografie & Film</span>
+            <span class="ticker-item"><span class="dot"></span>Imagekampagnen</span>
+            <span class="ticker-item"><span class="dot"></span>KI-Prozessoptimierung</span>
+            <span class="ticker-item"><span class="dot"></span>Hybride Workflows</span>
+            <span class="ticker-item"><span class="dot"></span>Digitaler Concierge</span>
+            <span class="ticker-item"><span class="dot"></span>DSGVO-Konform</span>
+            <span class="ticker-item"><span class="dot"></span>Proprietäre Systeme</span>
+            <span class="ticker-item"><span class="dot"></span>Mecklenburg-Vorpommern</span>
+            <span class="ticker-item"><span class="dot"></span>Videografie & Film</span>
+            <span class="ticker-item"><span class="dot"></span>Imagekampagnen</span>
+        </div>
+    </div>
+
+    <!-- ═══════ MISSION ═══════ -->
+    <section id="mission" class="section mission" aria-labelledby="mission-title">
+        <div class="container">
+            <div class="t-section-label reveal" style="color: rgba(255,255,255,0.3); margin-bottom: 3rem;">Mission</div>
+            <h2 id="mission-title" class="sr-only">Unsere Mission</h2>
+            <p class="mission-text reveal reveal-delay-1">
+                Wir verstehen <strong>KI als Werkzeug für neue Freiräume</strong>. Unser Ziel: Ihre operative Leistungsfähigkeit erweitern und wertvolle <strong>Fachkräfte von Routineaufgaben entlasten</strong>. Für mehr Zeit, mehr Qualität und echte Wertschöpfung. Systeme, die <strong>Souveränität ermöglichen</strong> und modernes Arbeiten in Mecklenburg-Vorpommern definieren.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════ EXPERTISE ═══════ -->
+    <section id="expertise" class="section" aria-labelledby="expertise-title">
+        <div class="container">
+            <div class="t-section-label reveal" style="margin-bottom: 1.5rem;">Produktion & Strategie</div>
+            <h2 id="expertise-title" class="t-headline reveal reveal-delay-1" style="max-width: 800px; margin-bottom: 4rem;">
+                High-End Content &<br>Globale Expertise.
+            </h2>
+            <p class="t-body-lg reveal reveal-delay-2" style="max-width: 600px; margin-bottom: 4rem; font-style: italic; font-family: var(--serif);">
+                Von der analogen Exzellenz zur digitalen Souveränität.
+            </p>
+
+            <div class="card-grid">
+                <article class="card reveal">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                     </div>
-                </div>
+                    <h3>Videografie & Film</h3>
+                    <p class="t-body">Konzeption und Produktion kompletter Videografie- und Filmprojekte sowie Werbeproduktionen – von lokalen Projekten bis zu internationalen Produktionen.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-1">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h3>Imagekampagnen</h3>
+                    <p class="t-body">Ganzheitliche Kampagnenführung, die Markenidentität und Botschaft präzise vereint. Bildsprachen, die weltweit funktionieren und lokal wirken.</p>
+                </article>
+
+                <article class="card reveal reveal-delay-2">
+                    <div class="card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>KI-Schnittstelle</h3>
+                    <p class="t-body">High-End Content als Basis für intelligente Systeme. Verbindung von realem Filmmaterial und KI-gestützter Prozessoptimierung – Kommunikation skalieren ohne Qualitätsverlust.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Section: High-End Content & Globale Expertise -->
-    <section id="expertise" class="section-spacing px-6 md:px-12 bg-white text-anthracite">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-32 border-b border-gray-100 pb-12">
-                <div class="max-w-3xl">
-                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">High-End Content & Globale Expertise.</h2>
-                    <p class="text-xl md:text-2xl text-anthracite/50 serif italic">Von der analogen Exzellenz zur digitalen Souveränität.</p>
+    <!-- ═══════ REFERENCE BAR ═══════ -->
+    <div class="ref-bar">
+        <div class="container">
+            <div class="ref-bar-inner reveal">
+                <h3>Weltweite Referenzen.<br>Erprobtes Handwerk.<br><span>Digitale Zukunft.</span></h3>
+                <p>Langjährige Erfahrung in der Erstellung von High-End Content bildet das Fundament für die Entwicklung heutiger Optimierungsprogramme. Erst das Verständnis für erstklassiges Handwerk erlaubt die präzise digitale Skalierung Ihrer operativen Prozesse.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ LÖSUNGEN ═══════ -->
+    <section id="loesungen" class="section" style="background: var(--gray-100);" aria-labelledby="loesungen-title">
+        <div class="container">
+            <div class="t-section-label reveal" style="margin-bottom: 1.5rem;">Process Optimization</div>
+            <h2 id="loesungen-title" class="t-headline reveal reveal-delay-1" style="margin-bottom: 1rem;">Lösungen.</h2>
+            <p class="t-body-lg reveal reveal-delay-2" style="font-family: var(--serif); font-style: italic; margin-bottom: 4rem;">Moderne Strategien für Mecklenburg-Vorpommern.</p>
+
+            <!-- Solution 01 -->
+            <article class="solution reveal">
+                <div>
+                    <div class="solution-num">01</div>
+                    <h4>Der perfekte Gastgeber-Service</h4>
+                    <p class="t-body">Implementierung des Digitalen Concierge. 24/7 Erreichbarkeit in mehreren Sprachen. Maßgeschneiderte proprietäre Systeme für maximale Service-Exzellenz bei gleichzeitiger Entlastung Ihres Teams.</p>
+                    <div class="solution-tags">
+                        <span class="tag">Custom Software</span>
+                        <span class="tag">Proprietär</span>
+                    </div>
                 </div>
-                <p class="text-xs uppercase tracking-[0.4em] font-bold text-signalred pb-2 hidden md:block">Produktion & Strategie</p>
+                <div class="solution-img">
+                    <img src="MZ7_6611.jpg" alt="Tourismus und Hotellerie in Mecklenburg-Vorpommern – Digitaler Concierge Service" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Solution 02 -->
+            <article class="solution reveal">
+                <div class="solution-img" style="order: 0;">
+                    <img src="HMS01146_1.jpg" alt="Gesundheitswesen Innovation – DSGVO-konforme KI-Assistenzsysteme" loading="lazy">
+                </div>
+                <div>
+                    <div class="solution-num">02</div>
+                    <h4>Fokus auf den Menschen</h4>
+                    <p class="t-body">Administrative Entlastung durch DSGVO-konforme Assistenz-Systeme. Automatisierte Terminierung und Rezeptwünsche über prozessspezifische Eigenentwicklungen – für ein entspanntes Team und erstklassige Patientenbetreuung.</p>
+                    <div class="solution-tags">
+                        <span class="tag">In-House Entwicklung</span>
+                        <span class="tag">DSGVO-Konform</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Solution 03 -->
+            <article class="solution reveal">
+                <div>
+                    <div class="solution-num">03</div>
+                    <h4>Intelligenter Flow</h4>
+                    <p class="t-body">Beschleunigung durch Intelligent Document Processing (IDP). Automatisierte Verarbeitung von Fracht- und Zolldokumenten durch eigene Optimierungsalgorithmen – reibungslose, digitale Abläufe in Hafen & Logistik.</p>
+                    <div class="solution-tags">
+                        <span class="tag">IDP Solutions</span>
+                        <span class="tag">Zoll-Automation</span>
+                    </div>
+                </div>
+                <div class="solution-img">
+                    <img src="MHS08251.jpg" alt="Hafen und Logistik Rostock – Intelligent Document Processing" loading="lazy">
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ═══════ TEAM ═══════ -->
+    <section id="team" class="section" aria-labelledby="team-title">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="t-section-label reveal" style="margin-bottom: 1.5rem;">Hinter der Vision</div>
+                <h2 id="team-title" class="t-headline reveal reveal-delay-1">Die Köpfe.</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-16 mb-40">
-                <div class="space-y-8 group">
-                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
-                        <i data-lucide="video" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+            <div class="team-grid">
+                <article class="team-member reveal">
+                    <div class="team-photo">
+                        <img src="martens.png" alt="Holger Martens – Head of Vision & Creative AI bei BOTSCHAFT 42" loading="lazy"
+                             onerror="this.parentElement.style.background='var(--gray-200)'">
                     </div>
-                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">Videografie & Film</h3>
-                    <p class="text-lg text-anthracite/60 leading-relaxed">
-                        Wir konzipieren und produzieren komplette <strong>Videografie</strong> & Film-Projekte sowie Werbeproduktionen. Unsere Erfahrung reicht von lokalen Projekten bis hin zu weltweiten Produktionen mit internationalem Anspruch.
-                    </p>
-                </div>
+                    <div class="team-info">
+                        <h4>Holger Martens</h4>
+                        <div class="team-role">Head of Vision & Creative AI</div>
+                        <p class="team-desc">Vordenker und kreativer Architekt. Entwicklung spezialisierter Programme zur Prozessoptimierung. Synergetische Verbindung von analoger High-End Produktion und digitaler Skalierung. Experte für kreative Systemvernetzung.</p>
+                    </div>
+                </article>
 
-                <div class="space-y-8 group text-anthracite">
-                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
-                        <i data-lucide="layers" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+                <article class="team-member reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <img src="ries.png" alt="Torsten Ries – Head of Strategy & Operations bei BOTSCHAFT 42" loading="lazy"
+                             onerror="this.parentElement.style.background='var(--gray-200)'">
                     </div>
-                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">Imagekampagnen</h3>
-                    <p class="text-lg text-anthracite/60 leading-relaxed">
-                        Ganzheitliche <strong>Imagekampagnen</strong>-Führung, die Markenidentität und Botschaft präzise vereint. Wir entwickeln Bildsprachen, die weltweit funktionieren und lokal wirken.
-                    </p>
-                </div>
-
-                <div class="space-y-8 group text-anthracite">
-                    <div class="w-12 h-12 flex items-center justify-center border-2 border-anthracite group-hover:bg-signalred group-hover:border-signalred transition-all duration-300">
-                        <i data-lucide="zap" class="w-6 h-6 group-hover:text-white transition-colors"></i>
+                    <div class="team-info">
+                        <h4>Torsten Ries</h4>
+                        <div class="team-role">Head of Strategy & Operations</div>
+                        <p class="team-desc">Strategische Integration von KI in Wertschöpfungsketten. Über 30 Jahre kaufmännische Erfahrung. Fokus auf wirtschaftliche Rentabilität und den Brückenbau zwischen Technologie und kaufmännischer Praxis.</p>
                     </div>
-                    <h3 class="text-2xl font-black uppercase tracking-tighter border-b border-gray-100 pb-4">KI-Schnittstelle</h3>
-                    <p class="text-lg text-anthracite/60 leading-relaxed">
-                        Wir nutzen unseren High-End Content als Basis für intelligente Systeme. Durch die Verbindung von realem Filmmaterial und KI-gestützter Prozessoptimierung skalieren wir Ihre Kommunikation ohne Qualitätsverlust.
-                    </p>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 p-8 md:p-16 border-l-8 border-signalred">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-4 text-anthracite">
-                        <p class="text-3xl font-black tracking-tight leading-none uppercase">
-                            Weltweite Referenzen.<br>Erprobtes Handwerk.<br><span class="text-signalred">Digitale Zukunft.</span>
-                        </p>
-                    </div>
-                    <div class="md:col-span-8 text-anthracite/70 font-light serif italic leading-relaxed text-xl">
-                        Unsere langjährige <strong>Weltweite Referenzen</strong>-Erfahrung in der Erstellung von High-End Content bildet das Fundament für die Entwicklung der heutigen Optimierungsprogramme. Erst das Verständnis für erstklassiges Handwerk erlaubt uns die präzise digitale Skalierung Ihrer operativen Prozesse.
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Section: Lösungen -->
-    <section id="loesungen" class="section-spacing px-6 md:px-12 bg-gray-50 text-anthracite">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-32 border-b border-gray-200 pb-12">
-                <div class="max-w-2xl text-anthracite">
-                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-4">Lösungen.</h2>
-                    <p class="text-xl md:text-2xl text-anthracite/50 serif italic">Moderne Strategien für Mecklenburg-Vorpommern.</p>
-                </div>
-                <p class="text-xs uppercase tracking-[0.4em] font-bold text-signalred pb-2 hidden md:block">Process Optimization</p>
+    <!-- ═══════ KONTAKT ═══════ -->
+    <section id="kontakt" class="section contact" aria-labelledby="kontakt-title">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="t-section-label reveal" style="margin-bottom: 1.5rem;">Jetzt starten</div>
+                <h2 id="kontakt-title" class="t-headline reveal reveal-delay-1">Lassen Sie uns<br>gemeinsam starten.</h2>
+                <p class="reveal reveal-delay-2" style="font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--gray-600); margin-top: 1.5rem;">Gemeinsam definieren wir die Souveränität Ihres Unternehmens.</p>
             </div>
 
-            <div class="space-y-40 text-anthracite">
-                <!-- 01 Tourismus -->
-                <div class="grid md:grid-cols-12 gap-12 items-center group">
-                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">01</div>
-                    <div class="md:col-span-6 space-y-6">
-                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Der perfekte Gastgeber-Service</h4>
-                        <p class="text-lg text-anthracite/60 leading-relaxed">
-                            Implementierung des 'Digitalen Concierge'. Wir ermöglichen 24/7 Erreichbarkeit in mehreren Sprachen. Durch die Entwicklung maßgeschneiderter proprietärer Systeme sichern wir maximale Service-Exzellenz bei gleichzeitiger Entlastung Ihres Teams.
-                        </p>
-                        <div class="flex gap-4">
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Custom Software</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Proprietär</span>
-                        </div>
-                    </div>
-                    <div class="md:col-start-9 md:col-span-4 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
-                        <img src="MZ7_6611.jpg" alt="Tourismus Expertise" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-                <!-- 02 Gesundheit -->
-                <div class="grid md:grid-cols-12 gap-12 items-center group">
-                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">02</div>
-                    <div class="md:col-span-6 md:order-2 space-y-6">
-                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Fokus auf den Menschen</h4>
-                        <p class="text-lg text-anthracite/60 leading-relaxed">
-                            Administrative Entlastung durch DSGVO-konforme Assistenz-Systeme. Automatisierte Terminierung und Rezeptwünsche über prozessspezifische Eigenentwicklungen sorgen für ein entspanntes Team und erstklassige Patientenbetreuung.
-                        </p>
-                        <div class="flex gap-4">
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">In-House Entwicklung</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">DSGVO-Konform</span>
-                        </div>
-                    </div>
-                    <div class="md:col-span-4 md:order-1 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
-                        <img src="HMS01146_1.jpg" alt="Gesundheitswesen Innovation" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-                <!-- 03 Logistik -->
-                <div class="grid md:grid-cols-12 gap-12 items-center group">
-                    <div class="md:col-span-1 text-4xl md:text-6xl font-black text-gray-200 group-hover:text-signalred transition-colors italic">03</div>
-                    <div class="md:col-span-6 space-y-6">
-                        <h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Intelligenter Flow</h4>
-                        <p class="text-lg text-anthracite/60 leading-relaxed">
-                            Beschleunigung durch Intelligent Document Processing (IDP). Wir automatisieren die Verarbeitung von Fracht- und Zolldokumenten durch eigene Optimierungsalgorithmen, um reibungslose, digitale Abläufe in Hafen & Logistik zu garantieren.
-                        </p>
-                        <div class="flex gap-4">
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">IDP Solutions</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 italic">Zoll-Automation</span>
-                        </div>
-                    </div>
-                    <div class="md:col-start-9 md:col-span-4 aspect-video bg-white overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 shadow-sm">
-                        <img src="MHS08251.jpg" alt="Logistik Prozessoptimierung" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Team (ZIRKULÄRE BILDER) -->
-    <section id="team" class="section-spacing bg-white px-6 md:px-12 text-anthracite">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-24 text-center">
-                <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase">Die Köpfe</h2>
-                <p class="text-signalred text-xs font-bold uppercase tracking-[0.5em]">Hinter der Vision</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-24">
-                <!-- Holger Martens -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="w-full md:w-1/2 aspect-square bg-gray-50 border border-gray-100 p-1 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden shadow-sm rounded-full flex-shrink-0">
-                         <img src="martens.png" alt="Holger Martens" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                         <div class="hidden w-full h-full bg-gray-100 items-center justify-center font-serif italic text-gray-400 text-center px-4 rounded-full">[martens.png]</div>
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="text-2xl font-black uppercase tracking-tighter mb-1">Holger Martens</h4>
-                        <p class="text-signalred text-[10px] font-bold tracking-widest mb-6 uppercase">Head of Vision & Creative AI</p>
-                        <p class="text-sm text-anthracite/70 leading-relaxed italic border-l-2 border-signalred pl-4">
-                            Vordenker und kreativer Architekt. Entwicklung spezialisierter Programme zur Prozessoptimierung. Synergetische Verbindung von analoger High-End Produktion und digitaler Skalierung. Experte für kreative Systemvernetzung.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Torsten Ries -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="w-full md:w-1/2 aspect-square bg-gray-50 border border-gray-100 p-1 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden shadow-sm rounded-full flex-shrink-0">
-                        <img src="ries.png" alt="Torsten Ries" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="hidden w-full h-full bg-gray-100 items-center justify-center font-serif italic text-gray-400 text-center px-4 rounded-full">[ries.png]</div>
-                    </div>
-                    <div class="w-full md:w-1/2 text-anthracite">
-                        <h4 class="text-2xl font-black uppercase tracking-tighter mb-1">Torsten Ries</h4>
-                        <p class="text-signalred text-[10px] font-bold tracking-widest mb-6 uppercase">Head of Strategy & Operations</p>
-                        <p class="text-sm text-anthracite/70 leading-relaxed italic border-l-2 border-signalred pl-4">
-                            Strategische Integration von KI in Wertschöpfungsketten. Über 30 Jahre kaufmännische Erfahrung. Fokus auf wirtschaftliche Rentabilität und den Brückenbau zwischen Technologie und kaufmännischer Praxis.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Kontakt -->
-    <section id="kontakt" class="section-spacing bg-white px-6 md:px-12 border-t border-gray-100 text-anthracite">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase">Lassen Sie uns starten</h2>
-                <p class="text-anthracite/50 text-xl font-light serif italic">Gemeinsam definieren wir die Souveränität Ihres Unternehmens.</p>
-            </div>
-
-            <form action="https://formsubmit.co/info@holger-martens.com" method="POST" class="space-y-10 text-anthracite">
+            <form action="https://formsubmit.co/info@holger-martens.com" method="POST" class="contact-form reveal">
                 <input type="text" name="_honey" style="display:none">
                 <input type="hidden" name="_subject" value="Neue Anfrage via BOTSCHAFT 42">
-                
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Vorname</label>
-                        <input type="text" name="vorname" required class="w-full py-4 bg-transparent outline-none text-lg">
-                    </div>
-                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Name</label>
-                        <input type="text" name="name" required class="w-full py-4 bg-transparent outline-none text-lg">
-                    </div>
-                </div>
 
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred text-anthracite">Telefon</label>
-                        <input type="tel" name="telefon" class="w-full py-4 bg-transparent outline-none text-lg">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vorname">Vorname</label>
+                        <input type="text" id="vorname" name="vorname" required autocomplete="given-name">
                     </div>
-                    <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors text-anthracite">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred text-anthracite">E-Mail</label>
-                        <input type="email" name="email" required class="w-full py-4 bg-transparent outline-none text-lg">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="family-name">
                     </div>
                 </div>
 
-                <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Unternehmen</label>
-                    <input type="text" name="unternehmen" class="w-full py-4 bg-transparent outline-none text-lg">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefon">Telefon</label>
+                        <input type="tel" id="telefon" name="telefon" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
                 </div>
 
-                <div class="group border-b border-gray-200 focus-within:border-signalred transition-colors">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-focus-within:text-signalred">Ihr Kontaktwunsch</label>
-                    <textarea name="nachricht" rows="1" required class="w-full py-4 bg-transparent outline-none text-lg resize-none"></textarea>
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="unternehmen">Unternehmen</label>
+                    <input type="text" id="unternehmen" name="unternehmen" autocomplete="organization">
                 </div>
 
-                <div class="pt-12 text-center text-anthracite">
-                    <button type="submit" class="w-full md:w-auto bg-signalred text-white px-12 py-6 text-xl font-bold uppercase tracking-widest hover:bg-anthracite transition-all shadow-xl shadow-signalred/10">
+                <div class="form-group" style="margin-bottom: 3rem;">
+                    <label for="nachricht">Ihr Kontaktwunsch</label>
+                    <textarea id="nachricht" name="nachricht" rows="1" required></textarea>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit" class="submit-btn">
                         Zukunft gemeinsam gestalten
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                 </div>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-gray-100 px-6 md:px-12 text-anthracite">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-            <div class="flex items-center">
-                <div class="b42-signet text-xs">
-                    B<span class="text-signalred">42</span>
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <a href="#" class="nav-brand" aria-label="BOTSCHAFT 42 – Startseite">
+                    <div class="b42-signet" style="font-size:0.75rem;">B<span class="red">42</span></div>
+                    <div class="nav-brand-text" style="font-size:1rem;">Botschaft<span class="red">42</span></div>
+                </a>
+                <div class="footer-links">
+                    <button onclick="toggleModal('impressum')">Impressum</button>
+                    <button onclick="toggleModal('datenschutz')">Datenschutz</button>
+                    <a href="https://www.linkedin.com/in/holger-martens-13a8083a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
-                <div class="font-black text-xl tracking-tighter uppercase text-anthracite">
-                    BOTSCHAFT<span class="text-signalred ml-0.5">42</span>
-                </div>
-            </div>
-            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                <button onclick="toggleModal('impressum')" class="hover:text-anthracite transition-colors text-anthracite">Impressum</button>
-                <button onclick="toggleModal('datenschutz')" class="hover:text-anthracite transition-colors text-anthracite">Datenschutz</button>
-                <a href="https://www.linkedin.com/in/holger-martens-13a8083a/" target="_blank" class="hover:text-anthracite transition-colors text-anthracite">LinkedIn</a>
-            </div>
-            <div class="text-[10px] text-gray-400 uppercase tracking-widest">
-                © 2026 BOTSCHAFT 42
+                <div class="footer-copy">© 2026 BOTSCHAFT 42</div>
             </div>
         </div>
     </footer>
 
-    <!-- Modal: Impressum -->
-    <div id="impressum" class="modal">
-        <div class="modal-content text-anthracite">
-            <button onclick="toggleModal('impressum')" class="float-right text-4xl font-light">&times;</button>
-            <h2 class="text-4xl font-black uppercase mb-8">Impressum</h2>
-            <div class="grid md:grid-cols-2 gap-12">
+    <!-- ═══════ MODALS ═══════ -->
+    <!-- Impressum -->
+    <div id="impressum" class="modal" role="dialog" aria-labelledby="impressum-title" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="toggleModal('impressum')" aria-label="Schließen">&times;</button>
+            <h2 id="impressum-title">Impressum</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                 <div>
-                    <h3 class="font-bold uppercase text-signalred text-xs tracking-widest mb-4">Verantwortlich gemäß § 5 TMG</h3>
-                    <p class="mb-2 font-bold">Holger Martens</p>
+                    <h3 style="color: var(--red); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; border: none; padding-top: 0;">Verantwortlich gemäß § 5 TMG</h3>
+                    <p><strong>Holger Martens</strong></p>
                     <p>Dehmelstraße 7, 18055 Rostock</p>
                     <p>Telefon: 0170 7991910</p>
                     <p>E-Mail: info@holger-martens.com</p>
-                    <p class="mt-4">UST-IdNr. DE203988874</p>
+                    <p style="margin-top: 1rem;">UST-IdNr. DE203988874</p>
                 </div>
                 <div>
-                    <h3 class="font-bold uppercase text-signalred text-xs tracking-widest mb-4">Kooperationspartner</h3>
-                    <p class="mb-2 font-bold">Thorsten Ries (Ries Consulting)</p>
+                    <h3 style="color: var(--red); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; border: none; padding-top: 0;">Kooperationspartner</h3>
+                    <p><strong>Thorsten Ries (Ries Consulting)</strong></p>
                     <p>Seestraße 1, 18211 Börgerende-Rethwisch</p>
                     <p>Telefon: 0170 3542038</p>
                     <p>E-Mail: kontakt@ries-consulting.de</p>
                 </div>
             </div>
-            <div class="mt-12 text-sm text-gray-500 space-y-4">
-                <p><strong>Streitschlichtung:</strong> Plattform zur Online-Streitbeilegung (OS) der EU: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="underline">https://ec.europa.eu/consumers/odr/</a>.</p>
+            <div style="margin-top: 2rem; font-size: 0.85rem;">
+                <p><strong>Streitschlichtung:</strong> Plattform zur Online-Streitbeilegung (OS) der EU: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" style="color: var(--red);">https://ec.europa.eu/consumers/odr/</a></p>
                 <p><strong>Haftung:</strong> Wir haften nicht für Schäden durch Nutzung dieser Seite, es sei denn, es liegt vorsätzliches oder grob fahrlässiges Verschulden vor. Externe Links liegen in der Verantwortung der jeweiligen Betreiber.</p>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Datenschutz -->
-    <div id="datenschutz" class="modal">
-        <div class="modal-content text-anthracite">
-            <button onclick="toggleModal('datenschutz')" class="float-right text-4xl font-light">&times;</button>
-            <h2 class="text-4xl font-black uppercase mb-8">Datenschutz­erklärung</h2>
-            <div class="space-y-6 text-sm md:text-base">
-                <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften.</p>
-                <h3 class="font-bold text-lg border-b border-gray-100 pt-4">1. Verantwortliche Stelle</h3>
-                <p>Thorsten Ries, Seestraße 1, 18211 Börgerende-Rethwisch<br>E-Mail: kontakt@ries-consulting.de</p>
-                <h3 class="font-bold text-lg border-b border-gray-100 pt-4">2. Datenerfassung</h3>
-                <p><strong>Kontaktformular:</strong> Daten aus dem Formular werden ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert. Eine Weitergabe an Dritte erfolgt nicht ohne Einwilligung.</p>
-                <p><strong>Hosting:</strong> Die Seite wird durch Schaber Onlinemarketing (Dirk Schaber, Papendorf) gehostet. Ein AV-Vertrag liegt vor.</p>
-            </div>
+    <!-- Datenschutz -->
+    <div id="datenschutz" class="modal" role="dialog" aria-labelledby="datenschutz-title" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="toggleModal('datenschutz')" aria-label="Schließen">&times;</button>
+            <h2 id="datenschutz-title">Datenschutz­erklärung</h2>
+            <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften.</p>
+            <h3>1. Verantwortliche Stelle</h3>
+            <p>Thorsten Ries, Seestraße 1, 18211 Börgerende-Rethwisch<br>E-Mail: kontakt@ries-consulting.de</p>
+            <h3>2. Datenerfassung</h3>
+            <p><strong>Kontaktformular:</strong> Daten aus dem Formular werden ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert. Eine Weitergabe an Dritte erfolgt nicht ohne Einwilligung.</p>
+            <p><strong>Hosting:</strong> Die Seite wird durch Schaber Onlinemarketing (Dirk Schaber, Papendorf) gehostet. Ein AV-Vertrag liegt vor.</p>
         </div>
     </div>
 
-    <!-- Mobile Menu Layer -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-anthracite z-[150] hidden flex flex-col items-center justify-center p-12 text-white">
-        <button id="close-menu" class="absolute top-8 right-6">
-            <i data-lucide="x" class="w-12 h-12"></i>
-        </button>
-        <div class="flex flex-col space-y-12 text-4xl font-black uppercase tracking-tighter text-center">
-            <a href="#antrieb" class="mobile-link">Antrieb</a>
-            <a href="#expertise" class="mobile-link">Expertise</a>
-            <a href="#loesungen" class="mobile-link">Lösungen</a>
-            <a href="#team" class="mobile-link text-white">Team</a>
-            <a href="#kontakt" class="mobile-link text-signalred">Kontakt</a>
-        </div>
-    </div>
+    <!-- Screenreader-only helper -->
+    <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 
-    <!-- Scripts -->
+    <!-- ═══════ SCRIPTS ═══════ -->
     <script>
-        lucide.createIcons();
+        // ── Navigation Scroll Effect ──
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
 
-        // Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-menu');
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        // ── Mobile Menu (with iOS scroll lock) ──
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+        const mobLinks = document.querySelectorAll('.mob-link');
 
-        menuBtn.addEventListener('click', () => overlay.classList.remove('hidden'));
-        closeBtn.addEventListener('click', () => overlay.classList.add('hidden'));
-        mobileLinks.forEach(l => l.addEventListener('click', () => overlay.classList.add('hidden')));
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = `-${window.scrollY}px`;
+        }
+        function closeMenu() {
+            const scrollY = document.body.style.top;
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+        burger.addEventListener('click', openMenu);
+        mobileClose.addEventListener('click', closeMenu);
+        mobLinks.forEach(l => l.addEventListener('click', closeMenu));
 
-        // Modal Logic
+        // ── Scroll Reveal ──
+        const reveals = document.querySelectorAll('.reveal');
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        reveals.forEach(el => observer.observe(el));
+
+        // ── Modal Logic ──
         function toggleModal(id) {
             const modal = document.getElementById(id);
-            if (modal.style.display === "block") {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-            } else {
-                modal.style.display = "block";
-                document.body.style.overflow = "hidden";
-            }
+            const isOpen = modal.style.display === 'block';
+            modal.style.display = isOpen ? 'none' : 'block';
+            document.body.style.overflow = isOpen ? 'auto' : 'hidden';
         }
-
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = "none";
-                document.body.style.overflow = "auto";
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
-        }
-
-        // Auto-resize textarea
-        const textarea = document.querySelector('textarea');
-        textarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
         });
 
-        // Sticky Nav Shadow
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (nav) {
-                if (window.scrollY > 20) {
-                    nav.classList.add('py-4', 'shadow-sm');
-                    nav.classList.remove('py-6');
-                } else {
-                    nav.classList.add('py-6');
-                    nav.classList.remove('py-4', 'shadow-sm');
+        // ── Auto-resize Textarea ──
+        const ta = document.querySelector('textarea');
+        if (ta) {
+            ta.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        }
+
+        // ── Smooth Scroll for Safari ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }
+            });
         });
     </script>
 </body>
