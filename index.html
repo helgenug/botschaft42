@@ -48,15 +48,14 @@
         "telephone": "+491707991910",
         "email": "info@holger-martens.com",
         "founder": [
-            {"@type": "Person", "name": "Holger Martens", "jobTitle": "Head of Vision & Creative AI"},
-            {"@type": "Person", "name": "Torsten Ries", "jobTitle": "Head of Strategy & Operations"}
+            {"@type": "Person", "name": "Holger Martens", "jobTitle": "Head of Vision & Creative AI"}
         ],
         "knowsAbout": ["Künstliche Intelligenz", "Prozessoptimierung", "Hybride Workflows", "Videografie", "Imagekampagnen", "Intelligent Document Processing"],
         "areaServed": {
             "@type": "State",
             "name": "Mecklenburg-Vorpommern"
         },
-        "sameAs": ["https://www.linkedin.com/in/holger-martens-11135a9b/", "https://www.linkedin.com/in/thorsten-ries-126831132/"]
+        "sameAs": ["https://www.linkedin.com/in/holger-martens-11135a9b/"]
     }
     </script>
 
@@ -529,12 +528,16 @@
             padding-left: 2rem;
         }
 
-        /* ── Team ── */
-        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-        .team-member { display: flex; gap: 2rem; align-items: flex-start; }
-        .team-photo {
-            width: 180px;
-            height: 180px;
+        /* ── Über Mich ── */
+        .ueber-mich-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .ueber-mich-photo {
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -542,31 +545,48 @@
             transition: filter 0.7s;
             border: 3px solid var(--gray-200);
         }
-        .team-member:hover .team-photo { filter: grayscale(0%); }
-        .team-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .team-info h4 {
+        .ueber-mich-photo:hover { filter: grayscale(0%); }
+        .ueber-mich-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .ueber-mich-content h4 {
             font-family: var(--sans);
-            font-size: 1.3rem;
+            font-size: 2rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: -0.02em;
             margin-bottom: 0.25rem;
         }
-        .team-role {
+        .ueber-mich-role {
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--red);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
-        .team-desc {
-            font-size: 0.95rem;
-            line-height: 1.65;
+        .ueber-mich-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        .skill-tag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-200);
             color: var(--gray-600);
-            font-style: italic;
+            transition: all 0.3s;
+        }
+        .skill-tag:hover { border-color: var(--red); color: var(--red); }
+        .ueber-mich-desc {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--gray-600);
             border-left: 2px solid var(--red);
-            padding-left: 1rem;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         /* ── Contact ── */
@@ -702,37 +722,30 @@
 
         /* ── Responsive ── */
 
-        /* Safe area support for iPhone notch/dynamic island */
         @supports (padding: env(safe-area-inset-top)) {
             .nav { padding-left: max(clamp(1.5rem, 4vw, 4rem), env(safe-area-inset-left)); padding-right: max(clamp(1.5rem, 4vw, 4rem), env(safe-area-inset-right)); }
             .footer { padding-bottom: max(3rem, env(safe-area-inset-bottom)); }
             .mobile-menu { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
         }
 
-        /* Fix: Safari 100vh includes address bar */
         @supports (-webkit-touch-callout: none) {
             .hero { min-height: -webkit-fill-available; }
         }
 
-        /* Prevent iOS zoom on input focus (requires 16px minimum) */
         @media screen and (max-width: 900px) {
             .form-group input,
-            .form-group textarea {
-                font-size: 16px;
-            }
+            .form-group textarea { font-size: 16px; }
         }
 
-        /* Tablet & smaller */
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .burger { display: block; }
             .solution { grid-template-columns: 1fr; gap: 2rem; }
             .solution-img { order: -1; }
             .solution-num { font-size: 3.5rem; }
-            .team-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .team-member { flex-direction: column; align-items: center; text-align: center; }
-            .team-photo { width: 150px; height: 150px; }
-            .team-desc { border-left: none; padding-left: 0; border-top: 2px solid var(--red); padding-top: 1rem; }
+            .ueber-mich-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .ueber-mich-photo { width: 160px; height: 160px; margin: 0 auto; }
+            .ueber-mich-content { text-align: left; }
             .form-row { grid-template-columns: 1fr; gap: 1.5rem; }
             .ref-bar-inner { grid-template-columns: 1fr; }
             .ref-bar p { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
@@ -742,7 +755,6 @@
             .modal-inner > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
         }
 
-        /* Phone-specific (<480px) */
         @media (max-width: 480px) {
             .t-display { font-size: clamp(2.2rem, 10vw, 3.5rem); }
             .t-headline { font-size: clamp(1.8rem, 8vw, 2.8rem); }
@@ -762,7 +774,6 @@
             .t-section-label { font-size: 0.6rem; letter-spacing: 0.25em; }
         }
 
-        /* Ensure touch targets >= 44px (Apple HIG) */
         @media (pointer: coarse) {
             .nav-cta { min-height: 44px; display: inline-flex; align-items: center; }
             .burger { min-width: 44px; min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -774,16 +785,10 @@
             .modal-close { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
         }
 
-        /* Reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1; transform: none; transition: none; }
             .ticker-inner { animation: none; }
-            .card, .card::before, .solution-img img, .team-photo { transition: none; }
-        }
-
-        /* Dark mode hint (optional, respects system) */
-        @media (prefers-color-scheme: dark) {
-            /* Keeps light theme but adjusts meta theme-color */
+            .card, .card::before, .solution-img img, .ueber-mich-photo { transition: none; }
         }
 
         /* ── Horizontal Rule Accent ── */
@@ -842,7 +847,7 @@
             <a href="#mission">Mission</a>
             <a href="#expertise">Expertise</a>
             <a href="#loesungen">Lösungen</a>
-            <a href="#team">Team</a>
+            <a href="#team">Über Mich</a>
             <a href="#kontakt" class="nav-cta">Kontakt</a>
         </div>
         <button class="burger" id="burger" aria-label="Menü öffnen">
@@ -856,7 +861,7 @@
         <a href="#mission" class="mob-link">Mission</a>
         <a href="#expertise" class="mob-link">Expertise</a>
         <a href="#loesungen" class="mob-link">Lösungen</a>
-        <a href="#team" class="mob-link">Team</a>
+        <a href="#team" class="mob-link">Über Mich</a>
         <a href="#kontakt" class="mob-link" style="color:var(--red)">Kontakt</a>
     </div>
 
@@ -1020,38 +1025,36 @@
         </div>
     </section>
 
-    <!-- ═══════ TEAM ═══════ -->
+    <!-- ═══════ ÜBER MICH ═══════ -->
     <section id="team" class="section" aria-labelledby="team-title">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 4rem;">
+            <div style="margin-bottom: 4rem;">
                 <div class="t-section-label reveal" style="margin-bottom: 1.5rem;">Hinter der Vision</div>
-                <h2 id="team-title" class="t-headline reveal reveal-delay-1">Die Köpfe.</h2>
+                <h2 id="team-title" class="t-headline reveal reveal-delay-1">Über Mich.</h2>
             </div>
 
-            <div class="team-grid">
-                <article class="team-member reveal">
-                    <div class="team-photo">
-                        <img src="martens.png" alt="Holger Martens – Head of Vision & Creative AI bei BOTSCHAFT 42" loading="lazy"
-                             onerror="this.parentElement.style.background='var(--gray-200)'">
+            <div class="ueber-mich-grid reveal">
+                <div class="ueber-mich-photo">
+                    <img src="martens.png" alt="Holger Martens – Head of Vision & Creative AI bei BOTSCHAFT 42" loading="lazy"
+                         onerror="this.parentElement.style.background='var(--gray-200)'">
+                </div>
+                <div class="ueber-mich-content">
+                    <h4>Holger Martens</h4>
+                    <div class="ueber-mich-role">Head of Vision & Creative AI</div>
+                    <p class="ueber-mich-desc">
+                        Vordenker und kreativer Architekt. Entwicklung spezialisierter Programme zur Prozessoptimierung. Synergetische Verbindung von analoger High-End Produktion und digitaler Skalierung. Experte für kreative Systemvernetzung. Erstellung von Website Architektur, Fotografie & Videographie.
+                    </p>
+                    <div class="ueber-mich-skills">
+                        <span class="skill-tag">Fotografie & Film</span>
+                        <span class="skill-tag">KI-Prozessoptimierung</span>
+                        <span class="skill-tag">Imagekampagnen</span>
+                        <span class="skill-tag">Webdesign</span>
+                        <span class="skill-tag">Hybride Workflows</span>
+                        <span class="skill-tag">Visuelle Strategie</span>
+                        <span class="skill-tag">Drohne</span>
+                        <span class="skill-tag">Presse & Reportage</span>
                     </div>
-                    <div class="team-info">
-                        <h4>Holger Martens</h4>
-                        <div class="team-role">Head of Vision & Creative AI</div>
-                        <p class="team-desc">Vordenker und kreativer Architekt. Entwicklung spezialisierter Programme zur Prozessoptimierung. Synergetische Verbindung von analoger High-End Produktion und digitaler Skalierung. Experte für kreative Systemvernetzung.</p>
-                    </div>
-                </article>
-
-                <article class="team-member reveal reveal-delay-1">
-                    <div class="team-photo">
-                        <img src="ries.png" alt="Torsten Ries – Head of Strategy & Operations bei BOTSCHAFT 42" loading="lazy"
-                             onerror="this.parentElement.style.background='var(--gray-200)'">
-                    </div>
-                    <div class="team-info">
-                        <h4>Thorsten Ries</h4>
-                        <div class="team-role">Head of Strategy & Operations</div>
-                        <p class="team-desc">Strategische Integration von KI in Wertschöpfungsketten. Über 30 Jahre kaufmännische Erfahrung. Fokus auf wirtschaftliche Rentabilität und den Brückenbau zwischen Technologie und kaufmännischer Praxis.</p>
-                    </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
@@ -1122,8 +1125,7 @@
                 <div class="footer-links">
                     <button onclick="toggleModal('impressum')">Impressum</button>
                     <button onclick="toggleModal('datenschutz')">Datenschutz</button>
-                    <a href="https://www.linkedin.com/in/holger-martens-11135a9b/" target="_blank" rel="noopener noreferrer">LinkedIn HM</a>
-                    <a href="https://www.linkedin.com/in/thorsten-ries-126831132/" target="_blank" rel="noopener noreferrer">LinkedIn TR</a>
+                    <a href="https://www.linkedin.com/in/holger-martens-11135a9b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
                 <div class="footer-copy">© 2026 BOTSCHAFT 42</div>
             </div>
@@ -1167,7 +1169,7 @@
             <h2 id="datenschutz-title">Datenschutz­erklärung</h2>
             <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften.</p>
             <h3>1. Verantwortliche Stelle</h3>
-            <p>Thorsten Ries, Seestraße 1, 18211 Börgerende-Rethwisch<br>E-Mail: kontakt@ries-consulting.de</p>
+            <p>Holger Martens, Dehmelstraße 7, 18055 Rostock<br>E-Mail: info@holger-martens.com</p>
             <h3>2. Datenerfassung</h3>
             <p><strong>Kontaktformular:</strong> Daten aus dem Formular werden ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert. Eine Weitergabe an Dritte erfolgt nicht ohne Einwilligung.</p>
             <p><strong>Hosting:</strong> Die Seite wird durch Schaber Onlinemarketing (Dirk Schaber, Papendorf) gehostet. Ein AV-Vertrag liegt vor.</p>
@@ -1181,7 +1183,6 @@
     <script>
         // ── Navigation Scroll Effect ──
         const nav = document.getElementById('nav');
-        let lastScroll = 0;
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
@@ -1261,4 +1262,3 @@
     </script>
 </body>
 </html>
-
