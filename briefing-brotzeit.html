@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Website-Briefing – Brotzeit Rostock | BOTSCHAFT 42</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;500&display=swap');
+
+  :root {
+    --cream: #faf7f2;
+    --warm: #f0e8d8;
+    --brown: #5c3d2e;
+    --brown-light: #8b5e4a;
+    --accent: #c8773a;
+    --text: #2a1f1a;
+    --muted: #9a8478;
+    --border: #ddd0c4;
+    --success: #4a7c59;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--brown);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 20px;
+    letter-spacing: 0.06em;
+  }
+
+  .topbar a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 2px solid var(--brown);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--brown);
+    line-height: 1.2;
+  }
+
+  .brand span {
+    display: block;
+    font-size: 12px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* INTRO */
+  .intro {
+    background: var(--warm);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin-bottom: 44px;
+    font-size: 14.5px;
+    color: var(--brown-light);
+    line-height: 1.75;
+  }
+
+  /* BLOCKS */
+  .block { margin-bottom: 48px; }
+
+  .block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--brown);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .block-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* QUESTIONS */
+  .question { margin-bottom: 24px; }
+
+  .q-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding-left: 28px;
+  }
+
+  /* CUSTOM CHECKBOX / RADIO */
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 0;
+  }
+
+  .opt input { display: none; }
+
+  .opt-box, .opt-circle {
+    width: 19px;
+    height: 19px;
+    border: 1.5px solid var(--border);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .opt-box { border-radius: 3px; }
+  .opt-circle { border-radius: 50%; }
+
+  .opt input[type="checkbox"]:checked + .opt-box {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .opt input[type="checkbox"]:checked + .opt-box::after {
+    content: '✓';
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .opt input[type="radio"]:checked + .opt-circle {
+    border-color: var(--accent);
+  }
+  .opt input[type="radio"]:checked + .opt-circle::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .opt-text {
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .opt:hover .opt-box,
+  .opt:hover .opt-circle {
+    border-color: var(--accent);
+  }
+
+  /* TEXT INPUT */
+  .text-input {
+    width: calc(100% - 28px);
+    margin-left: 28px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 13px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    resize: vertical;
+    min-height: 64px;
+    transition: border-color 0.15s;
+  }
+
+  input.text-input {
+    min-height: unset;
+    height: 42px;
+    resize: none;
+  }
+
+  .text-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 36px 0;
+  }
+
+  /* CONTACT BLOCK */
+  .contact-block {
+    background: var(--warm);
+    padding: 24px 28px;
+    border-radius: 4px;
+    margin-bottom: 36px;
+  }
+
+  .contact-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--brown);
+    margin-bottom: 18px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .contact-grid .full { grid-column: 1 / -1; }
+
+  .field-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .contact-grid input,
+  .contact-grid textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    transition: border-color 0.15s;
+  }
+
+  .contact-grid textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+
+  .contact-grid input:focus,
+  .contact-grid textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* BUTTONS */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .btn {
+    padding: 13px 36px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--brown);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-secondary {
+    background: white;
+    color: var(--brown);
+    border: 1.5px solid var(--brown);
+  }
+  .btn-secondary:hover { background: var(--warm); }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* SUCCESS / ERROR */
+  .msg {
+    display: none;
+    border-radius: 4px;
+    padding: 18px 22px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .msg-success {
+    background: #edf7ef;
+    border: 1.5px solid #7db87d;
+    color: var(--success);
+  }
+
+  .msg-error {
+    background: #fdf0ee;
+    border: 1.5px solid #d4756a;
+    color: #8b3a2e;
+  }
+
+  /* PROGRESS */
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: 60px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .page-footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  .page-footer-copy {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 520px) {
+    .page { padding: 28px 18px 60px; }
+    .header-top { flex-direction: column; }
+    .meta { text-align: left; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid .full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  Vertrauliches Briefing-Dokument · Nicht öffentlich · <a href="https://www.botschaft42.de">botschaft42.de</a>
+</div>
+
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">
+        Brotzeit Rostock
+        <span>Website-Briefing · März 2026</span>
+      </div>
+      <div class="meta">
+        BOTSCHAFT 42<br>
+        Holger Martens<br>
+        <a href="tel:01707991910">0170 7991910</a><br>
+        <a href="mailto:info@holger-martens.com">info@holger-martens.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro">
+    Herzlichen Dank für Ihr Interesse an einer neuen Website. Bitte kreuzen Sie einfach an, was auf Sie zutrifft — fast überall reicht ein Klick. Am Ende auf <strong>„Absenden"</strong> drücken. Wir melden uns dann persönlich bei Ihnen.
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <form id="briefingForm">
+
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" style="display:none">
+    <input type="hidden" name="_subject" value="Briefing-Bogen: Brotzeit Rostock">
+    <input type="hidden" name="_next" value="">
+
+    <!-- A -->
+    <div class="block">
+      <div class="block-title">A &nbsp; Über Ihr Unternehmen</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">1</span> Wer soll auf der Website sichtbar sein?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="a1_sichtbarkeit" value="Inhaber mit Foto"><span class="opt-box"></span><span class="opt-text">Inhaber mit Foto</span></label>
+          <label class="opt"><input type="checkbox" name="a1_sichtbarkeit" value="Das Team"><span class="opt-box"></span><span class="opt-text">Das Team</span></label>
+          <label class="opt"><input type="checkbox" name="a1_sichtbarkeit" value="Lieber anonym"><span class="opt-box"></span><span class="opt-text">Lieber anonym</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">2</span> Wer sind Ihre Hauptkunden?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="a2_zielgruppe" value="Familien"><span class="opt-box"></span><span class="opt-text">Familien</span></label>
+          <label class="opt"><input type="checkbox" name="a2_zielgruppe" value="Berufstätige / Mittagspause"><span class="opt-box"></span><span class="opt-text">Berufstätige / Mittagspause</span></label>
+          <label class="opt"><input type="checkbox" name="a2_zielgruppe" value="Senioren"><span class="opt-box"></span><span class="opt-text">Senioren</span></label>
+          <label class="opt"><input type="checkbox" name="a2_zielgruppe" value="Touristen"><span class="opt-box"></span><span class="opt-text">Touristen</span></label>
+          <label class="opt"><input type="checkbox" name="a2_zielgruppe" value="Stammkunden"><span class="opt-box"></span><span class="opt-text">Stammkunden</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">3</span> Bestehendes Logo / Corporate Design?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="a3_logo" value="Ja, unverändert übernehmen"><span class="opt-circle"></span><span class="opt-text">Ja, unverändert übernehmen</span></label>
+          <label class="opt"><input type="radio" name="a3_logo" value="Ja, darf modernisiert werden"><span class="opt-circle"></span><span class="opt-text">Ja, darf modernisiert werden</span></label>
+          <label class="opt"><input type="radio" name="a3_logo" value="Nein, neu entwickeln"><span class="opt-circle"></span><span class="opt-text">Nein, neu entwickeln</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="block">
+      <div class="block-title">B &nbsp; Ihr Angebot</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">4</span> Was soll auf der neuen Website zu sehen sein?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Frühstück & Mittagstisch"><span class="opt-box"></span><span class="opt-text">Frühstück & Mittagstisch</span></label>
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Torten & Konditorei"><span class="opt-box"></span><span class="opt-text">Torten & Konditorei</span></label>
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Backwaren & Brot"><span class="opt-box"></span><span class="opt-text">Backwaren & Brot</span></label>
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Catering"><span class="opt-box"></span><span class="opt-text">Catering</span></label>
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Gutscheine"><span class="opt-box"></span><span class="opt-text">Gutscheine</span></label>
+          <label class="opt"><input type="checkbox" name="b1_angebot" value="Saisonale Angebote"><span class="opt-box"></span><span class="opt-text">Saisonale Angebote</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">5</span> Dürfen Preise auf der Website stehen?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="b2_preise" value="Ja"><span class="opt-circle"></span><span class="opt-text">Ja</span></label>
+          <label class="opt"><input type="radio" name="b2_preise" value="Nein"><span class="opt-circle"></span><span class="opt-text">Nein</span></label>
+          <label class="opt"><input type="radio" name="b2_preise" value="Nur teilweise"><span class="opt-circle"></span><span class="opt-text">Nur teilweise</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">6</span> Wie oft ändert sich Ihr Speiseangebot?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="b3_wechsel" value="Täglich"><span class="opt-circle"></span><span class="opt-text">Täglich</span></label>
+          <label class="opt"><input type="radio" name="b3_wechsel" value="Wöchentlich"><span class="opt-circle"></span><span class="opt-text">Wöchentlich</span></label>
+          <label class="opt"><input type="radio" name="b3_wechsel" value="Saisonal"><span class="opt-circle"></span><span class="opt-text">Saisonal</span></label>
+          <label class="opt"><input type="radio" name="b3_wechsel" value="Selten / bleibt gleich"><span class="opt-circle"></span><span class="opt-text">Selten / bleibt gleich</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">7</span> Gibt es saisonale Aktionen?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="b4_saison" value="Ostern"><span class="opt-box"></span><span class="opt-text">Ostern</span></label>
+          <label class="opt"><input type="checkbox" name="b4_saison" value="Muttertag"><span class="opt-box"></span><span class="opt-text">Muttertag</span></label>
+          <label class="opt"><input type="checkbox" name="b4_saison" value="Valentinstag"><span class="opt-box"></span><span class="opt-text">Valentinstag</span></label>
+          <label class="opt"><input type="checkbox" name="b4_saison" value="Weihnachten"><span class="opt-box"></span><span class="opt-text">Weihnachten</span></label>
+          <label class="opt"><input type="checkbox" name="b4_saison" value="Geburtstage"><span class="opt-box"></span><span class="opt-text">Geburtstage</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="block">
+      <div class="block-title">C &nbsp; Was soll die neue Website können?</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">8</span> Wie sollen Kunden eine Torte anfragen?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="c1_anfrage" value="Online-Formular"><span class="opt-box"></span><span class="opt-text">Online-Formular</span></label>
+          <label class="opt"><input type="checkbox" name="c1_anfrage" value="WhatsApp"><span class="opt-box"></span><span class="opt-text">WhatsApp</span></label>
+          <label class="opt"><input type="checkbox" name="c1_anfrage" value="Telefon"><span class="opt-box"></span><span class="opt-text">Telefon</span></label>
+          <label class="opt"><input type="checkbox" name="c1_anfrage" value="E-Mail"><span class="opt-box"></span><span class="opt-text">E-Mail</span></label>
+          <label class="opt"><input type="checkbox" name="c1_anfrage" value="Nur persönlich im Laden"><span class="opt-box"></span><span class="opt-text">Nur persönlich im Laden</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">9</span> Welche Funktionen wünschen Sie sich?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Vorbestellung / Click & Collect"><span class="opt-box"></span><span class="opt-text">Vorbestellung / Click & Collect</span></label>
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Tischreservierung"><span class="opt-box"></span><span class="opt-text">Tischreservierung</span></label>
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Kundenbewertungen einbinden"><span class="opt-box"></span><span class="opt-text">Kundenbewertungen</span></label>
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Newsletter"><span class="opt-box"></span><span class="opt-text">Newsletter</span></label>
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Allergen-Filter auf der Karte"><span class="opt-box"></span><span class="opt-text">Allergen-Filter</span></label>
+          <label class="opt"><input type="checkbox" name="c2_funktionen" value="Google Maps"><span class="opt-box"></span><span class="opt-text">Google Maps</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">10</span> Soll die Karriere-Seite bleiben?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="c3_karriere" value="Ja, mit Bewerbungsformular"><span class="opt-circle"></span><span class="opt-text">Ja, mit Bewerbungsformular</span></label>
+          <label class="opt"><input type="radio" name="c3_karriere" value="Ja, nur E-Mail-Link"><span class="opt-circle"></span><span class="opt-text">Ja, nur E-Mail-Link</span></label>
+          <label class="opt"><input type="radio" name="c3_karriere" value="Nein"><span class="opt-circle"></span><span class="opt-text">Nein</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="block">
+      <div class="block-title">D &nbsp; Bilder & Social Media</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">11</span> Haben Sie professionelles Bildmaterial?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="d1_bilder" value="Ja, vorhanden"><span class="opt-circle"></span><span class="opt-text">Ja, vorhanden</span></label>
+          <label class="opt"><input type="radio" name="d1_bilder" value="Nur Handy-Fotos"><span class="opt-circle"></span><span class="opt-text">Nur Handy-Fotos</span></label>
+          <label class="opt"><input type="radio" name="d1_bilder" value="Nein, neu produzieren"><span class="opt-circle"></span><span class="opt-text">Nein, muss neu produziert werden</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">12</span> Was soll fotografiert werden?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="d2_foto" value="Torten & Konditorei"><span class="opt-box"></span><span class="opt-text">Torten & Konditorei</span></label>
+          <label class="opt"><input type="checkbox" name="d2_foto" value="Frühstück & Speisen"><span class="opt-box"></span><span class="opt-text">Frühstück & Speisen</span></label>
+          <label class="opt"><input type="checkbox" name="d2_foto" value="Atmosphäre & Laden"><span class="opt-box"></span><span class="opt-text">Atmosphäre & Laden</span></label>
+          <label class="opt"><input type="checkbox" name="d2_foto" value="Team & Menschen"><span class="opt-box"></span><span class="opt-text">Team & Menschen</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">13</span> Instagram auf der neuen Website einbinden?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="d3_instagram" value="Ja"><span class="opt-circle"></span><span class="opt-text">Ja</span></label>
+          <label class="opt"><input type="radio" name="d3_instagram" value="Nein"><span class="opt-circle"></span><span class="opt-text">Nein</span></label>
+          <label class="opt"><input type="radio" name="d3_instagram" value="Weiß nicht"><span class="opt-circle"></span><span class="opt-text">Weiß nicht</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="block">
+      <div class="block-title">E &nbsp; Design & Atmosphäre</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">14</span> Welche Atmosphäre soll die Seite haben?</div>
+        <div class="options">
+          <label class="opt"><input type="checkbox" name="e1_stil" value="Warm & handgemacht"><span class="opt-box"></span><span class="opt-text">Warm & handgemacht</span></label>
+          <label class="opt"><input type="checkbox" name="e1_stil" value="Modern & klar"><span class="opt-box"></span><span class="opt-text">Modern & klar</span></label>
+          <label class="opt"><input type="checkbox" name="e1_stil" value="Gemütlich & einladend"><span class="opt-box"></span><span class="opt-text">Gemütlich & einladend</span></label>
+          <label class="opt"><input type="checkbox" name="e1_stil" value="Hochwertig & premium"><span class="opt-box"></span><span class="opt-text">Hochwertig & premium</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">15</span> Gibt es Websites die Ihnen gefallen? (kurze Notiz)</div>
+        <textarea class="text-input" name="e2_referenzen" placeholder="z.B. eine Bäckerei, ein Café, oder einfach: „so wie unser Laden aussieht""></textarea>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="block">
+      <div class="block-title">F &nbsp; Technik & Pflege</div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">16</span> Wer soll die Website später pflegen?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="f1_pflege" value="Wir selbst"><span class="opt-circle"></span><span class="opt-text">Wir selbst</span></label>
+          <label class="opt"><input type="radio" name="f1_pflege" value="Die Agentur"><span class="opt-circle"></span><span class="opt-text">Die Agentur</span></label>
+          <label class="opt"><input type="radio" name="f1_pflege" value="Noch unklar"><span class="opt-circle"></span><span class="opt-text">Noch unklar</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="q-num">17</span> Haben Sie Zugang zu Ihrer Domain-Verwaltung?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="f2_domain" value="Ja"><span class="opt-circle"></span><span class="opt-text">Ja</span></label>
+          <label class="opt"><input type="radio" name="f2_domain" value="Nein / weiß nicht"><span class="opt-circle"></span><span class="opt-text">Nein / weiß nicht</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- KONTAKT -->
+    <div class="contact-block">
+      <div class="contact-label">Ihre Kontaktdaten</div>
+      <div class="contact-grid">
+        <div>
+          <label class="field-label">Name *</label>
+          <input type="text" name="kontakt_name" placeholder="Vor- und Nachname" required>
+        </div>
+        <div>
+          <label class="field-label">Telefon</label>
+          <input type="tel" name="kontakt_telefon" placeholder="0381 …">
+        </div>
+        <div>
+          <label class="field-label">E-Mail *</label>
+          <input type="email" name="kontakt_email" placeholder="info@brotzeit-rostock.de" required>
+        </div>
+        <div>
+          <label class="field-label">Bester Rückruf-Zeitpunkt</label>
+          <input type="text" name="kontakt_rueckruf" placeholder="z.B. vormittags bis 11 Uhr">
+        </div>
+        <div class="full">
+          <label class="field-label">Anmerkungen (optional)</label>
+          <textarea name="kontakt_anmerkung" placeholder="Was ist Ihnen noch wichtig?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary" id="submitBtn">Absenden</button>
+      <button type="button" class="btn btn-secondary" onclick="downloadPDF()">Als PDF speichern</button>
+    </div>
+    <div class="footer-note">Ihre Angaben werden ausschließlich für die Projektplanung verwendet.</div>
+
+    <div class="msg msg-success" id="successMsg">
+      ✓ &nbsp; Vielen Dank! Wir haben Ihre Angaben erhalten und melden uns in Kürze bei Ihnen.
+    </div>
+    <div class="msg msg-error" id="errorMsg">
+      ✗ &nbsp; Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0170 7991910
+    </div>
+
+  </form>
+
+  <div class="page-footer">
+    <span class="page-footer-brand">BOTSCHAFT 42</span>
+    <span class="page-footer-copy">© 2026 · Holger Martens · Dehmelstraße 7, 18055 Rostock</span>
+  </div>
+
+</div>
+
+<script>
+  // Progress bar
+  function updateProgress() {
+    const inputs = document.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked, textarea, input[type="text"], input[type="email"], input[type="tel"]');
+    const total = document.querySelectorAll('.question').length + 5;
+    const answered = document.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked').length;
+    const filled = document.querySelectorAll('input[type="text"][value!=""], input[type="email"][value!=""]').length;
+    const pct = Math.min(100, Math.round((answered / (total * 0.8)) * 100));
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('change', updateProgress);
+    el.addEventListener('input', updateProgress);
+  });
+
+  // Formspree Submit
+  document.getElementById('briefingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet …';
+
+    const formData = new FormData(this);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xwvwkykq', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+        btn.textContent = '✓ Gesendet';
+        document.getElementById('progressFill').style.width = '100%';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      document.getElementById('errorMsg').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Absenden';
+    }
+  });
+
+  // PDF Download
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+    const brown = [92, 61, 46];
+    const accent = [200, 119, 58];
+    const muted = [154, 132, 120];
+    const text = [42, 31, 26];
+
+    let y = 20;
+
+    // Header
+    doc.setFillColor(...brown);
+    doc.rect(0, 0, 210, 14, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(8);
+    doc.text('Vertrauliches Briefing-Dokument · BOTSCHAFT 42 · botschaft42.de', 105, 9, { align: 'center' });
+
+    y = 28;
+    doc.setTextColor(...brown);
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Brotzeit Rostock', 20, y);
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...muted);
+    doc.text('Website-Briefing · März 2026', 20, y + 7);
+
+    doc.setTextColor(...muted);
+    doc.setFontSize(9);
+    doc.text('BOTSCHAFT 42 · Holger Martens · 0170 7991910 · info@holger-martens.com', 210 - 20, y, { align: 'right' });
+
+    y += 18;
+    doc.setDrawColor(...brown);
+    doc.setLineWidth(0.5);
+    doc.line(20, y, 190, y);
+    y += 10;
+
+    // Collect answers
+    const sections = [
+      { title: 'A – Über Ihr Unternehmen', questions: [
+        { label: 'Sichtbarkeit', names: ['a1_sichtbarkeit'] },
+        { label: 'Hauptkunden', names: ['a2_zielgruppe'] },
+        { label: 'Logo / CI', names: ['a3_logo'] },
+      ]},
+      { title: 'B – Ihr Angebot', questions: [
+        { label: 'Angebot auf Website', names: ['b1_angebot'] },
+        { label: 'Preise zeigen', names: ['b2_preise'] },
+        { label: 'Speisekarten-Wechsel', names: ['b3_wechsel'] },
+        { label: 'Saisonale Aktionen', names: ['b4_saison'] },
+      ]},
+      { title: 'C – Funktionen', questions: [
+        { label: 'Tortenanfrage', names: ['c1_anfrage'] },
+        { label: 'Gewünschte Funktionen', names: ['c2_funktionen'] },
+        { label: 'Karriere-Seite', names: ['c3_karriere'] },
+      ]},
+      { title: 'D – Bilder & Social Media', questions: [
+        { label: 'Bildmaterial', names: ['d1_bilder'] },
+        { label: 'Fotoproduktion', names: ['d2_foto'] },
+        { label: 'Instagram einbinden', names: ['d3_instagram'] },
+      ]},
+      { title: 'E – Design', questions: [
+        { label: 'Atmosphäre', names: ['e1_stil'] },
+        { label: 'Design-Referenzen', names: ['e2_referenzen'], isText: true },
+      ]},
+      { title: 'F – Technik & Pflege', questions: [
+        { label: 'Website-Pflege', names: ['f1_pflege'] },
+        { label: 'Domain-Zugang', names: ['f2_domain'] },
+      ]},
+    ];
+
+    function getVal(names, isText) {
+      for (const name of names) {
+        const els = document.querySelectorAll(`[name="${name}"]`);
+        if (!els.length) continue;
+        if (isText) return els[0].value || '—';
+        const checked = [...els].filter(el => el.checked).map(el => el.value);
+        if (checked.length) return checked.join(', ');
+      }
+      return '—';
+    }
+
+    function checkPage(needed) {
+      if (y + needed > 275) {
+        doc.addPage();
+        y = 20;
+      }
+    }
+
+    for (const section of sections) {
+      checkPage(16);
+      doc.setFillColor(...brown);
+      doc.rect(20, y - 4, 170, 8, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'bold');
+      doc.text(section.title, 24, y + 1);
+      y += 12;
+
+      for (const q of section.questions) {
+        checkPage(12);
+        const val = getVal(q.names, q.isText);
+        doc.setTextColor(...muted);
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica', 'normal');
+        doc.text(q.label + ':', 24, y);
+        doc.setTextColor(...text);
+        doc.setFont('helvetica', val === '—' ? 'italic' : 'normal');
+        const lines = doc.splitTextToSize(val, 120);
+        doc.text(lines, 75, y);
+        y += lines.length * 5 + 3;
+      }
+      y += 4;
+    }
+
+    // Kontaktdaten
+    checkPage(40);
+    doc.setFillColor(...brown);
+    doc.rect(20, y - 4, 170, 8, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Kontaktdaten', 24, y + 1);
+    y += 12;
+
+    const kontaktFelder = [
+      ['Name', 'kontakt_name'],
+      ['Telefon', 'kontakt_telefon'],
+      ['E-Mail', 'kontakt_email'],
+      ['Rückruf', 'kontakt_rueckruf'],
+      ['Anmerkung', 'kontakt_anmerkung'],
+    ];
+
+    for (const [label, name] of kontaktFelder) {
+      const el = document.querySelector(`[name="${name}"]`);
+      const val = el ? (el.value || '—') : '—';
+      doc.setTextColor(...muted);
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica', 'normal');
+      doc.text(label + ':', 24, y);
+      doc.setTextColor(...text);
+      doc.setFont('helvetica', val === '—' ? 'italic' : 'normal');
+      const lines = doc.splitTextToSize(val, 120);
+      doc.text(lines, 75, y);
+      y += lines.length * 5 + 3;
+    }
+
+    // Footer
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setDrawColor(...muted);
+      doc.setLineWidth(0.3);
+      doc.line(20, 285, 190, 285);
+      doc.setFontSize(8);
+      doc.setTextColor(...muted);
+      doc.setFont('helvetica', 'normal');
+      doc.text('BOTSCHAFT 42 · Holger Martens · Dehmelstraße 7, 18055 Rostock', 20, 290);
+      doc.text(`Seite ${i} / ${pageCount}`, 190, 290, { align: 'right' });
+    }
+
+    doc.save('Briefing-Brotzeit-Rostock.pdf');
+  }
+</script>
+</body>
+</html>
