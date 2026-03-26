@@ -713,10 +713,8 @@
 <script>
   // Progress bar
   function updateProgress() {
-    const inputs = document.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked, textarea, input[type="text"], input[type="email"], input[type="tel"]');
-    const total = document.querySelectorAll('.question').length + 5;
+    const total = document.querySelectorAll('.question').length;
     const answered = document.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked').length;
-    const filled = document.querySelectorAll('input[type="text"][value!=""], input[type="email"][value!=""]').length;
     const pct = Math.min(100, Math.round((answered / (total * 0.8)) * 100));
     document.getElementById('progressFill').style.width = pct + '%';
   }
