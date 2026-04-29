@@ -23,11 +23,20 @@
     <meta property="og:url" content="https://botschaft42.de/">
     <meta property="og:locale" content="de_DE">
     <meta property="og:site_name" content="BOTSCHAFT 42">
-
-    <!-- Twitter Card -->
+    <meta property="og:image" content="https://botschaft42.de/martens.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://botschaft42.de/martens.png" />
     <meta name="twitter:title" content="BOTSCHAFT 42 | KI-Prozessoptimierung">
     <meta name="twitter:description" content="Operative Souveränität durch intelligente Systeme für Unternehmen in MV.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
@@ -48,14 +57,19 @@
         "telephone": "+491707991910",
         "email": "info@holger-martens.com",
         "founder": [
-            {"@type": "Person", "name": "Holger Martens", "jobTitle": "Head of Vision & Creative AI"}
+            {"@type": "Person", "name": "Holger Martens", "jobTitle": "Head of Vision & Creative AI", "url": "https://www.holger-martens.com"}
         ],
         "knowsAbout": ["Künstliche Intelligenz", "Prozessoptimierung", "Hybride Workflows", "Videografie", "Imagekampagnen", "Intelligent Document Processing"],
         "areaServed": {
             "@type": "State",
             "name": "Mecklenburg-Vorpommern"
         },
-        "sameAs": ["https://www.linkedin.com/in/holger-martens-11135a9b/"]
+        "sameAs": [
+            "https://www.linkedin.com/in/holger-martens-11135a9b/",
+            "https://www.instagram.com/holger.martens/",
+            "https://www.facebook.com/Fotograf.Holger.Martens",
+            "https://www.holger-martens.com"
+        ]
     }
     </script>
 
@@ -865,6 +879,7 @@
         <a href="#kontakt" class="mob-link" style="color:var(--red)">Kontakt</a>
     </div>
 
+    <main>
     <!-- ═══════ HERO ═══════ -->
     <header class="hero" role="banner">
         <div class="hero-bg-num" aria-hidden="true">42</div>
@@ -1114,6 +1129,29 @@
         </div>
     </section>
 
+    <!-- ═══════ HOLGER-MARTENS.COM CROSS-PROMOTION ═══════ -->
+    <section style="background: var(--black); padding: clamp(4rem, 8vh, 7rem) 0;" aria-label="Fotografische Produktion">
+        <div class="container">
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; max-width: 800px;">
+                <div class="t-section-label" style="color: var(--red);">Bildsprache & Kampagnen</div>
+                <h2 style="font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 400; color: white; line-height: 1.05; letter-spacing: -0.01em;">
+                    Wenn KI-Strategie auf<br><em style="font-style: italic; color: var(--red);">Bildproduktion</em> trifft.
+                </h2>
+                <p style="font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.55); max-width: 560px;">
+                    Imagekampagnen, Industriefotografie und Videoproduktion für Unternehmen — realisiert von Holger Martens. Über 25 Jahre Produktionserfahrung für LIEBHERR, Caterpillar, BMW, DACHSER und zahlreiche weitere Auftraggeber in Norddeutschland und bundesweit.
+                </p>
+                <a href="https://www.holger-martens.com" target="_blank" rel="noopener"
+                   style="display: inline-flex; align-items: center; gap: 1rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: white; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 1rem; transition: border-color 0.4s;"
+                   onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+                    holger-martens.com
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer" role="contentinfo">
         <div class="container">
@@ -1123,6 +1161,7 @@
                     <div class="nav-brand-text" style="font-size:1rem;">Botschaft<span class="red">42</span></div>
                 </a>
                 <div class="footer-links">
+                    <a href="https://www.holger-martens.com" target="_blank" rel="noopener">holger-martens.com</a>
                     <button onclick="toggleModal('impressum')">Impressum</button>
                     <button onclick="toggleModal('datenschutz')">Datenschutz</button>
                     <a href="https://www.linkedin.com/in/holger-martens-11135a9b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -1254,6 +1293,19 @@
                 }
             });
         });
+        // ── Bildschutz: Rechtsklick und Drag deaktivieren
+        document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+        document.querySelectorAll('img').forEach(img => { img.addEventListener('dragstart', e => e.preventDefault()); });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YGNLKB1YF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0YGNLKB1YF');
+        gtag('config', 'AW-952107806');
     </script>
 </body>
 </html>
