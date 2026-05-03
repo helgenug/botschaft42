@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vielfalt im Fokus — Feinkonzept Mai 2026 · INROS LACKNER SE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-soft: #F2EDE4;
+    --bg-deep: #ECE4D6;
+    --ink: #1A1714;
+    --ink-soft: #5C5448;
+    --ink-mute: #8B8275;
+    --line: #D4CCC0;
+    --line-soft: #E5DED2;
+    --accent: #B8431A;
+    --accent-soft: #C2643A;
+    --highlight: #DDA436;
+    --paper: #FFFEFB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-weight: 400;
+  }
+
+  .italic-mark {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .meta {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  .meta-accent {
+    color: var(--accent);
+  }
+
+  /* ============ LAYOUT ============ */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .section-marker {
+    position: absolute;
+    top: 40px;
+    left: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-marker::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    min-height: 100vh;
+    padding: 80px 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+  }
+
+  .cover-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .cover-main {
+    padding: 80px 0 60px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 100px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-size: clamp(64px, 9vw, 132px);
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--ink);
+    max-width: 1100px;
+  }
+
+  .cover h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .cover-sub {
+    margin-top: 56px;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 640px;
+    font-weight: 300;
+  }
+
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+  }
+
+  .cover-info-block .meta {
+    margin-bottom: 8px;
+  }
+
+  .cover-info-block .val {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  /* ============ HERO LINE ============ */
+  .hero-line {
+    height: 1px;
+    background: var(--accent);
+    width: 100%;
+    margin: 0;
+  }
+
+  /* ============ TITLES ============ */
+  .section-title {
+    font-size: clamp(44px, 5.5vw, 76px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 24px;
+    max-width: 900px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .section-lead {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 56px;
+    font-weight: 300;
+  }
+
+  h3.block-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  h4.sub-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  p.body { font-size: 16px; line-height: 1.65; color: var(--ink); margin-bottom: 14px; }
+  p.body-large { font-size: 18px; line-height: 1.6; color: var(--ink); margin-bottom: 16px; }
+  p.body-soft { color: var(--ink-soft); }
+
+  /* ============ STATUS BAR ============ */
+  .status-bar {
+    background: var(--bg-soft);
+    border-radius: 20px;
+    padding: 48px 56px;
+    margin-bottom: 40px;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .status-item .meta { margin-bottom: 12px; }
+  .status-item .val {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .status-item .desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .pill-done { background: #2D5F3F; color: #E8F0E8; }
+  .pill-active { background: var(--accent); color: var(--paper); }
+  .pill-open { background: var(--bg-deep); color: var(--ink); border: 1px solid var(--line); }
+
+  /* ============ CARDS ============ */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px;
+    height: 100%;
+  }
+
+  .card-soft {
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+  }
+
+  .card-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .card-rule {
+    height: 1px;
+    background: var(--line);
+    margin: 16px 0;
+  }
+
+  /* ============ PILLAR GRID (6) ============ */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .pillar {
+    background: var(--bg);
+    padding: 36px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .pillar-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .pillar-treat {
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .pillar-treat strong { font-weight: 600; color: var(--accent); }
+
+  /* ============ TIMELINE 3 EBENEN ============ */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg-soft);
+  }
+
+  .tl-col {
+    padding: 40px 36px;
+    border-right: 1px solid var(--line);
+  }
+  .tl-col:last-child { border-right: none; }
+
+  .tl-marker {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .tl-title {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .tl-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  /* ============ DREHPLAN TIMELINE ============ */
+  .drehplan {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+
+  .day {
+    display: grid;
+    grid-template-columns: 140px 1fr 320px;
+    gap: 32px;
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: start;
+  }
+
+  .day:last-child { border-bottom: none; }
+
+  .day-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .day-name {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .day-time {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  .day-content h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .day-content p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+
+  .shotlist {
+    list-style: none;
+  }
+
+  .shotlist li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    padding: 6px 0 6px 18px;
+    position: relative;
+  }
+
+  .shotlist li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .day-side {
+    background: var(--bg-soft);
+    padding: 20px 22px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .day-side .meta { margin-bottom: 10px; }
+  .day-side .lst { color: var(--ink); }
+  .day-side .lst strong { font-weight: 600; }
+
+  /* ============ FRAGENKATALOG ============ */
+  .qa-block {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 20px;
+  }
+
+  .qa-block.priority {
+    border-color: var(--accent);
+    background: linear-gradient(180deg, var(--paper) 0%, #FFF7F0 100%);
+  }
+
+  .qa-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .qa-head h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .qa-list {
+    list-style: none;
+  }
+
+  .qa-list li {
+    padding: 12px 0 12px 32px;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .qa-list li:last-child { border-bottom: none; }
+
+  .qa-list li::before {
+    counter-increment: qcount;
+    content: counter(qcount, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .qa-block { counter-reset: qcount; }
+
+  .qa-list li em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ============ STATEMENT BOX ============ */
+  .statement-box {
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    padding: 48px 56px;
+    background: linear-gradient(135deg, #FFF7F0 0%, var(--paper) 100%);
+    position: relative;
+  }
+
+  .statement-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 32px;
+    font-family: 'Fraunces', serif;
+    font-size: 120px;
+    color: var(--accent);
+    line-height: 1;
+    font-style: italic;
+  }
+
+  .statement-box .display {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-left: 60px;
+    font-weight: 400;
+  }
+
+  /* ============ POST PRODUCTION ============ */
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .post-step {
+    background: var(--paper);
+    padding: 32px 28px;
+  }
+
+  .post-step .num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .post-step h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .post-step p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .post-step .dur {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ============ TAGESORDNUNG ============ */
+  .agenda-list {
+    list-style: none;
+    counter-reset: agcount;
+  }
+
+  .agenda-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  .agenda-num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .agenda-content h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .agenda-content p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .agenda-prio {
+    text-align: right;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 80px 0 40px;
+    border: none;
+  }
+
+  footer .page { padding-top: 0; padding-bottom: 0; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .footer-claim {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-claim em {
+    font-style: italic;
+    color: var(--accent-soft);
+  }
+
+  footer .meta {
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+  }
+
+  footer .val {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--bg);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ DECORATIVE ELEMENTS ============ */
+  .ornament-line {
+    height: 1px;
+    background: var(--line);
+    margin: 48px 0;
+    position: relative;
+  }
+
+  .ornament-line::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .marginalia {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    margin: 24px 0;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .page { padding: 0 28px; }
+    .grid-2, .grid-3, .pillars, .timeline, .post-grid, .cover-bottom {
+      grid-template-columns: 1fr;
+    }
+    .day { grid-template-columns: 1fr; gap: 16px; padding: 28px; }
+    .agenda-item { grid-template-columns: 60px 1fr; }
+    .agenda-prio { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    section { padding: 80px 0; }
+    .cover h1 { font-size: 56px; }
+    .section-title { font-size: 40px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; padding: 60px 0; }
+    .cover { min-height: auto; }
+    #splash, .response-bar, .submit-section { display: none !important; }
+  }
+
+  /* ============ SPLASH SCREEN ============ */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+  }
+  #splash.hidden { opacity: 0; pointer-events: none; }
+  .splash-inner {
+    max-width: 460px;
+    width: 90%;
+    text-align: center;
+    color: var(--bg);
+    padding: 40px;
+  }
+  .splash-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .splash-title {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .splash-title em { font-style: italic; color: var(--accent-soft); }
+  .splash-sub {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+  .splash-form { display: flex; flex-direction: column; gap: 14px; }
+  .splash-input {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: var(--bg);
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0.4em;
+    outline: none;
+    transition: all 0.25s;
+  }
+  .splash-input:focus {
+    border-color: var(--accent-soft);
+    background: rgba(255,255,255,0.1);
+  }
+  .splash-input.shake { animation: shake 0.4s; border-color: #c14a3a; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+  .splash-btn {
+    padding: 16px 24px;
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .splash-btn:hover { background: var(--accent-soft); }
+  .splash-foot {
+    margin-top: 32px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ============ ANSWER FIELDS ============ */
+  .answer-box {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .answer-box textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    resize: vertical;
+    outline: none;
+    transition: all 0.2s;
+  }
+  .answer-box textarea:focus {
+    border-color: var(--accent);
+    background: var(--paper);
+    box-shadow: 0 0 0 3px rgba(184,67,26,0.08);
+  }
+  .answer-box textarea::placeholder {
+    color: var(--ink-mute);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  .check-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .check-row input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .check-row input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check-row input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--paper);
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .check-row input[type="checkbox"]:checked + span {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ============ RESPONSE / SUBMIT SECTION ============ */
+  .submit-section {
+    background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-deep) 100%);
+    padding: 100px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .submit-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 56px 64px;
+    box-shadow: 0 20px 60px rgba(26,23,20,0.04);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .contact-field label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .contact-field input, .contact-field textarea {
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: all 0.2s;
+  }
+  .contact-field input:focus, .contact-field textarea:focus {
+    border-color: var(--accent);
+    background: var(--paper);
+    box-shadow: 0 0 0 3px rgba(184,67,26,0.08);
+  }
+  .contact-full {
+    grid-column: 1 / -1;
+  }
+  .submit-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 18px 32px;
+    border-radius: 10px;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+  }
+  .btn-primary { background: var(--accent); color: var(--paper); }
+  .btn-primary:hover { background: #9c3815; transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-secondary { background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .btn-secondary:hover { background: var(--bg-soft); border-color: var(--ink-soft); }
+
+  .msg {
+    margin-top: 24px;
+    padding: 18px 22px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    display: none;
+  }
+  .msg-success { background: #E8F0E8; color: #2D5F3F; border: 1px solid #2D5F3F33; }
+  .msg-error { background: #FBE9E3; color: #8C2E16; border: 1px solid #8C2E1633; }
+
+  /* PRINT FIX */
+  @media print {
+    .answer-box textarea {
+      border: 1px solid var(--ink) !important;
+      background: white !important;
+      min-height: 50px;
+    }
+  }
+</style>
+</head>
+<body style="overflow:hidden;">
+
+<!-- ========== SPLASH SCREEN ========== -->
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-mark">Vertraulich · INROS LACKNER · 90 Jahre</div>
+    <div class="splash-title">Vielfalt<br>im <em>Fokus</em>.</div>
+    <div class="splash-sub">Dieses Dokument ist für den internen Austausch zwischen Holger Martens und INROS LACKNER SE. Bitte Zugangscode eingeben.</div>
+    <form class="splash-form" id="splashForm" autocomplete="off">
+      <input type="password" id="splashInput" class="splash-input" placeholder="••••" maxlength="8" autofocus>
+      <button type="submit" class="splash-btn">Dokument öffnen</button>
+    </form>
+    <div class="splash-foot">Holger Martens · Fotografie & Bildkunst</div>
+  </div>
+</div>
+
+<form id="briefingForm" onsubmit="return false;">
+
+<!-- ========== COVER ========== -->
+<header class="cover">
+  <div class="page">
+    <div class="cover-top">
+      <div class="cover-logo">Holger Martens — Fotografie & Bildkunst</div>
+      <div class="meta">Stand · Mai 2026 · Vertraulich</div>
+    </div>
+  </div>
+
+  <div class="page cover-main">
+    <div class="eyebrow meta meta-accent">Feinkonzept · Drehphase</div>
+    <h1 class="display">Vielfalt<br>im <em>Fokus</em>.</h1>
+    <p class="cover-sub">Jubiläumsfilm INROS LACKNER SE · 90 Jahre. Update zum Konzept aus März 2026 — vor dem Drehstart im Mai.</p>
+  </div>
+
+  <div class="page">
+    <div class="cover-bottom">
+      <div class="cover-info-block">
+        <div class="meta">Format</div>
+        <div class="val">3:00 Min · 4K Cine · 5.1</div>
+      </div>
+      <div class="cover-info-block">
+        <div class="meta">Drehphase</div>
+        <div class="val">Mai 2026 · 5 Tage</div>
+      </div>
+      <div class="cover-info-block">
+        <div class="meta">Konzept & Regie</div>
+        <div class="val">Holger Martens</div>
+      </div>
+      <div class="cover-info-block">
+        <div class="meta">Kamera</div>
+        <div class="val">Holger Martens & David Garbe</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ========== STATUS UPDATE ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 01 · Stand der Produktion</span></div>
+  <div class="page">
+    <h2 class="section-title display">Was bereits <em>läuft</em>.</h2>
+    <p class="section-lead">Das Konzept aus März 2026 bleibt in seinem Kern bestehen: drei Zeitebenen, die Linie als visuelles Motiv, Menschen als Träger der Geschichte. Erste Bausteine sind in Produktion.</p>
+
+    <div class="status-bar">
+      <div class="status-grid">
+        <div class="status-item">
+          <span class="pill pill-active">In Arbeit</span>
+          <div class="val" style="margin-top:14px;">KI-Animation der Archivbilder</div>
+          <div class="desc">Historische Inros-Aufnahmen werden mit KI zum Leben erweckt. Bewegung in stehende Bilder, Atmung in Sepia. Die "Gestern"-Ebene wird damit emotional aufgeladen, ohne Archivlogik zu verlieren.</div>
+        </div>
+        <div class="status-item">
+          <span class="pill pill-done">Bestätigt</span>
+          <div class="val" style="margin-top:14px;">Dramaturgie-Gerüst</div>
+          <div class="desc">Drei-Akt-Struktur mit Prolog (Gestern), Hauptteil (Heute) und Finale (Morgen). Die Linie zieht sich durch — von Tusche über CAD bis Datennetz.</div>
+        </div>
+        <div class="status-item">
+          <span class="pill pill-open">Klärung morgen</span>
+          <div class="val" style="margin-top:14px;">Drehorte, Projekte, Personen</div>
+          <div class="desc">Andrea Schmidt-Schwonbeck und Anne Hoppe legen mit uns die konkreten Drehlocations, Leuchtturmprojekte und Mitarbeitenden für den Mai fest.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marginalia">
+      Die KI-Archivanimation ist Teil des Prologs (Akt I, 0:00 – 0:30) und kann sparsam in Akt II als Rückblende eingesetzt werden. Sie ersetzt keine reale Aufnahme — sie erweckt das, was niemand mehr filmen kann.
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== KONZEPT KERN ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 02 · Konzept-Kern</span></div>
+  <div class="page">
+    <h2 class="section-title display">Menschen <em>zeigen</em>.</h2>
+    <p class="section-lead">Die wichtigste Klarstellung zu diesem Update — und sie verträgt keinen Spielraum für Missverständnisse.</p>
+
+    <div class="grid-2">
+      <div>
+        <p class="body-large">Inros Lackner ist seine Belegschaft. Hände, die zeichnen. Augen, die prüfen. Köpfe, die zusammenarbeiten. Der Film zeigt diese Menschen — am Bildschirm, auf der Baustelle, im Team, im BIM-Modell, im historischen Archiv, in der KI-animierten Vergangenheit.</p>
+        <p class="body-large">Sie sprechen nicht. Oder wenn doch, nur in kurzen Sätzen, fast beiläufig, eingewoben in den Bildstrom. Ein Talking Head als Erzählinstrument hat in diesem Film keinen Platz.</p>
+        <p class="body-large">Auch in der Abstraktion bleiben Menschen sichtbar: Silhouetten in Datenströmen, Hände zwischen Hologrammen, Gesichter im BIM-Modell. Die digitale Ebene zeigt keine leeren Räume.</p>
+      </div>
+
+      <div class="card card-soft">
+        <div class="meta meta-accent">Drei Regeln</div>
+        <h3 class="block-title" style="margin-top:14px;">Beobachtende Kamera</h3>
+        <p class="body body-soft">Die Kamera dokumentiert echte Arbeit. Keine gestellten Posen, keine Studio-Setups für Mitarbeitende.</p>
+        <div class="card-rule"></div>
+        <h3 class="block-title">Voice-Over über dem Bildstrom</h3>
+        <p class="body body-soft">Eine warme, ruhige Stimme. 25–30 Sekunden Sprache in 3 Minuten Film. Sie kommentiert nicht — sie öffnet Räume.</p>
+        <div class="card-rule"></div>
+        <h3 class="block-title">Statements als Option</h3>
+        <p class="body body-soft">Falls Mitarbeitende kurz sprechen: ein, zwei Sätze, eingestreut zwischen Bildern. Nie als zentrales Element. Diese Frage entscheiden Andrea und Anne.</p>
+      </div>
+    </div>
+
+    <div class="ornament-line"></div>
+
+    <div class="statement-box">
+      <p class="display">Die Projekte sind das Ergebnis. Die Menschen tragen die Geschichte.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== SECHS SÄULEN INROS ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 03 · Generalplaner-Identität</span></div>
+  <div class="page">
+    <h2 class="section-title display">Sechs Säulen,<br>ein Film.</h2>
+    <p class="section-lead">Die Generalplaner-Selbstdarstellung von Inros Lackner ruht auf sechs Kernkompetenzen. Das Originalkonzept hat vier davon als Akte ausgearbeitet. Die zwei verbleibenden — Genehmigungsmanagement und Projektsteuerung — werden im Update integriert: als Querschnittsmotive, die in mehreren Akten mitlaufen, ohne eigenen Hauptakt.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 01</div>
+        <div class="pillar-name">Komplexe Gebäudeplanung</div>
+        <div class="pillar-desc">Verwaltung, öffentliche Bauten, Sonderbauten. Architektur und Ingenieurplanung aus einer Hand.</div>
+        <div class="pillar-treat"><strong>Akt II · Projekt B</strong> · Hochbau / Architektur / TGA · Schicht-Durchfahrt</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 02</div>
+        <div class="pillar-name">Wasserbau und Hafenlogistik</div>
+        <div class="pillar-desc">Hafenanlagen, Schleusen, Spundwände, Hochwasserschutz, Schiffshebewerke.</div>
+        <div class="pillar-treat"><strong>Akt II · Projekt A</strong> · Infrastruktur / Wasserbau · Unterwasser-VFX</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 03</div>
+        <div class="pillar-name">Infrastrukturplanung</div>
+        <div class="pillar-desc">Straßen, Schiene, Brücken, Tunnel, Verkehr. Lineare Bauwerke, große Distanzen.</div>
+        <div class="pillar-treat"><strong>Akt II · Projekt A erweitert</strong> · Brücke und Verkehr im Bild von Wasserbau-Akt</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 04</div>
+        <div class="pillar-name">Energie- und Umweltplanung</div>
+        <div class="pillar-desc">Windkraft, Photovoltaik, Renaturierung, Umweltverträglichkeit, Entwässerung.</div>
+        <div class="pillar-treat"><strong>Akt II · Projekt C</strong> · Umwelt / Energie / Nachhaltigkeit · Bodenproben, Drohne über Windpark</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 05</div>
+        <div class="pillar-name">Projektsteuerung & Baumanagement</div>
+        <div class="pillar-desc">Bauleitung, Lean, Schnittstellenkoordination, Qualitätssicherung. Das Querschnittsthema von Inros.</div>
+        <div class="pillar-treat"><strong>Querschnitt</strong> · Lean-Workshop, Planwand, Team-Meetings · sichtbar in allen Akten</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">SÄULE 06</div>
+        <div class="pillar-name">Genehmigungsmanagement</div>
+        <div class="pillar-desc">Behörden, Planfeststellung, Bürgerbeteiligung. Die unsichtbare Disziplin, die Projekte erst möglich macht.</div>
+        <div class="pillar-treat"><strong>Querschnitt</strong> · kurze Bildmotive: Aktenordner, Stempel, Karten, Termin im Amt · Akt II + III</div>
+      </div>
+    </div>
+
+    <div class="marginalia">
+      Frage an Andrea: Sehen Inros-Vorstand und Marketing das so — oder soll Säule 5 oder 6 einen eigenen Mini-Akt bekommen? Die Filmlänge bleibt 3:00 Min — eine Erweiterung müsste durch Kürzung an anderer Stelle ausgeglichen werden.
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== DREI ZEITEBENEN ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 04 · Dramaturgie</span></div>
+  <div class="page">
+    <h2 class="section-title display">Drei Zeitebenen,<br>eine <em>Linie</em>.</h2>
+    <p class="section-lead">Der Film arbeitet nicht chronologisch. Er verschränkt Gestern, Heute und Morgen zu einem fließenden Bildstrom, der durch ein einziges visuelles Motiv zusammengehalten wird: die Linie. Tusche, Bleistift, CAD, BIM, Netzwerk.</p>
+
+    <div class="timeline">
+      <div class="tl-col">
+        <div class="tl-marker">Akt I · Prolog</div>
+        <div class="tl-title">Gestern</div>
+        <div class="tl-sub">Die Hand, das Papier</div>
+        <p class="body body-soft">1936–1990 · KI-animiertes Archivmaterial, historische Pläne, alte Werkzeuge. Schwarzweiß und Sepia. Tusche auf Papier. Zirkel. Blaupausen. Die Linie beginnt zu leuchten.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px; color:var(--accent);"><strong>0:00 – 0:30</strong></p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-marker">Akt II · Hauptteil</div>
+        <div class="tl-title">Heute</div>
+        <div class="tl-sub">Die Handschrift</div>
+        <p class="body body-soft">Vier Leuchtturmprojekte. Mitarbeitende bei der Arbeit. Echte Gesichter, echte Hände, echte Gespräche. Am Bildschirm, auf der Baustelle, im Team-Meeting. Querschnittsmotive Projektsteuerung und Genehmigung.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px; color:var(--accent);"><strong>0:30 – 2:30</strong></p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-marker">Akt III · Finale</div>
+        <div class="tl-title">Morgen</div>
+        <div class="tl-sub">Die Vision</div>
+        <p class="body body-soft">BIM-Modelle, digitale Zwillinge, Datenströme. Die Linie wird zum Netzwerk. Alle Fäden laufen zusammen. Logo. Claim. Fade to Black mit Atem.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px; color:var(--accent);"><strong>2:30 – 3:00</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== 5-TAGE-DREHPLAN ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 05 · Drehplan</span></div>
+  <div class="page">
+    <h2 class="section-title display">Fünf Tage <em>im Mai</em>.</h2>
+    <p class="section-lead">Realistisch geplant: vier bis fünf Drehtage zwischen 04. und 17. Mai 2026 (KW 19–20). Außerhalb davon kollidieren Ostseeklinik Zingst (21.05.) und Horizonte Zingst (29.05.–07.06.). Der Plan ist Schnittbild-orientiert, mit Statement-Optionen, falls Andrea und Anne einzelne O-Töne wünschen.</p>
+
+    <div class="drehplan">
+      <div class="day">
+        <div>
+          <div class="day-num">TAG 01</div>
+          <div class="day-name">Wasser, Hafen, Brücke</div>
+          <div class="day-time">Sonnenaufgang bis Mittag · Golden Hour</div>
+        </div>
+        <div class="day-content">
+          <h5>Akt II · Projekt A — Infrastruktur / Wasserbau</h5>
+          <p>Eine aktive Inros-Baustelle oder ein fertiges Referenzprojekt im Wasserbau. Hafen, Schleuse, Spundwand oder Brücke. Drohne über Wasser, Kamera am Ufer, Hände auf Bauplan. Team-Szene mit zwei oder drei Ingenieur:innen.</p>
+          <ul class="shotlist">
+            <li>Drohnenflug über Wasserbauprojekt, Sonnenaufgang</li>
+            <li>Silhouette Ingenieur:in am Ufer mit Plan</li>
+            <li>Hände auf Karte, Stiftbewegung, Detailaufnahmen</li>
+            <li>Team-Szene drei Personen am Plan, ungestellt</li>
+            <li>Detailshots: Spundwand, Stahl, Wasseroberfläche</li>
+          </ul>
+        </div>
+        <div class="day-side">
+          <div class="meta">Crew & Equipment</div>
+          <div class="lst"><strong>Holger:</strong> Hauptkamera Sony A7V<br><strong>David:</strong> 2. Kamera + Gimbal<br><strong>Drohne:</strong> Reservierung Mavic 3<br><strong>Licht:</strong> natürlich, Reflektor</div>
+          <div class="card-rule"></div>
+          <div class="meta">Zu klären</div>
+          <div class="lst">Welches Projekt? Welche Genehmigung für Baustelle?</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div>
+          <div class="day-num">TAG 02</div>
+          <div class="day-name">Umwelt, Energie, Land</div>
+          <div class="day-time">Sonnenaufgang & Spätnachmittag</div>
+        </div>
+        <div class="day-content">
+          <h5>Akt II · Projekt C — Umwelt / Energie / Nachhaltigkeit</h5>
+          <p>Windpark, Renaturierungsfläche oder Umweltplanungs-Standort. Bodenproben, Hände in Erde, Drohne über Anlagen. Umweltingenieurin im Feld, Sonnenlicht. Nähe zu Rostock bevorzugt, um Crew-Transfers zu minimieren.</p>
+          <ul class="shotlist">
+            <li>Drohne über Windpark im Morgenlicht</li>
+            <li>Hände nehmen Bodenprobe, Detailaufnahme</li>
+            <li>Renaturierte Fläche, vorher/nachher als Zeitraffer-Plan</li>
+            <li>Mitarbeitende mit Schutzhelm in Pflanzung oder Feld</li>
+            <li>Datenpunkte als Overlay-Plan dokumentieren (für VFX)</li>
+          </ul>
+        </div>
+        <div class="day-side">
+          <div class="meta">Crew & Equipment</div>
+          <div class="lst"><strong>Drohne:</strong> Pflicht für Akt-Schluss<br><strong>Makro:</strong> für Bodenproben, Hände<br><strong>Tracking-Markers:</strong> für VFX-Overlays</div>
+          <div class="card-rule"></div>
+          <div class="meta">Zu klären</div>
+          <div class="lst">Konkretes Projekt? Welcher Standort erreichbar?</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div>
+          <div class="day-num">TAG 03</div>
+          <div class="day-name">Hochbau, Innenraum, Licht</div>
+          <div class="day-time">Vormittag bis Blue Hour</div>
+        </div>
+        <div class="day-content">
+          <h5>Akt II · Projekt B — Hochbau / Architektur / TGA</h5>
+          <p>Ein realisiertes Inros-Hochbauprojekt mit fotogenem Innenraum. Lichtachsen auf Beton, Foyer, Treppenhaus. Architektin am Bildschirm mit 3D-Modell. Schicht-Durchfahrt als VFX-Idee — gedreht werden saubere Schichten Fassade, Tragwerk, TGA, Innenraum.</p>
+          <ul class="shotlist">
+            <li>Schwenk durch Foyer, Lichtachsen</li>
+            <li>Architektin am Bildschirm, BIM-Modell sichtbar</li>
+            <li>Hände bedienen Touchscreen oder Tastatur</li>
+            <li>Detailaufnahmen Beton, Glas, Fassade, Materialübergänge</li>
+            <li>Tracking-Markers für AR-Overlay-Sequenz</li>
+          </ul>
+        </div>
+        <div class="day-side">
+          <div class="meta">Crew & Equipment</div>
+          <div class="lst"><strong>Slider:</strong> für Innenraum-Bewegung<br><strong>Gimbal:</strong> Schwenks und Verfolgung<br><strong>Lidar-Scan:</strong> klären — Eigenleistung oder Dienstleister?</div>
+          <div class="card-rule"></div>
+          <div class="meta">Zu klären</div>
+          <div class="lst">Welches Hochbauprojekt? Foyer öffentlich zugänglich?</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div>
+          <div class="day-num">TAG 04</div>
+          <div class="day-name">Büro, BIM, International</div>
+          <div class="day-time">Ganztägig im Hauptsitz Rostock</div>
+        </div>
+        <div class="day-content">
+          <h5>Akt II · Projekt D — Digitalisierung / BIM · plus Querschnitt Projektsteuerung</h5>
+          <p>Hauptsitz Rostock: BIM-Arbeitsplätze, Lean-Planwand, Workshop-Raum, Videocall mit anderen Standorten. Hier wird das Querschnittsthema Projektsteuerung sichtbar — Post-its an der Wand, Diskussion am Whiteboard, internationale Verbindungen. Auch Portraits einzelner Mitarbeitender.</p>
+          <ul class="shotlist">
+            <li>BIM-Arbeitsplatz mit komplexem 3D-Modell</li>
+            <li>Lean-Planwand mit Post-its, Hände im Bild</li>
+            <li>Videocall-Setup, mehrere Bildschirme, Standorte sichtbar</li>
+            <li>Stille Portraits am Schreibtisch, ungestellt</li>
+            <li>Genehmigungsmanagement-Motive: Aktenordner, Pläne, Karten</li>
+          </ul>
+        </div>
+        <div class="day-side">
+          <div class="meta">Crew & Equipment</div>
+          <div class="lst"><strong>Beide Kameras:</strong> parallele Setups<br><strong>Tonangel:</strong> falls Statements gedreht werden<br><strong>Make-up:</strong> ggf. Leichte Korrektur für Portraits</div>
+          <div class="card-rule"></div>
+          <div class="meta">Zu klären</div>
+          <div class="lst">Welche Mitarbeitenden? Vorstand verfügbar?</div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div>
+          <div class="day-num">TAG 05</div>
+          <div class="day-name">Archiv, Makro, Puffer</div>
+          <div class="day-time">Studio-Tag oder Hauptsitz</div>
+        </div>
+        <div class="day-content">
+          <h5>Akt I · Archiv-Makros · plus Puffer für Nachdrehs</h5>
+          <p>Makroaufnahmen historischer Pläne, Tuschestriche, alte Werkzeuge, Zirkel, Blaupausen. Ergänzung zur KI-Animation, die teilweise schon läuft. Reserve-Tag für alles, was an den Tagen 1–4 ausgefallen ist. Wetterpuffer.</p>
+          <ul class="shotlist">
+            <li>Makroaufnahmen Tusche auf altem Papier</li>
+            <li>Hände im Archiv, Pläne werden umgeblättert</li>
+            <li>Werkzeuge in Nahaufnahme: Zirkel, Lineal, Bleistift</li>
+            <li>Detailshots aus Inros-Firmenchronik (Buch, Stempel, Briefkopf)</li>
+            <li>Reserve-Slot für Wetter- und Termin-Ausfälle</li>
+          </ul>
+        </div>
+        <div class="day-side">
+          <div class="meta">Crew & Equipment</div>
+          <div class="lst"><strong>Makro-Optik:</strong> 90mm oder 105mm<br><strong>Lichtsetup:</strong> Studio-Licht oder Nordlicht<br><strong>Material:</strong> historische Originale, Inros stellt</div>
+          <div class="card-rule"></div>
+          <div class="meta">Zu klären</div>
+          <div class="lst">Welches historisches Material existiert physisch?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== STATEMENT STRATEGIE ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 06 · Statements</span></div>
+  <div class="page">
+    <h2 class="section-title display">Wenn überhaupt:<br>kurze <em>Sätze</em>.</h2>
+    <p class="section-lead">Die Frage, ob im Film gesprochen wird, ist morgen Tagesordnungspunkt. Stand jetzt: keine festgelegte Antwort. Drei Szenarien.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-num">SZENARIO A</div>
+        <h4 class="sub-title">Reine Bildebene</h4>
+        <p class="body body-soft">Niemand spricht. Voice-Over allein trägt den Text. Mitarbeitende werden gezeigt, sind im Bildstrom präsent, aber ohne O-Ton.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px;"><strong>Vorteil:</strong> kompakt, ruhig, dramaturgisch reinste Form. Keine Casting-Frage, keine Sprech-Coaching-Risiken.</p>
+      </div>
+      <div class="card card-soft">
+        <div class="card-num">SZENARIO B</div>
+        <h4 class="sub-title">Eingestreute Sätze</h4>
+        <p class="body body-soft">Pro Akt ein Mitarbeitender, ein Satz. Beiläufig, im Arbeitskontext aufgenommen. Eingewoben in den Bildstrom, nie frontal als Talking Head.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px;"><strong>Vorteil:</strong> emotionale Nähe, ohne dramaturgisches Gewicht. Erfordert Vorab-Absprache und kurzes Sprech-Briefing.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">SZENARIO C</div>
+        <h4 class="sub-title">O-Ton-Collage</h4>
+        <p class="body body-soft">Mehrere kurze Wortfetzen aus echten Arbeitssituationen. Nicht für die Kamera gesprochen, dokumentarisch aufgenommen. Bruchstücke statt Aussagen.</p>
+        <div class="card-rule"></div>
+        <p class="body" style="font-size:13px;"><strong>Vorteil:</strong> maximal authentisch. Erfordert Tonangel und Drehgenehmigungen, längere Postproduktion.</p>
+      </div>
+    </div>
+
+    <div class="ornament-line"></div>
+
+    <p class="body-large" style="text-align:center; max-width:720px; margin:0 auto; color:var(--ink-soft);">Empfehlung der Regie: Szenario B. Nähe ohne Erzählverschiebung. Die Entscheidung trifft Inros morgen.</p>
+  </div>
+</section>
+
+
+<!-- ========== POST-PRODUCTION ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 07 · Post-Production</span></div>
+  <div class="page">
+    <h2 class="section-title display">Vom Material<br>zum <em>Master</em>.</h2>
+    <p class="section-lead">Sechs bis acht Wochen nach dem letzten Drehtag. Parallele Tracks für Schnitt, VFX, Sound, Color.</p>
+
+    <div class="post-grid">
+      <div class="post-step">
+        <div class="num">PHASE 01</div>
+        <h5>Sichtung & Rohschnitt</h5>
+        <p>Sichtung des Materials, Auswahl der Takes, erste Bildmontage. Voice-Over wird parallel finalisiert und als Scratch eingelegt.</p>
+        <div class="dur">2 Wochen</div>
+      </div>
+      <div class="post-step">
+        <div class="num">PHASE 02</div>
+        <h5>VFX & Feinschnitt</h5>
+        <p>Tusche-Transition, Unterwasser-Spundwände, Schicht-Durchfahrt, BIM-to-Reality-Morph. Lidar-Scan wird hier verwertet, falls vorhanden.</p>
+        <div class="dur">2–3 Wochen</div>
+      </div>
+      <div class="post-step">
+        <div class="num">PHASE 03</div>
+        <h5>Sound-Design & Score</h5>
+        <p>Organische Klanglandschaft: Tusche, Wasser, Stahl, Glas. Score wird komponiert oder lizenziert. 5.1-Mix.</p>
+        <div class="dur">1–2 Wochen</div>
+      </div>
+      <div class="post-step">
+        <div class="num">PHASE 04</div>
+        <h5>Color, Master, Abnahme</h5>
+        <p>Color Grading mit DaVinci. Erste Vorabnahme mit Inros, dann Feinkorrektur, dann Master in 4K, plus Web-Versionen.</p>
+        <div class="dur">1 Woche</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FRAGENKATALOG ========== -->
+<section style="background: var(--bg-soft);">
+  <div class="section-marker"><span class="meta">§ 08 · Fragenkatalog für morgen</span></div>
+  <div class="page">
+    <h2 class="section-title display">Was wir <em>klären</em> müssen.</h2>
+    <p class="section-lead">Strukturiert für das Meeting mit Andrea Schmidt-Schwonbeck und Anne Hoppe. Reihenfolge nach Dringlichkeit. Block 1 ist die heutige Tagesordnungs-Priorität.</p>
+
+    <!-- BLOCK 1 — LOGISTIK -->
+    <div class="qa-block priority">
+      <div class="qa-head">
+        <h4>01 · Logistik & Drehzeitraum</h4>
+        <span class="pill pill-active">Höchste Priorität</span>
+      </div>
+      <ul class="qa-list">
+        <li>Welche KW im Mai funktioniert für Inros? KW 19 (04.–10.05.) oder KW 20 (11.–17.05.)?
+          <em>Spätere Termine kollidieren mit Holgers Zingst-Verpflichtungen ab 21.05.</em>
+        </li>
+        <li>Sind 4 oder 5 Drehtage realistisch — und liegen die Tage am Stück, oder geblockt mit Pufferpause?</li>
+        <li>Crew-Konstellation: ihr beide plus Tonmann ja/nein? Drohne übernimmt Holger oder David?</li>
+        <li>Lidar-Scan für BIM-to-Reality-Morph — Eigenleistung Inros, externer Dienstleister, oder streichen wir den Effekt?</li>
+        <li>Kann Inros Drehgenehmigungen für Baustellen organisieren (Anmeldung Bauherren, Sicherheitseinweisung, Schutzkleidung)?</li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 2 — DREHORTE -->
+    <div class="qa-block">
+      <div class="qa-head">
+        <h4>02 · Drehorte & konkrete Projekte</h4>
+        <span class="pill pill-open">Inhaltlich</span>
+      </div>
+      <ul class="qa-list">
+        <li>Welche konkreten Inros-Projekte stehen im Mai drehbar zur Verfügung?
+          <em>Niederpöbel ist publiziert — realistisch erreichbar, oder zu weit?</em>
+        </li>
+        <li>Wo sind wir für Wasserbau und Hafenlogistik im Bild — Hamburg, Rostock, Mecklenburg-Vorpommern, anderswo?</li>
+        <li>Wo sind wir für Brückenbau und Infrastruktur — gibt es eine aktive Brückenbaustelle, die fotogen ist?</li>
+        <li>Wo sind wir für Hochbau — gibt es ein realisiertes Inros-Hochbauprojekt mit fotogenem Innenraum, Foyer, Lichtachsen?</li>
+        <li>Wo sind wir für Energie- und Umweltplanung — Windpark, Photovoltaik, Renaturierungsfläche?</li>
+        <li>Drehen wir nur am Hauptsitz Rostock oder auch in Niederlassungen (Stuttgart, Hannover, Hamburg)?</li>
+        <li>Gibt es eine Inros-Baustelle, auf die wir können — möglichst eine pro Säule?</li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 3 — MENSCHEN -->
+    <div class="qa-block">
+      <div class="qa-head">
+        <h4>03 · Menschen vor der Kamera</h4>
+        <span class="pill pill-open">Casting & Auswahl</span>
+      </div>
+      <ul class="qa-list">
+        <li>Steht der Vorstand zur Verfügung — Torsten Retzlaff, Michael Beckmann, Wolfgang Eckstaller — und wenn ja, in welcher Rolle (Portrait, Arbeitssituation, beides)?</li>
+        <li>Wen wollen Andrea und Anne im Film haben — Jung/Alt-Mix, Frauen, internationale Kollegen, alle Standorte sichtbar?</li>
+        <li>Statements: ja oder nein als Grundsatzentscheidung — oder pro Akt unterschiedlich?
+          <em>Empfehlung der Regie: kurze Sätze, beiläufig, eingestreut. Aber Inros entscheidet.</em>
+        </li>
+        <li>Gibt es Mitarbeitende, die NICHT im Film auftauchen sollen (rechtliche, organisatorische Gründe)?</li>
+        <li>Wer macht die Vorabsprache mit den Mitarbeitenden vor Drehtag — Anne, Andrea, oder Holger direkt?</li>
+        <li>DSGVO: brauchen wir Model-Releases, oder reicht eine Sammelfreigabe über die HR-Abteilung?</li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 4 — KI ARCHIV -->
+    <div class="qa-block">
+      <div class="qa-head">
+        <h4>04 · KI-Archiv & Material</h4>
+        <span class="pill pill-active">In Arbeit</span>
+      </div>
+      <ul class="qa-list">
+        <li>Wie viele Sekunden KI-animiertes Archivmaterial existieren bereits — und welche Motive?
+          <em>Bisher in Arbeit / teilweise erledigt durch Holger und David. Status zur Prüfung mit Inros.</em>
+        </li>
+        <li>Welche zusätzlichen historischen Originale stellt Inros zur Verfügung — Pläne, Fotos, Werkzeuge, Briefköpfe, Stempel, Firmenchronik?</li>
+        <li>Markieren wir die KI-animierten Bilder im Film transparent als KI-erstellt (Insert, Endcredits, Webbeschreibung)?</li>
+        <li>Wer prüft die KI-Animationen vor der Freigabe inhaltlich — Andrea, Anne, oder ein Inros-Historiker?</li>
+        <li>Gibt es bei Inros ein Bildarchiv mit hochauflösenden Scans der Originale, oder müssen wir selbst digitalisieren?</li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 5 — SECHS SAEULEN -->
+    <div class="qa-block">
+      <div class="qa-head">
+        <h4>05 · Sechs Säulen — Gewichtung</h4>
+        <span class="pill pill-open">Strategisch</span>
+      </div>
+      <ul class="qa-list">
+        <li>Sind Inros-Vorstand und Marketing einverstanden, dass Projektsteuerung und Genehmigungsmanagement als Querschnittsmotive laufen — oder soll eine der beiden einen eigenen Mini-Akt bekommen?</li>
+        <li>Wenn eigener Akt: was kürzen wir an anderer Stelle? Filmlänge bleibt 3:00.</li>
+        <li>Welche der vier Hauptakte (A Wasserbau, B Hochbau, C Umwelt, D BIM) hat strategisch das größte Gewicht für Inros 2026 und sollte am stärksten sichtbar sein?</li>
+        <li>Soll der Film international funktionieren — englischer Voice-Over zusätzlich, oder Untertitel?
+          <em>Update Holger: für die jetzige Produktion reicht deutsch. EN-Version später optional.</em>
+        </li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 6 — RECHTLICHES & FREIGABEN -->
+    <div class="qa-block">
+      <div class="qa-head">
+        <h4>06 · Rechte, Freigaben, Verwendung</h4>
+        <span class="pill pill-open">Vertraglich</span>
+      </div>
+      <ul class="qa-list">
+        <li>Verwendungsrechte: Web, Social, Messen, interne Veranstaltungen, Vertrieb — was ist im Vertrag abgedeckt, was kommt dazu?</li>
+        <li>Wer gibt den finalen Schnitt frei — Andrea, Anne, Vorstand, mehrstufiges Verfahren?</li>
+        <li>Wie viele Korrekturschleifen sind eingeplant?</li>
+        <li>Premiere und Veröffentlichungstermin: gibt es einen festen Anlass im Jubiläumsjahr 2026?</li>
+        <li>Drittmaterial (Musik, Schriften, ggf. Stockfootage) — Lizenzen über Holger, oder über Inros-Marketing?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== TAGESORDNUNG MORGEN ========== -->
+<section>
+  <div class="section-marker"><span class="meta">§ 09 · Tagesordnung Meeting</span></div>
+  <div class="page">
+    <h2 class="section-title display">Morgen,<br>in dieser <em>Reihenfolge</em>.</h2>
+    <p class="section-lead">Vorschlag für den Ablauf des Meetings mit Andrea und Anne. Logistik zuerst — sie ist der Engpass.</p>
+
+    <ul class="agenda-list">
+      <li class="agenda-item">
+        <div class="agenda-num">01</div>
+        <div class="agenda-content">
+          <h5>Logistik & Drehtage festlegen</h5>
+          <p>KW 19 oder 20. Crew-Konstellation. Drehgenehmigungen. Lidar-Scan-Entscheidung. Höchste Priorität — alles weitere baut darauf auf.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-active">Pflicht</span>
+        </div>
+      </li>
+      <li class="agenda-item">
+        <div class="agenda-num">02</div>
+        <div class="agenda-content">
+          <h5>Drehorte und konkrete Projekte</h5>
+          <p>Pro Säule mindestens ein Standort. Niederpöbel klären. Hauptsitz Rostock plus eventuelle Niederlassungen.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-active">Pflicht</span>
+        </div>
+      </li>
+      <li class="agenda-item">
+        <div class="agenda-num">03</div>
+        <div class="agenda-content">
+          <h5>Menschen vor der Kamera</h5>
+          <p>Vorstand, Mitarbeitende, Mix. Statement-Frage entscheiden. DSGVO-Klärung.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-active">Pflicht</span>
+        </div>
+      </li>
+      <li class="agenda-item">
+        <div class="agenda-num">04</div>
+        <div class="agenda-content">
+          <h5>Sechs-Säulen-Gewichtung</h5>
+          <p>Querschnitt oder eigener Akt für Projektsteuerung und Genehmigungsmanagement. Strategische Schwerpunkte für 2026.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-open">Inhalt</span>
+        </div>
+      </li>
+      <li class="agenda-item">
+        <div class="agenda-num">05</div>
+        <div class="agenda-content">
+          <h5>KI-Archivmaterial</h5>
+          <p>Status vorzeigen, Inros-Originale anfordern, Transparenz-Frage klären.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-open">Inhalt</span>
+        </div>
+      </li>
+      <li class="agenda-item">
+        <div class="agenda-num">06</div>
+        <div class="agenda-content">
+          <h5>Rechte, Freigaben, Premierentermin</h5>
+          <p>Verwendungsrechte, Korrekturschleifen, Veröffentlichungsdatum 2026.</p>
+        </div>
+        <div class="agenda-prio">
+          <span class="pill pill-open">Vertrag</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ========== ABSCHLUSS / SENDEN ========== -->
+<section class="submit-section">
+  <div class="section-marker"><span class="meta">§ 10 · Rückmeldung</span></div>
+  <div class="page">
+    <div class="submit-card">
+      <div class="meta meta-accent">Antworten an Holger Martens senden</div>
+      <h2 class="section-title display" style="margin-top:14px; font-size:48px;">Notizen, <em>Antworten</em>,<br>Anmerkungen.</h2>
+      <p class="section-lead" style="margin-bottom:0;">Wenn Sie zwischen den Fragen Notizen gemacht oder Felder angekreuzt haben: hier schicken Sie das Dokument zurück. Sie können auch eine PDF-Kopie herunterladen, bevor Sie senden.</p>
+
+      <div class="contact-grid">
+        <div class="contact-field">
+          <label for="kontakt_name">Name</label>
+          <input type="text" id="kontakt_name" name="kontakt_name" placeholder="Ihr Name" required>
+        </div>
+        <div class="contact-field">
+          <label for="kontakt_rolle">Rolle / Position</label>
+          <input type="text" id="kontakt_rolle" name="kontakt_rolle" placeholder="z. B. Marketing INROS LACKNER">
+        </div>
+        <div class="contact-field">
+          <label for="kontakt_email">E-Mail</label>
+          <input type="email" id="kontakt_email" name="kontakt_email" placeholder="andrea.schmidt-schwonbeck@inros-lackner.de" required>
+        </div>
+        <div class="contact-field">
+          <label for="kontakt_telefon">Telefon (optional)</label>
+          <input type="tel" id="kontakt_telefon" name="kontakt_telefon" placeholder="für Rückfragen">
+        </div>
+        <div class="contact-field contact-full">
+          <label for="freitext">Allgemeine Anmerkungen / freier Text</label>
+          <textarea id="freitext" name="freitext" rows="4" placeholder="Was sonst noch wichtig ist — Themen, die im Konzept fehlen, Hinweise zu Personen, Wünsche zur Inszenierung …"></textarea>
+        </div>
+      </div>
+
+      <div class="submit-actions">
+        <button type="button" class="btn btn-primary" id="submitBtn">Antworten an Holger senden</button>
+        <button type="button" class="btn btn-secondary" id="pdfBtn">Als PDF herunterladen</button>
+      </div>
+
+      <div class="msg msg-success" id="successMsg">
+        ✓&nbsp;&nbsp;Vielen Dank — Ihre Antworten sind bei Holger angekommen. Wir melden uns innerhalb der nächsten 24 Stunden.
+      </div>
+      <div class="msg msg-error" id="errorMsg">
+        ✗&nbsp;&nbsp;Beim Senden ist etwas schiefgegangen. Bitte versuchen Sie es erneut oder mailen direkt an info@holger-martens.com — alternativ Anruf: 0170 7991910.
+      </div>
+    </div>
+  </div>
+</section>
+
+</form>
+
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="page">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-claim">90 Jahre. <em>Vielfalt im Fokus.</em><br>Eine Linie, vom Tuschestrich bis ins Datennetz.</p>
+      </div>
+      <div>
+        <div class="meta">Konzept & Regie</div>
+        <div class="val">Holger Martens<br>Fotografie & Bildkunst</div>
+      </div>
+      <div>
+        <div class="meta">Kamera</div>
+        <div class="val">Holger Martens<br>David Garbe</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>FEINKONZEPT MAI 2026 · INTERN</span>
+      <span>holger-martens.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ SPLASH / PASSWORT ============
+  const PASS = '9090';
+  const splash = document.getElementById('splash');
+  const splashForm = document.getElementById('splashForm');
+  const splashInput = document.getElementById('splashInput');
+
+  function unlock() {
+    splash.classList.add('hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => splash.remove(), 700);
+  }
+
+  splashForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (splashInput.value === PASS) {
+      unlock();
+    } else {
+      splashInput.classList.add('shake');
+      splashInput.value = '';
+      setTimeout(() => splashInput.classList.remove('shake'), 500);
+    }
+  });
+
+  // ============ ANTWORTFELDER AUTOMATISCH EINFÜGEN ============
+  // Jede Frage in den qa-list-Blöcken bekommt ein Antwortfeld + Häkchen
+  document.querySelectorAll('.qa-block').forEach((block, blockIdx) => {
+    const blockNum = String(blockIdx + 1).padStart(2, '0');
+    const blockTitle = block.querySelector('.qa-head h4')?.textContent.trim() || `Block ${blockNum}`;
+    block.dataset.blockTitle = blockTitle;
+
+    block.querySelectorAll('.qa-list li').forEach((li, qIdx) => {
+      const qNum = String(qIdx + 1).padStart(2, '0');
+      const fieldName = `b${blockNum}_q${qNum}`;
+      const questionText = li.childNodes[0]?.textContent.trim().substring(0, 120) || `Frage ${qNum}`;
+      li.dataset.fieldName = fieldName;
+      li.dataset.questionText = questionText;
+
+      const answerBox = document.createElement('div');
+      answerBox.className = 'answer-box';
+      answerBox.innerHTML = `
+        <textarea name="${fieldName}_text" placeholder="Anmerkung von INROS LACKNER zu dieser Frage …" rows="2"></textarea>
+        <label class="check-row">
+          <input type="checkbox" name="${fieldName}_done" value="ja">
+          <span>geklärt / besprochen</span>
+        </label>
+      `;
+      li.appendChild(answerBox);
+    });
+  });
+
+  // ============ FORMSPREE SUBMIT ============
+  document.getElementById('submitBtn').addEventListener('click', async function() {
+    const form = document.getElementById('briefingForm');
+    const btn = this;
+
+    // Pflichtfelder prüfen
+    const name = form.querySelector('[name="kontakt_name"]').value.trim();
+    const email = form.querySelector('[name="kontakt_email"]').value.trim();
+    if (!name || !email) {
+      document.getElementById('errorMsg').textContent = '✗  Bitte mindestens Name und E-Mail-Adresse ausfüllen.';
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('successMsg').style.display = 'none';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet …';
+
+    const formData = new FormData(form);
+    formData.append('_subject', `INROS LACKNER · Feinkonzept-Rückmeldung von ${name}`);
+    formData.append('_dokument', 'Feinkonzept Mai 2026 — Vielfalt im Fokus');
+
+    try {
+      const res = await fetch('https://formspree.io/f/xwvwkykq', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+        btn.textContent = '✓ Gesendet';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('successMsg').style.display = 'none';
+      btn.disabled = false;
+      btn.textContent = 'Antworten an Holger senden';
+    }
+  });
+
+  // ============ PDF-DOWNLOAD ============
+  document.getElementById('pdfBtn').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+    // Farben (matched Layout)
+    const ink = [26, 23, 20];
+    const accent = [184, 67, 26];
+    const muted = [92, 84, 72];
+    const line = [212, 204, 192];
+
+    const PAGE_W = 210, PAGE_H = 297;
+    const MARGIN = 20;
+    const W = PAGE_W - MARGIN * 2;
+    let y = MARGIN;
+
+    function newPageIfNeeded(needed) {
+      if (y + needed > PAGE_H - MARGIN) {
+        doc.addPage();
+        y = MARGIN;
+        addHeader();
+      }
+    }
+
+    function addHeader() {
+      doc.setFillColor(...ink);
+      doc.rect(0, 0, PAGE_W, 10, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      doc.text('VERTRAULICH · INROS LACKNER SE · 90 JAHRE · FEINKONZEPT MAI 2026', PAGE_W / 2, 6.5, { align: 'center' });
+      y = MARGIN + 4;
+    }
+
+    addHeader();
+
+    // Titel
+    doc.setTextColor(...ink);
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Vielfalt im Fokus.', MARGIN, y + 8);
+    y += 14;
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...muted);
+    doc.text('Rückmeldung INROS LACKNER · Jubiläumsfilm 90 Jahre', MARGIN, y);
+    y += 4;
+    doc.text(new Date().toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }), MARGIN, y + 4);
+    y += 12;
+
+    // Kontaktdaten
+    doc.setDrawColor(...line);
+    doc.setLineWidth(0.3);
+    doc.line(MARGIN, y, PAGE_W - MARGIN, y);
+    y += 8;
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...accent);
+    doc.text('KONTAKT', MARGIN, y);
+    y += 6;
+
+    const kontaktFelder = [
+      ['Name', document.querySelector('[name="kontakt_name"]').value || '—'],
+      ['Rolle', document.querySelector('[name="kontakt_rolle"]').value || '—'],
+      ['E-Mail', document.querySelector('[name="kontakt_email"]').value || '—'],
+      ['Telefon', document.querySelector('[name="kontakt_telefon"]').value || '—'],
+    ];
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...ink);
+    kontaktFelder.forEach(([label, val]) => {
+      doc.setTextColor(...muted);
+      doc.text(label + ':', MARGIN, y);
+      doc.setTextColor(...ink);
+      doc.text(val, MARGIN + 28, y);
+      y += 5;
+    });
+    y += 4;
+
+    // Freitext
+    const freitext = document.querySelector('[name="freitext"]').value.trim();
+    if (freitext) {
+      newPageIfNeeded(20);
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...accent);
+      doc.text('ALLGEMEINE ANMERKUNGEN', MARGIN, y);
+      y += 6;
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...ink);
+      const lines = doc.splitTextToSize(freitext, W);
+      lines.forEach(line => {
+        newPageIfNeeded(5);
+        doc.text(line, MARGIN, y);
+        y += 5;
+      });
+      y += 4;
+    }
+
+    // Antworten pro Block
+    document.querySelectorAll('.qa-block').forEach((block) => {
+      const blockTitle = block.dataset.blockTitle || '';
+      const items = block.querySelectorAll('.qa-list li');
+      const hasAnswers = [...items].some(li => {
+        const t = li.querySelector('textarea')?.value.trim();
+        const c = li.querySelector('input[type="checkbox"]')?.checked;
+        return t || c;
+      });
+      if (!hasAnswers) return;
+
+      newPageIfNeeded(20);
+      doc.setDrawColor(...line);
+      doc.line(MARGIN, y, PAGE_W - MARGIN, y);
+      y += 7;
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...accent);
+      doc.text(blockTitle.toUpperCase(), MARGIN, y);
+      y += 7;
+
+      items.forEach((li, idx) => {
+        const text = li.querySelector('textarea')?.value.trim();
+        const checked = li.querySelector('input[type="checkbox"]')?.checked;
+        if (!text && !checked) return;
+
+        const qText = li.dataset.questionText || '';
+        const num = String(idx + 1).padStart(2, '0');
+
+        newPageIfNeeded(15);
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(...muted);
+        doc.text(num + '  ' + (checked ? '[geklärt] ' : ''), MARGIN, y);
+        const numWidth = doc.getTextWidth(num + '  ' + (checked ? '[geklärt] ' : ''));
+        doc.setFont('helvetica', 'italic');
+        doc.setTextColor(...ink);
+        const qLines = doc.splitTextToSize(qText, W - numWidth);
+        doc.text(qLines, MARGIN + numWidth, y);
+        y += qLines.length * 4 + 1;
+
+        if (text) {
+          doc.setFont('helvetica', 'normal');
+          doc.setTextColor(...ink);
+          doc.setFontSize(9.5);
+          const tLines = doc.splitTextToSize('→ ' + text, W - 6);
+          tLines.forEach(line => {
+            newPageIfNeeded(5);
+            doc.text(line, MARGIN + 6, y);
+            y += 4.5;
+          });
+        }
+        y += 3;
+      });
+    });
+
+    // Footer auf jeder Seite
+    const total = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= total; i++) {
+      doc.setPage(i);
+      doc.setFontSize(7);
+      doc.setTextColor(...muted);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Holger Martens · Fotografie & Bildkunst · 0170 7991910 · info@holger-martens.com', MARGIN, PAGE_H - 8);
+      doc.text(`${i} / ${total}`, PAGE_W - MARGIN, PAGE_H - 8, { align: 'right' });
+    }
+
+    const datestamp = new Date().toISOString().slice(0, 10);
+    doc.save(`INROS-Feinkonzept-Rueckmeldung-${datestamp}.pdf`);
+  });
+</script>
+
+</body>
+</html>
