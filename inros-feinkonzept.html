@@ -133,6 +133,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 48px;
     border-bottom: 1px solid var(--line);
     padding-bottom: 24px;
   }
@@ -1236,7 +1238,7 @@
   <div class="section-marker"><span class="meta">§ 04 · Dramaturgie</span></div>
   <div class="page">
     <h2 class="section-title display">Drei Zeitebenen,<br>eine <em>Linie</em>.</h2>
-    <p class="section-lead">Der Film arbeitet nicht chronologisch. Er verschränkt Gestern, Heute und Morgen zu einem fließenden Bildstrom, der durch ein einziges visuelles Motiv zusammengehalten wird: die Linie. Tusche, Bleistift, CAD, BIM, Netzwerk.</p>
+    <p class="section-lead">Der Film folgt der Entwicklung des Generalplaners — chronologisch, von den Anfängen 1936 bis zur heutigen Praxis und mit Ausblick auf das, was Inros morgen kann. Drei Phasen, verbunden durch ein einziges visuelles Motiv: die Linie. Tusche, Bleistift, CAD, BIM, Datennetz.</p>
 
     <div class="timeline">
       <div class="tl-col">
@@ -1258,8 +1260,8 @@
       <div class="tl-col">
         <div class="tl-marker">Akt III · Finale</div>
         <div class="tl-title">Morgen</div>
-        <div class="tl-sub">Die Vision</div>
-        <p class="body body-soft">BIM-Modelle, digitale Zwillinge, Datenströme. Die Linie wird zum Netzwerk. Alle Fäden laufen zusammen. Logo. Claim. Fade to Black mit Atem.</p>
+        <div class="tl-sub">Was Inros heute kann</div>
+        <p class="body body-soft">BIM-Modelle, digitale Zwillinge, Lean-Planung, internationale Standortvernetzung. Stand der heutigen Praxis bei Inros, und was sich daraus fortschreibt. Die Linie wird zum Netzwerk. Logo. Claim. Fade to Black.</p>
         <div class="card-rule"></div>
         <p class="body" style="font-size:13px; color:var(--accent);"><strong>2:30 – 3:00</strong></p>
       </div>
@@ -1273,7 +1275,7 @@
   <div class="section-marker"><span class="meta">§ 05 · Drehplan</span></div>
   <div class="page">
     <h2 class="section-title display">Fünf Tage <em>im Mai</em>.</h2>
-    <p class="section-lead">Realistisch geplant: vier bis fünf Drehtage zwischen 04. und 17. Mai 2026 (KW 19–20). Außerhalb davon kollidieren Ostseeklinik Zingst (21.05.) und Horizonte Zingst (29.05.–07.06.). Der Plan ist Schnittbild-orientiert, mit Statement-Optionen, falls Andrea und Anne einzelne O-Töne wünschen.</p>
+    <p class="section-lead">Vier bis fünf Drehtage im Mai 2026. Der Plan ist Schnittbild-orientiert. Die Reihenfolge der Tage wird auf Wetter, Standort-Verfügbarkeit und Mitarbeitenden-Termine abgestimmt.</p>
 
     <div class="drehplan">
       <div class="day">
@@ -1410,20 +1412,42 @@
 </section>
 
 
-<!-- ========== STATEMENT STRATEGIE ========== -->
+<!-- ========== STIMME DES FILMS ========== -->
 <section>
-  <div class="section-marker"><span class="meta">§ 06 · Statements</span></div>
+  <div class="section-marker"><span class="meta">§ 06 · Die Stimme des Films</span></div>
   <div class="page">
-    <h2 class="section-title display">Wenn überhaupt:<br>kurze <em>Sätze</em>.</h2>
-    <p class="section-lead">Die Frage, ob im Film gesprochen wird, ist morgen Tagesordnungspunkt. Stand jetzt: keine festgelegte Antwort. Drei Szenarien.</p>
+    <h2 class="section-title display">Sprecher und<br>kurze <em>Sätze</em>.</h2>
+    <p class="section-lead">Zwei Tonebenen tragen den Film: ein Voice-Over-Sprecher, der durch die 90 Jahre führt, und eventuell kurze Sätze einzelner Mitarbeitender, eingewoben in den Bildstrom. Beides entscheidet Inros morgen.</p>
+
+    <!-- VOICE OVER BLOCK -->
+    <div class="card" style="margin-bottom:32px; padding:48px 56px;">
+      <div class="meta meta-accent">Empfehlung der Regie · zentrales Element</div>
+      <h3 class="block-title" style="font-size:36px; margin-top:14px;">Voice-Over-Sprecher</h3>
+      <div class="grid-2" style="margin-top:24px; gap:48px;">
+        <div>
+          <p class="body-large">Eine warme, ruhige Stimme führt durch den Film. 25 bis 30 Sekunden Sprache in 3 Minuten Film, an wenigen Schlüsselstellen — Prolog, Übergänge zwischen den Akten, Finale. Sie kommentiert nicht, sie öffnet Räume.</p>
+          <p class="body-large">Der Sprecher ist die Klammer, die 90 Jahre Inros zusammenhält und den Bildern Halt gibt. Ohne diese Stimme würde der Film entweder eine reine Bilderfolge oder ein Talking-Head-Format. Beides will der Auftrag nicht.</p>
+        </div>
+        <div class="card card-soft" style="padding:28px;">
+          <div class="meta">Sprecher-Profil</div>
+          <p class="body" style="margin-top:14px;">Männlich oder weiblich, ruhig, warm, dokumentarisch. Kein Nachrichten-Duktus. Jemand, der eine Geschichte erzählt — nicht jemand, der eine Werbung spricht.</p>
+          <div class="card-rule"></div>
+          <div class="meta">Auswahl</div>
+          <p class="body" style="margin-top:14px;">Holger schlägt Stimmproben vor (Hörproben aus Sprecher-Agenturen). Inros wählt aus. Aufnahme im Tonstudio nach Bildmontage.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="block-title" style="margin-top:48px; margin-bottom:24px;">Statements von Mitarbeitenden — drei Szenarien</h3>
+    <p class="body-large body-soft" style="max-width:720px; margin-bottom:32px;">Ergänzend zum Voice-Over kann der Film O-Töne einzelner Mitarbeitender aufnehmen. Die Frage, ob und wie, ist morgen Tagesordnungspunkt. Stand jetzt: keine festgelegte Antwort.</p>
 
     <div class="grid-3">
       <div class="card">
         <div class="card-num">SZENARIO A</div>
         <h4 class="sub-title">Reine Bildebene</h4>
-        <p class="body body-soft">Niemand spricht. Voice-Over allein trägt den Text. Mitarbeitende werden gezeigt, sind im Bildstrom präsent, aber ohne O-Ton.</p>
+        <p class="body body-soft">Niemand spricht. Der Voice-Over-Sprecher allein trägt den Text. Mitarbeitende werden gezeigt, sind im Bildstrom präsent, aber ohne O-Ton.</p>
         <div class="card-rule"></div>
-        <p class="body" style="font-size:13px;"><strong>Vorteil:</strong> kompakt, ruhig, dramaturgisch reinste Form. Keine Casting-Frage, keine Sprech-Coaching-Risiken.</p>
+        <p class="body" style="font-size:13px;"><strong>Vorteil:</strong> kompakt, ruhig, dramaturgisch klare Form. Keine Casting-Frage, keine Sprech-Coaching-Risiken.</p>
       </div>
       <div class="card card-soft">
         <div class="card-num">SZENARIO B</div>
@@ -1443,7 +1467,7 @@
 
     <div class="ornament-line"></div>
 
-    <p class="body-large" style="text-align:center; max-width:720px; margin:0 auto; color:var(--ink-soft);">Empfehlung der Regie: Szenario B. Nähe ohne Erzählverschiebung. Die Entscheidung trifft Inros morgen.</p>
+    <p class="body-large" style="text-align:center; max-width:720px; margin:0 auto; color:var(--ink-soft);">Empfehlung der Regie: Voice-Over-Sprecher als Anker — plus Szenario B für O-Töne. Nähe ohne Erzählverschiebung. Die Entscheidung trifft Inros morgen.</p>
   </div>
 </section>
 
@@ -1499,13 +1523,13 @@
         <span class="pill pill-active">Höchste Priorität</span>
       </div>
       <ul class="qa-list">
-        <li>Welche KW im Mai funktioniert für Inros? KW 19 (04.–10.05.) oder KW 20 (11.–17.05.)?
-          <em>Spätere Termine kollidieren mit Holgers Zingst-Verpflichtungen ab 21.05.</em>
+        <li>Welcher Zeitraum im Mai funktioniert für Inros?
+          <em>Vier bis fünf Drehtage, idealerweise mit Pufferpause zwischen den Hauptblöcken.</em>
         </li>
-        <li>Sind 4 oder 5 Drehtage realistisch — und liegen die Tage am Stück, oder geblockt mit Pufferpause?</li>
-        <li>Crew-Konstellation: ihr beide plus Tonmann ja/nein? Drohne übernimmt Holger oder David?</li>
+        <li>Sollen die Drehtage am Stück liegen oder geblockt mit kurzen Pausen für Vor- und Nachbereitung?</li>
+        <li>Crew-Konstellation: Holger und David allein, oder zusätzlich Tonmann?</li>
         <li>Lidar-Scan für BIM-to-Reality-Morph — Eigenleistung Inros, externer Dienstleister, oder streichen wir den Effekt?</li>
-        <li>Kann Inros Drehgenehmigungen für Baustellen organisieren (Anmeldung Bauherren, Sicherheitseinweisung, Schutzkleidung)?</li>
+        <li>Kann Inros Drehgenehmigungen für Baustellen organisieren — Anmeldung Bauherren, Sicherheitseinweisung, Schutzkleidung?</li>
       </ul>
     </div>
 
@@ -1531,16 +1555,20 @@
     <!-- BLOCK 3 — MENSCHEN -->
     <div class="qa-block">
       <div class="qa-head">
-        <h4>03 · Menschen vor der Kamera</h4>
+        <h4>03 · Menschen vor der Kamera & Stimme des Films</h4>
         <span class="pill pill-open">Casting & Auswahl</span>
       </div>
       <ul class="qa-list">
         <li>Steht der Vorstand zur Verfügung — Torsten Retzlaff, Michael Beckmann, Wolfgang Eckstaller — und wenn ja, in welcher Rolle (Portrait, Arbeitssituation, beides)?</li>
         <li>Wen wollen Andrea und Anne im Film haben — Jung/Alt-Mix, Frauen, internationale Kollegen, alle Standorte sichtbar?</li>
-        <li>Statements: ja oder nein als Grundsatzentscheidung — oder pro Akt unterschiedlich?
-          <em>Empfehlung der Regie: kurze Sätze, beiläufig, eingestreut. Aber Inros entscheidet.</em>
+        <li>Voice-Over-Sprecher: ist die Empfehlung der Regie tragfähig — eine warme, ruhige Sprecherstimme als Erzählinstanz, die durch die 90 Jahre führt?
+          <em>Empfehlung Holger: ja. Ohne Sprecher fehlt dem Film der Anker.</em>
         </li>
-        <li>Gibt es Mitarbeitende, die NICHT im Film auftauchen sollen (rechtliche, organisatorische Gründe)?</li>
+        <li>Sprecher männlich oder weiblich — gibt es eine Präferenz oder soll Holger Stimmproben aus mehreren Richtungen vorschlagen?</li>
+        <li>O-Töne von Mitarbeitenden: ja oder nein als Grundsatzentscheidung — oder pro Akt unterschiedlich?
+          <em>Drei Szenarien zur Auswahl: A keine O-Töne · B eingestreute kurze Sätze · C dokumentarische Wortfetzen-Collage.</em>
+        </li>
+        <li>Gibt es Mitarbeitende, die NICHT im Film auftauchen sollen — rechtliche, organisatorische Gründe?</li>
         <li>Wer macht die Vorabsprache mit den Mitarbeitenden vor Drehtag — Anne, Andrea, oder Holger direkt?</li>
         <li>DSGVO: brauchen wir Model-Releases, oder reicht eine Sammelfreigabe über die HR-Abteilung?</li>
       </ul>
@@ -1609,7 +1637,7 @@
         <div class="agenda-num">01</div>
         <div class="agenda-content">
           <h5>Logistik & Drehtage festlegen</h5>
-          <p>KW 19 oder 20. Crew-Konstellation. Drehgenehmigungen. Lidar-Scan-Entscheidung. Höchste Priorität — alles weitere baut darauf auf.</p>
+          <p>Zeitraum im Mai. Crew-Konstellation. Drehgenehmigungen. Lidar-Scan-Entscheidung. Höchste Priorität — alles weitere baut darauf auf.</p>
         </div>
         <div class="agenda-prio">
           <span class="pill pill-active">Pflicht</span>
@@ -1796,15 +1824,21 @@
 
   // ============ FORMSPREE SUBMIT ============
   document.getElementById('submitBtn').addEventListener('click', async function() {
-    const form = document.getElementById('briefingForm');
     const btn = this;
 
+    // Kontakt einsammeln
+    const kontakt = {
+      'Name':    document.querySelector('[name="kontakt_name"]').value.trim(),
+      'Rolle':   document.querySelector('[name="kontakt_rolle"]').value.trim(),
+      'E-Mail':  document.querySelector('[name="kontakt_email"]').value.trim(),
+      'Telefon': document.querySelector('[name="kontakt_telefon"]').value.trim(),
+    };
+
     // Pflichtfelder prüfen
-    const name = form.querySelector('[name="kontakt_name"]').value.trim();
-    const email = form.querySelector('[name="kontakt_email"]').value.trim();
-    if (!name || !email) {
-      document.getElementById('errorMsg').textContent = '✗  Bitte mindestens Name und E-Mail-Adresse ausfüllen.';
-      document.getElementById('errorMsg').style.display = 'block';
+    if (!kontakt.Name || !kontakt['E-Mail']) {
+      const errMsg = document.getElementById('errorMsg');
+      errMsg.textContent = '✗  Bitte mindestens Name und E-Mail-Adresse ausfüllen.';
+      errMsg.style.display = 'block';
       document.getElementById('successMsg').style.display = 'none';
       return;
     }
@@ -1812,14 +1846,52 @@
     btn.disabled = true;
     btn.textContent = 'Wird gesendet …';
 
-    const formData = new FormData(form);
-    formData.append('_subject', `INROS LACKNER · Feinkonzept-Rückmeldung von ${name}`);
-    formData.append('_dokument', 'Feinkonzept Mai 2026 — Vielfalt im Fokus');
+    // FormData mit lesbaren Schlüsseln aufbauen
+    const data = new FormData();
+
+    // Kontakt-Block
+    Object.entries(kontakt).forEach(([k, v]) => { if (v) data.append(k, v); });
+
+    // Allgemeine Anmerkungen
+    const freitext = document.querySelector('[name="freitext"]').value.trim();
+    if (freitext) data.append('Allgemeine Anmerkungen', freitext);
+
+    // Antworten Block für Block, nur was ausgefüllt oder angekreuzt ist
+    let antwortZaehler = 0;
+    document.querySelectorAll('.qa-block').forEach((block) => {
+      const blockTitle = block.dataset.blockTitle || '';
+      const blockShort = blockTitle.replace(/^\d+\s*·\s*/, ''); // Nummer-Präfix entfernen für saubere Anzeige
+      const blockNum = (blockTitle.match(/^(\d+)/) || ['', ''])[1] || '';
+
+      block.querySelectorAll('.qa-list li').forEach((li, qIdx) => {
+        const text = li.querySelector('textarea')?.value.trim();
+        const checked = li.querySelector('input[type="checkbox"]')?.checked;
+        if (!text && !checked) return;
+
+        const qText = li.dataset.questionText || '';
+        const qNum = String(qIdx + 1).padStart(2, '0');
+
+        // Schlüssel: "Block 01 — Logistik · Frage 03 — Crew-Konstellation: Holger und David allein …"
+        const key = `Block ${blockNum} — ${blockShort} · Frage ${qNum} — ${qText}`;
+
+        // Wert: Status + Antwort kombiniert
+        let value = '';
+        if (checked && text)      value = `[geklärt]  ${text}`;
+        else if (checked)         value = '[geklärt]';
+        else if (text)            value = text;
+
+        data.append(key, value);
+        antwortZaehler++;
+      });
+    });
+
+    // Subject mit Antwort-Anzahl
+    data.append('_subject', `INROS LACKNER · Rückmeldung Feinkonzept von ${kontakt.Name} (${antwortZaehler} Antworten)`);
 
     try {
       const res = await fetch('https://formspree.io/f/xwvwkykq', {
         method: 'POST',
-        body: formData,
+        body: data,
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
