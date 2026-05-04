@@ -6,7 +6,7 @@
 <title>Vielfalt im Fokus — Feinkonzept Mai 2026 · INROS LACKNER SE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <meta name="robots" content="noindex, nofollow">
 <style>
@@ -23,17 +23,21 @@
     --accent-soft: #C2643A;
     --highlight: #DDA436;
     --paper: #FFFEFB;
+    --font-display: 'Cormorant', 'Georgia', serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --gutter: clamp(20px, 4vw, 56px);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; max-width: 100%; }
 
   body {
-    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.55;
+    line-height: 1.6;
     font-size: 16px;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
@@ -41,21 +45,20 @@
   }
 
   .display {
-    font-family: 'Fraunces', Georgia, serif;
-    font-optical-sizing: auto;
+    font-family: var(--font-display);
     letter-spacing: -0.02em;
     line-height: 1.05;
     font-weight: 400;
   }
 
   .italic-mark {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: var(--font-display);
     font-style: italic;
     font-weight: 300;
   }
 
   .meta {
-    font-family: 'Albert Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -71,7 +74,8 @@
   .page {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 56px;
+    padding-left: max(var(--gutter), env(safe-area-inset-left));
+    padding-right: max(var(--gutter), env(safe-area-inset-right));
   }
 
   section {
@@ -85,7 +89,7 @@
   .section-marker {
     position: absolute;
     top: 40px;
-    left: 56px;
+    left: var(--gutter);
     display: flex;
     align-items: center;
     gap: 14px;
@@ -140,7 +144,7 @@
   }
 
   .cover-logo {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-weight: 500;
     font-size: 18px;
     letter-spacing: -0.01em;
@@ -196,7 +200,7 @@
   }
 
   .cover-info-block .val {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 18px;
     font-weight: 400;
   }
@@ -234,7 +238,7 @@
   }
 
   h3.block-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 32px;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -243,7 +247,7 @@
   }
 
   h4.sub-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 22px;
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -270,7 +274,7 @@
 
   .status-item .meta { margin-bottom: 12px; }
   .status-item .val {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 28px;
     line-height: 1.15;
     font-weight: 400;
@@ -310,7 +314,7 @@
   }
 
   .card-num {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
     color: var(--accent);
@@ -344,7 +348,7 @@
   }
 
   .pillar-num {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 13px;
     color: var(--accent);
     letter-spacing: 0.15em;
@@ -353,7 +357,7 @@
   }
 
   .pillar-name {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 22px;
     line-height: 1.15;
     font-weight: 500;
@@ -396,7 +400,7 @@
   .tl-col:last-child { border-right: none; }
 
   .tl-marker {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 13px;
     color: var(--accent);
     letter-spacing: 0.18em;
@@ -405,7 +409,7 @@
   }
 
   .tl-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 36px;
     line-height: 1;
     font-weight: 400;
@@ -413,7 +417,7 @@
   }
 
   .tl-sub {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-style: italic;
     color: var(--accent);
     margin-bottom: 18px;
@@ -442,7 +446,7 @@
   .day:last-child { border-bottom: none; }
 
   .day-num {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 14px;
     color: var(--accent);
     letter-spacing: 0.15em;
@@ -451,7 +455,7 @@
   }
 
   .day-name {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 28px;
     font-weight: 400;
     line-height: 1.05;
@@ -465,7 +469,7 @@
   }
 
   .day-content h5 {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 8px;
@@ -533,7 +537,7 @@
   }
 
   .qa-head h4 {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -559,7 +563,7 @@
     position: absolute;
     left: 0;
     top: 14px;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 11px;
     color: var(--accent);
     letter-spacing: 0.1em;
@@ -569,7 +573,7 @@
   .qa-block { counter-reset: qcount; }
 
   .qa-list li em {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-style: italic;
     color: var(--ink-soft);
     font-size: 14px;
@@ -591,7 +595,7 @@
     position: absolute;
     top: -20px;
     left: 32px;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 120px;
     color: var(--accent);
     line-height: 1;
@@ -622,7 +626,7 @@
   }
 
   .post-step .num {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 13px;
     color: var(--accent);
     letter-spacing: 0.15em;
@@ -631,7 +635,7 @@
   }
 
   .post-step h5 {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 8px;
@@ -667,7 +671,7 @@
   }
 
   .agenda-num {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 48px;
     font-weight: 300;
     color: var(--accent);
@@ -676,7 +680,7 @@
   }
 
   .agenda-content h5 {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 22px;
     font-weight: 500;
     margin-bottom: 6px;
@@ -712,7 +716,7 @@
   }
 
   .footer-claim {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 36px;
     line-height: 1.1;
     font-weight: 300;
@@ -730,7 +734,7 @@
   }
 
   footer .val {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 16px;
     color: var(--bg);
   }
@@ -765,7 +769,7 @@
   }
 
   .marginalia {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-style: italic;
     font-size: 15px;
     color: var(--ink-soft);
@@ -777,8 +781,8 @@
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 980px) {
-    .page { padding: 0 28px; }
-    .grid-2, .grid-3, .pillars, .timeline, .post-grid, .cover-bottom {
+    .grid-2, .grid-3, .pillars, .timeline, .post-grid, .cover-bottom,
+    .status-grid, .contact-grid {
       grid-template-columns: 1fr;
     }
     .day { grid-template-columns: 1fr; gap: 16px; padding: 28px; }
@@ -788,6 +792,119 @@
     section { padding: 80px 0; }
     .cover h1 { font-size: 56px; }
     .section-title { font-size: 40px; }
+    .submit-card { padding: 40px 32px; }
+    .status-bar { padding: 36px 32px; }
+    .statement-box { padding: 36px 32px; }
+    .statement-box .display { font-size: 26px; margin-left: 40px; }
+    .statement-box::before { font-size: 90px; left: 24px; top: -16px; }
+  }
+
+  /* PHONE */
+  @media (max-width: 640px) {
+    section { padding: 56px 0; }
+    .section-marker { top: 24px; }
+    .section-marker::before { width: 20px; }
+
+    /* Cover */
+    .cover { min-height: auto; padding: 72px 0 56px; }
+    .cover-top { gap: 12px 24px; padding-bottom: 18px; }
+    .cover-logo { font-size: 15px; }
+    .cover-main { padding: 48px 0 40px; }
+    .eyebrow { margin-bottom: 24px; padding: 5px 12px; font-size: 10.5px; }
+    .cover h1 { font-size: clamp(40px, 11vw, 56px); letter-spacing: -0.025em; }
+    .cover-sub { font-size: 17px; margin-top: 32px; }
+    .cover-bottom { gap: 20px; padding-top: 24px; }
+    .cover-info-block .val { font-size: 16px; }
+
+    /* Titel */
+    .section-title { font-size: clamp(32px, 8vw, 44px); }
+    .section-lead { font-size: 17px; margin-bottom: 36px; }
+    h3.block-title { font-size: 26px; }
+    h4.sub-title { font-size: 19px; }
+
+    /* Status-Bar */
+    .status-bar { padding: 28px 24px; border-radius: 14px; }
+    .status-grid { gap: 28px; }
+    .status-item .val { font-size: 22px; }
+
+    /* Pillars / Timeline / Post-Grid */
+    .pillar { padding: 28px 24px; min-height: auto; }
+    .pillar-name { font-size: 20px; }
+    .tl-col { padding: 32px 24px; border-right: none; border-bottom: 1px solid var(--line); }
+    .tl-col:last-child { border-bottom: none; }
+    .tl-title { font-size: 30px; }
+    .post-step { padding: 26px 22px; }
+
+    /* Cards */
+    .card { padding: 26px 22px; }
+
+    /* Drehplan */
+    .day { padding: 24px 22px; }
+    .day-name { font-size: 24px; }
+    .day-side { padding: 18px 18px; }
+
+    /* Fragenkatalog */
+    .qa-block { padding: 26px 22px; border-radius: 14px; }
+    .qa-head { gap: 8px; }
+    .qa-head h4 { font-size: 20px; }
+    .qa-list li { padding: 14px 0 14px 26px; font-size: 15px; }
+    .qa-list li::before { top: 16px; font-size: 10.5px; }
+
+    /* Statement */
+    .statement-box { padding: 56px 24px 28px; border-radius: 14px; }
+    .statement-box::before { font-size: 72px; top: 4px; left: 20px; }
+    .statement-box .display { font-size: 22px; margin-left: 0; line-height: 1.25; }
+
+    /* Agenda */
+    .agenda-item { grid-template-columns: 56px 1fr; gap: 20px; padding: 22px 0; }
+    .agenda-num { font-size: 36px; }
+    .agenda-content h5 { font-size: 19px; }
+
+    /* Submit */
+    .submit-section { padding: 64px 0; }
+    .submit-card { padding: 32px 24px; border-radius: 18px; }
+    .contact-grid { gap: 16px; margin: 24px 0; }
+    .submit-actions { flex-direction: column; gap: 12px; }
+    .submit-actions .btn { width: 100%; }
+    .btn { padding: 16px 24px; min-height: 48px; }
+
+    /* Antwortfelder mit besseren Touch-Targets */
+    .answer-box textarea { min-height: 84px; padding: 14px; font-size: 16px; }
+    .check-row { padding: 8px 0; min-height: 44px; align-items: center; }
+    .check-row input[type="checkbox"] { width: 22px; height: 22px; }
+    .check-row input[type="checkbox"]:checked::after { font-size: 14px; }
+
+    /* Inputs in Splash und Submit */
+    .contact-field input, .contact-field textarea { padding: 14px; font-size: 16px; }
+
+    /* Splash */
+    .splash-inner { padding: 28px 20px; }
+    .splash-title { font-size: 36px; }
+    .splash-sub { font-size: 14px; margin-bottom: 32px; }
+    .splash-input { padding: 16px; font-size: 20px; letter-spacing: 0.3em; }
+    .splash-btn { padding: 16px 20px; min-height: 48px; }
+    .splash-mark { font-size: 11px; margin-bottom: 24px; }
+
+    /* Footer */
+    footer { padding: 56px 0 32px; padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+    .footer-claim { font-size: 28px; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+
+    /* Marginalia / Ornament */
+    .marginalia { padding-left: 16px; font-size: 14px; }
+    .ornament-line { margin: 32px 0; }
+  }
+
+  /* SMALL PHONE (iPhone SE und schmaler) */
+  @media (max-width: 380px) {
+    section { padding: 48px 0; }
+    .cover h1 { font-size: 36px; }
+    .section-title { font-size: 28px; }
+    .splash-title { font-size: 30px; }
+    .statement-box .display { font-size: 19px; }
+    .day-name { font-size: 21px; }
+    .agenda-num { font-size: 30px; }
+    .footer-claim { font-size: 24px; }
   }
 
   @media print {
@@ -816,7 +933,7 @@
     padding: 40px;
   }
   .splash-mark {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 13px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -825,7 +942,7 @@
     font-weight: 500;
   }
   .splash-title {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 300;
     letter-spacing: -0.02em;
@@ -847,7 +964,7 @@
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 8px;
     color: var(--bg);
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
     font-size: 22px;
     text-align: center;
     letter-spacing: 0.4em;
@@ -870,7 +987,7 @@
     color: var(--paper);
     border: none;
     border-radius: 8px;
-    font-family: 'Albert Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 13px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -900,7 +1017,7 @@
     background: var(--bg-soft);
     border: 1px solid var(--line);
     border-radius: 8px;
-    font-family: 'Albert Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 14.5px;
     line-height: 1.5;
     color: var(--ink);
@@ -916,7 +1033,7 @@
   .answer-box textarea::placeholder {
     color: var(--ink-mute);
     font-style: italic;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font-display);
   }
   .check-row {
     display: inline-flex;
@@ -995,7 +1112,7 @@
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 8px;
-    font-family: 'Albert Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     color: var(--ink);
     outline: none;
@@ -1018,7 +1135,7 @@
   .btn {
     padding: 18px 32px;
     border-radius: 10px;
-    font-family: 'Albert Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 13px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
