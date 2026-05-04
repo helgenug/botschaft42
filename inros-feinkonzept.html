@@ -863,7 +863,7 @@
     /* Submit */
     .submit-section { padding: 64px 0; }
     .submit-card { padding: 32px 24px; border-radius: 18px; }
-    .contact-grid { gap: 16px; margin: 24px 0; }
+    .submit-card .contact-grid { grid-template-columns: 1fr; gap: 16px; margin: 24px 0; }
     .submit-actions { flex-direction: column; gap: 12px; }
     .submit-actions .btn { width: 100%; }
     .btn { padding: 16px 24px; min-height: 48px; }
@@ -959,6 +959,9 @@
   .splash-form { display: flex; flex-direction: column; gap: 14px; }
   .splash-input {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 18px 20px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.2);
@@ -1012,6 +1015,9 @@
   }
   .answer-box textarea {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     min-height: 70px;
     padding: 12px 14px;
     background: var(--bg-soft);
@@ -1099,6 +1105,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    min-width: 0;
   }
   .contact-field label {
     font-size: 11px;
@@ -1108,6 +1115,10 @@
     font-weight: 500;
   }
   .contact-field input, .contact-field textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 12px 14px;
     background: var(--bg);
     border: 1px solid var(--line);
@@ -1537,7 +1548,7 @@
     <p class="section-lead">Zwei Tonebenen tragen den Film: ein Voice-Over-Sprecher, der durch die 90 Jahre führt, und eventuell kurze Sätze einzelner Mitarbeitender, eingewoben in den Bildstrom. Beides entscheidet Inros morgen.</p>
 
     <!-- VOICE OVER BLOCK -->
-    <div class="card" style="margin-bottom:32px; padding:48px 56px;">
+    <div class="card" style="margin-bottom:32px; padding:clamp(28px, 5vw, 48px) clamp(24px, 5vw, 56px);">
       <div class="meta meta-accent">Empfehlung der Regie · zentrales Element</div>
       <h3 class="block-title" style="font-size:36px; margin-top:14px;">Voice-Over-Sprecher</h3>
       <div class="grid-2" style="margin-top:24px; gap:48px;">
@@ -1821,7 +1832,7 @@
   <div class="page">
     <div class="submit-card">
       <div class="meta meta-accent">Antworten an Holger Martens senden</div>
-      <h2 class="section-title display" style="margin-top:14px; font-size:48px;">Notizen, <em>Antworten</em>,<br>Anmerkungen.</h2>
+      <h2 class="section-title display" style="margin-top:14px; font-size:clamp(28px, 7vw, 48px);">Notizen, <em>Antworten</em>,<br>Anmerkungen.</h2>
       <p class="section-lead" style="margin-bottom:0;">Wenn Sie zwischen den Fragen Notizen gemacht oder Felder angekreuzt haben: hier schicken Sie das Dokument zurück. Sie können auch eine PDF-Kopie herunterladen, bevor Sie senden.</p>
 
       <div class="contact-grid">
@@ -1831,11 +1842,11 @@
         </div>
         <div class="contact-field">
           <label for="kontakt_rolle">Rolle / Position</label>
-          <input type="text" id="kontakt_rolle" name="kontakt_rolle" placeholder="z. B. Marketing INROS LACKNER">
+          <input type="text" id="kontakt_rolle" name="kontakt_rolle" placeholder="Funktion bei Inros">
         </div>
         <div class="contact-field">
           <label for="kontakt_email">E-Mail</label>
-          <input type="email" id="kontakt_email" name="kontakt_email" placeholder="andrea.schmidt-schwonbeck@inros-lackner.de" required>
+          <input type="email" id="kontakt_email" name="kontakt_email" placeholder="name@inros-lackner.de" required>
         </div>
         <div class="contact-field">
           <label for="kontakt_telefon">Telefon (optional)</label>
