@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sitemap & Informationsarchitektur — Eva-Maria Bast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5efe2; --paper-2:#efe6d5; --card:#faf6ec;
+  --ink:#26201a; --ink-soft:#5c5348; --ink-faint:#8a7f70;
+  --bordeaux:#6d1f2b; --bordeaux-700:#561620; --bordeaux-300:#a7616a;
+  --gold:#a37e3f; --gold-soft:#c9a86a;
+  --line:#dccfb8; --line-soft:#e6dcc8;
+  --dark:#221b16;
+  --serif-display:"Cormorant Garamond",Georgia,serif;
+  --serif-body:"EB Garamond",Georgia,serif;
+  --sans:"Jost",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif-body);font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+::selection{background:var(--gold-soft);color:var(--ink);}
+
+/* ---- Type ---- */
+.kicker{font-family:var(--sans);font-weight:500;letter-spacing:.22em;
+  font-size:12px;text-transform:uppercase;color:var(--bordeaux);margin:0 0 14px;}
+h1{font-family:var(--serif-display);font-weight:600;line-height:1.04;
+  font-size:clamp(40px,6.2vw,76px);margin:0 0 18px;letter-spacing:.005em;}
+h1 .it{font-style:italic;color:var(--bordeaux);font-weight:500;}
+h2{font-family:var(--serif-display);font-weight:600;line-height:1.08;
+  font-size:clamp(26px,3.4vw,38px);margin:0 0 6px;}
+h3{font-family:var(--serif-display);font-weight:600;font-size:23px;margin:0 0 6px;}
+.lead{font-size:clamp(19px,1.6vw,22px);color:var(--ink-soft);max-width:64ch;margin:0;}
+.sec-kicker{font-family:var(--sans);font-weight:500;letter-spacing:.2em;
+  font-size:12px;text-transform:uppercase;color:var(--gold);margin:0 0 10px;}
+.note{color:var(--ink-soft);max-width:70ch;}
+small.sub{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-faint);}
+
+/* ---- Layout rhythm ---- */
+header.top{padding:clamp(46px,7vw,90px) 0 clamp(30px,4vw,46px);border-bottom:1px solid var(--line);}
+section{padding:clamp(44px,6vw,80px) 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:0;}
+.sec-head{margin-bottom:clamp(28px,3vw,40px);}
+
+/* ---- Legend ---- */
+.legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:22px;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+  font-size:11.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 11px;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink-faint);}
+.badge.live::before{background:var(--gold);}
+.badge.neu::before{background:var(--bordeaux);}
+.badge.integrieren::before{background:var(--bordeaux-300);}
+.badge.block::before{background:var(--ink-faint);}
+
+/* ---- Pillars ---- */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+.dach{text-align:center;border:1px solid var(--line);background:var(--dark);color:#efe3ce;
+  padding:26px 20px;margin-bottom:18px;}
+.dach .name{font-family:var(--serif-display);font-size:34px;color:var(--gold-soft);line-height:1.1;}
+.dach small.sub{color:#a99c86;display:block;margin-top:6px;}
+.pillar{border:1px solid var(--line);background:var(--card);padding:24px 24px 22px;}
+.pillar .tag{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.pillar h3{margin:8px 0 12px;}
+.pillar ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:16.5px;}
+.pillar li{margin:5px 0;}
+@media(max-width:720px){.pillars{grid-template-columns:1fr;}}
+
+/* ---- Nav mock ---- */
+.navmock{border:1px solid var(--line);background:var(--card);}
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:16px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.navbar .brand{font-family:var(--serif-display);font-weight:600;font-size:22px;line-height:1;}
+.navbar .brand small{display:block;font-family:var(--sans);font-size:9.5px;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--ink-faint);margin-top:5px;}
+.navlinks{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--sans);font-size:14px;color:var(--ink-soft);}
+.navlinks span{position:relative;cursor:default;}
+.navlinks span.has::after{content:"▾";font-size:10px;margin-left:5px;color:var(--gold);}
+.navcta{font-family:var(--sans);font-size:13px;letter-spacing:.04em;
+  background:var(--bordeaux);color:#f5ead6;padding:10px 16px;}
+.navnote{padding:14px 22px;font-size:15px;color:var(--ink-soft);}
+.navnote b{color:var(--ink);font-weight:600;font-family:var(--serif-body);}
+
+/* ---- Tree ---- */
+.tree{margin-top:4px;font-size:17px;}
+.tree ul{list-style:none;margin:0;padding:0 0 0 26px;position:relative;}
+.tree>ul{padding-left:6px;}
+.tree li{position:relative;padding:9px 0 9px 26px;}
+.tree ul ul li::before{content:"";position:absolute;left:0;top:0;bottom:50%;
+  width:1px;background:var(--line);}
+.tree ul ul li::after{content:"";position:absolute;left:0;top:calc(50% - 0px);
+  width:16px;height:1px;background:var(--line);}
+.tree ul ul li:last-child::before{bottom:50%;}
+.node{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.node .dot{position:absolute;left:20px;top:18px;width:7px;height:7px;border-radius:50%;
+  background:var(--gold);transform:translateX(-50%);}
+.tree>ul>li>.node .dot{left:0;}
+.node .t{font-family:var(--serif-display);font-weight:600;font-size:20px;color:var(--ink);}
+.tree>ul>li>.node .t{font-size:24px;}
+.node .u{color:var(--ink-soft);font-size:15px;font-style:italic;}
+.node .b{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;padding:3px 9px;border:1px solid var(--line);color:var(--ink-soft);
+  background:var(--paper);white-space:nowrap;}
+.node .b.live{border-color:var(--gold);color:var(--gold);}
+.node .b.neu{border-color:var(--bordeaux-300);color:var(--bordeaux);}
+.node .b.integrieren{background:var(--bordeaux);color:#f5ead6;border-color:var(--bordeaux);}
+.node .b.block{border-style:dashed;}
+.node .b.bereich{background:var(--dark);color:var(--gold-soft);border-color:var(--dark);}
+.tree>ul>li{padding-left:22px;margin-top:6px;}
+.tree>ul>li>.node .dot{width:9px;height:9px;background:var(--bordeaux);top:22px;}
+
+/* ---- Ladder ---- */
+.ladder{display:grid;grid-template-columns:52px 1fr;gap:0 20px;margin-top:8px;}
+.axis{position:relative;}
+.axis-line{position:absolute;left:50%;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(var(--line),var(--bordeaux));transform:translateX(-50%);}
+.axis-lo,.axis-hi{position:absolute;left:50%;transform:translate(-50%,0);
+  writing-mode:vertical-rl;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);}
+.axis-lo{bottom:0;}.axis-hi{top:0;color:var(--bordeaux);}
+.rungs{display:flex;flex-direction:column;gap:14px;}
+.rung{border:1px solid var(--line);background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;}
+.rung .stage{font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);}
+.rung h3{margin:4px 0 4px;}
+.rung p{margin:0;font-size:15.5px;color:var(--ink-soft);max-width:60ch;}
+.rung .meta{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint);text-align:right;white-space:nowrap;align-self:start;padding-top:4px;}
+.rung.entry{background:#fbf4e4;border-color:var(--gold);border-left:4px solid var(--gold);}
+.rung.entry .stage{color:var(--bordeaux);}
+.rung.premium{border-left:4px solid var(--bordeaux);}
+@media(max-width:640px){.rung{grid-template-columns:1fr;}.rung .meta{text-align:left;}}
+
+/* ---- Callout ---- */
+.callout{border:1px solid var(--bordeaux);background:#fbf4e4;padding:26px clamp(22px,3vw,34px);}
+.callout .sec-kicker{color:var(--bordeaux);}
+.callout p{margin:0 0 12px;color:var(--ink-soft);}
+.callout p:last-child{margin-bottom:0;}
+.callout b{color:var(--ink);}
+
+/* ---- Flow ---- */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-top:6px;}
+.flow .step{flex:1 1 150px;border:1px solid var(--line);background:var(--card);
+  padding:16px 16px;position:relative;min-width:150px;}
+.flow .step + .step{border-left:0;}
+.flow .step .n{font-family:var(--serif-display);font-size:15px;color:var(--gold);}
+.flow .step .s{font-family:var(--serif-display);font-weight:600;font-size:19px;margin:4px 0 2px;display:block;}
+.flow .step small{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-faint);}
+.flow .step.free{background:#fbf4e4;border-color:var(--gold);}
+@media(max-width:720px){.flow .step + .step{border-left:1px solid var(--line);}}
+
+/* ---- Decisions ---- */
+.dec{border:1px solid var(--line);background:var(--card);padding:6px 24px;}
+.dec details{border-bottom:1px solid var(--line-soft);}
+.dec details:last-child{border-bottom:0;}
+.dec summary{cursor:pointer;list-style:none;padding:16px 0;font-family:var(--serif-display);
+  font-weight:600;font-size:20px;color:var(--ink);}
+.dec summary::-webkit-details-marker{display:none;}
+.dec summary::after{content:"+";float:right;color:var(--bordeaux);font-size:22px;line-height:1;}
+.dec details[open] summary::after{content:"–";}
+.dec details p{margin:0 0 16px;color:var(--ink-soft);font-size:16.5px;max-width:74ch;}
+
+.foot{padding:34px 0 60px;color:var(--ink-faint);font-family:var(--sans);
+  font-size:12.5px;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="kicker">Informationsarchitektur · Entwurf</p>
+    <h1>Sitemap &amp; <span class="it">Navigationsstruktur</span></h1>
+    <p class="lead">Abgeleitet aus der Markenarchitektur (<code>hierarchie.html</code>): eine Dachmarke,
+    zwei Geschäftsfelder, eine sichtbare Angebots-Leiter. Die kostenlose Facebook-Gruppe (<code>/gruppe</code>)
+    wird als niedrigschwelliger Einstieg in genau diese Leiter integriert — nicht als Fremdkörper bei ClickFunnels.</p>
+    <div class="legend">
+      <span class="badge bereich" style="border:1px solid var(--dark)">Bereich / Rubrik</span>
+      <span class="badge live">Live vorhanden (Redesign)</span>
+      <span class="badge neu">Neu bauen</span>
+      <span class="badge integrieren">Integrieren (aus extern holen)</span>
+      <span class="badge block">Querschnitt-Block</span>
+    </div>
+  </div>
+</header>
+
+<!-- 1 · MARKENARCHITEKTUR -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">01 · Markenarchitektur</p>
+      <h2>Branded House — eine Person, zwei Felder</h2>
+      <p class="note">Die Bücher tragen die Glaubwürdigkeit (acht SPIEGEL-Bestseller), die Schreib-Angebote bauen darauf auf.
+      Beide Felder hängen an derselben Dachmarke — das bestimmt Navigation und Startseite.</p>
+    </div>
+    <div class="dach">
+      <div class="name">Eva-Maria Bast</div>
+      <small class="sub">Dachmarke · Autorin · Verlegerin · Buchcoachin</small>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="tag">Feld 1 · Beleg</span>
+        <h3>Bücher</h3>
+        <ul>
+          <li>Bast Medien (Verlag)</li>
+          <li>Die Romane — 3 Stimmen (Bast · Jacobi · Herold)</li>
+          <li>Geheimnis-Reihe (100+ Bände)</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <span class="tag">Feld 2 · Geschäft</span>
+        <h3>Schreiben lehren</h3>
+        <ul>
+          <li>Schreibakademie (Einstieg)</li>
+          <li>1:1-Begleitung (Abschluss)</li>
+          <li>Flowkus (eigenes Programm &amp; Tool)</li>
+          <li><em>Die Methode</em> — das System darunter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · PRIMÄRE NAVIGATION -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">02 · Primäre Navigation</p>
+      <h2>Ein Menü, das die Leiter zeigt</h2>
+      <p class="note">Priorität laut Briefing: (1) Schreib-Angebote verkaufen, (2) Autorin &amp; Romane, (3) Bast Medien,
+      (4) Community. „Schreiben lernen“ steht deshalb vorn; „Coaching-Anfrage“ bleibt als Button durchgängig sichtbar.</p>
+    </div>
+    <div class="navmock">
+      <div class="navbar">
+        <div class="brand">Eva-Maria Bast<small>Autorin · Schreibakademie</small></div>
+        <nav class="navlinks">
+          <span class="has">Schreiben lernen</span>
+          <span class="has">Die Romane</span>
+          <span class="has">Bast Medien</span>
+          <span>Über mich</span>
+        </nav>
+        <span class="navcta">Coaching-Anfrage</span>
+      </div>
+      <div class="navnote">
+        <b>Dropdown „Schreiben lernen“:</b> Schreibakademie · 1:1-Begleitung · Flowkus · Die Methode · <b>Kostenlose Gruppe →</b><br>
+        <b>Dropdown „Die Romane“:</b> Eva-Maria Bast · Charlotte Jacobi · Romy Herold &nbsp;&nbsp;·&nbsp;&nbsp;
+        <b>Dropdown „Bast Medien“:</b> Der Verlag · Geheimnis-Reihe
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · SEITENBAUM -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">03 · Seitenbaum</p>
+      <h2>Vollständige Sitemap mit Status</h2>
+    </div>
+    <div class="tree">
+      <ul>
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Start</span>
+            <span class="u">Startseite — führt in beide Felder &amp; die Leiter</span><span class="b neu">Neu bauen</span></div>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Schreiben lernen</span>
+            <span class="u">Feld 2 · das Geschäft</span><span class="b bereich">Bereich</span></div>
+          <ul>
+            <li><div class="node"><span class="dot"></span><span class="t">Schreibakademie</span>
+              <span class="u">Übersicht — Kurse, Gruppe, Selbstlernen</span><span class="b neu">Neu bauen</span></div>
+              <ul>
+                <li><div class="node"><span class="dot"></span><span class="t">Kurse</span><span class="b neu">Neu bauen</span></div></li>
+                <li><div class="node"><span class="dot"></span><span class="t">Selbstlern-Angebot</span><span class="b neu">Neu bauen</span></div></li>
+                <li><div class="node"><span class="dot"></span><span class="t">Kostenlose Gruppe</span>
+                  <span class="u">Landing-Page · <code>/gruppe</code> · Funnel-Einstieg</span><span class="b integrieren">Integrieren</span></div></li>
+              </ul>
+            </li>
+            <li><div class="node"><span class="dot"></span><span class="t">1:1-Begleitung</span>
+              <span class="u">Premium-Coaching · Abschluss</span><span class="b neu">Neu bauen</span></div>
+              <ul>
+                <li><div class="node"><span class="dot"></span><span class="t">Erstgespräch</span>
+                  <span class="u">Anfrage-Formular</span><span class="b neu">Neu bauen</span></div></li>
+              </ul>
+            </li>
+            <li><div class="node"><span class="dot"></span><span class="t">Flowkus</span>
+              <span class="u">Eigenes Programm &amp; Tool · Platzierung offen</span><span class="b neu">Neu bauen</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">Die Methode</span>
+              <span class="u">Erklärt das System (FlowKus) — Vertrauensseite</span><span class="b neu">Neu bauen</span></div></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Die Romane</span>
+            <span class="u">Feld 1 · drei Stimmen</span><span class="b bereich">Bereich</span></div>
+          <ul>
+            <li><div class="node"><span class="dot"></span><span class="t">Eva-Maria Bast</span><span class="b neu">Neu bauen</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">Charlotte Jacobi</span><span class="b neu">Neu bauen</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">Romy Herold</span><span class="b neu">Neu bauen</span></div></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Bast Medien</span>
+            <span class="u">Feld 1 · Verlag</span><span class="b bereich">Bereich</span></div>
+          <ul>
+            <li><div class="node"><span class="dot"></span><span class="t">Der Verlag</span><span class="b neu">Neu bauen</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">Geheimnis-Reihe</span>
+              <span class="u">100+ Bände</span><span class="b neu">Neu bauen</span></div></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Über mich</span>
+            <span class="u">Die Autorin — verbindet beide Felder</span><span class="b neu">Neu bauen</span></div>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Kontakt</span><span class="b neu">Neu bauen</span></div>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Goldfunken</span>
+            <span class="u">Newsletter / Community — Block auf jeder Seite</span><span class="b block">Querschnitt</span></div>
+        </li>
+
+        <li>
+          <div class="node"><span class="dot"></span><span class="t">Rechtliches</span>
+            <span class="u">Footer</span><span class="b bereich">Bereich</span></div>
+          <ul>
+            <li><div class="node"><span class="dot"></span><span class="t">Impressum</span><span class="b live">Live</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">Datenschutz</span><span class="b live">Live</span></div></li>
+            <li><div class="node"><span class="dot"></span><span class="t">AGB</span><span class="b live">Live</span></div></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · ANGEBOTS-LEITER -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">04 · Die Angebots-Leiter</p>
+      <h2>Vom kostenlosen Einstieg zum Premium-Abschluss</h2>
+      <p class="note">So wandert ein Interessent durch das Feld „Schreiben lehren“. Die Achse steht für Schwelle &amp; Preis:
+      unten niedrig &amp; kostenlos, oben hochpreisig mit wenigen Plätzen. <code>/gruppe</code> ist die unterste, offene Tür.</p>
+    </div>
+    <div class="ladder">
+      <div class="axis">
+        <div class="axis-line"></div>
+        <span class="axis-hi">hoch · Preis</span>
+        <span class="axis-lo">niedrig · Schwelle</span>
+      </div>
+      <div class="rungs">
+        <div class="rung premium">
+          <div><span class="stage">Abschluss</span><h3>1:1-Begleitung</h3>
+            <p>Persönlich von der Idee zum fertigen Manuskript. Wenige Plätze, hochpreisig — das Premium-Ende der Leiter.</p></div>
+          <div class="meta">wenige Plätze<br>hochpreisig</div>
+        </div>
+        <div class="rung">
+          <div><span class="stage">Eigenes Produkt · Platzierung offen</span><h3>Flowkus</h3>
+            <p>Kurs, Programm und Tool mit eigener Kennung — „vom ersten Satz zum fertigen Manuskript“. An die Methode angebunden.</p></div>
+          <div class="meta">eigene Marke<br>skalierbar</div>
+        </div>
+        <div class="rung">
+          <div><span class="stage">Einstieg</span><h3>Schreibakademie</h3>
+            <p>Kurse und Selbstlern-Angebote. Viele Plätze, niedrige Schwelle — der bezahlte Einstieg ins Lernen.</p></div>
+          <div class="meta">viele Plätze<br>niedrigpreisig</div>
+        </div>
+        <div class="rung entry">
+          <div><span class="stage">Vorstufe · Lead-Magnet</span><h3>Kostenlose Gruppe &nbsp;<code>/gruppe</code></h3>
+            <p>Facebook-Community rund um die FlowKus-Methode: wöchentliche Live-Sessions, Fallbeispiele, Austausch.
+            Kostenlos — die offene Tür, durch die alle zuerst kommen.</p></div>
+          <div class="meta">kostenlos<br>offene Tür</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · /gruppe -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">05 · Verortung von <code>/gruppe</code></p>
+      <h2>Integrieren statt doppeln</h2>
+    </div>
+    <div class="callout">
+      <p class="sec-kicker">Empfehlung</p>
+      <p><b>Die <code>/gruppe</code>-Seite wird als eigene, fokussierte Landing-Page im neuen Designsystem nachgebaut</b>
+      und ersetzt die externe ClickFunnels-Version. Gründe: Markenkonsistenz, eigene Daten &amp; eigenes Tracking statt Plattform-Abhängigkeit,
+      und der Funnel wird sichtbarer Teil der Leiter.</p>
+      <p><b>Andere UX-Regeln als die Hauptseite:</b> dieselben Tokens &amp; Typo, aber reduziert — minimale/keine Navigation,
+      <b>ein</b> klarer CTA („Zur Gruppe“), keine Ablenkung. Eine Landing-Page verkauft eine einzige Handlung.</p>
+      <p><b>Mitgedacht auf der ganzen Seite:</b> Startseite und der Bereich „Schreiben lernen“ verweisen an passenden Stellen
+      auf die kostenlose Gruppe als niedrigschwelligen ersten Schritt — so speist der Lead-Magnet die ganze Leiter.</p>
+    </div>
+    <div style="height:26px"></div>
+    <div class="flow">
+      <div class="step free"><span class="n">0</span><span class="s">Kostenlose Gruppe</span><small>Lead-Magnet · <code>/gruppe</code></small></div>
+      <div class="step"><span class="n">1</span><span class="s">Newsletter</span><small>Goldfunken</small></div>
+      <div class="step"><span class="n">2</span><span class="s">Schreibakademie</span><small>bezahlter Einstieg</small></div>
+      <div class="step"><span class="n">3</span><span class="s">Flowkus</span><small>Programm &amp; Tool</small></div>
+      <div class="step"><span class="n">4</span><span class="s">1:1-Begleitung</span><small>Premium-Abschluss</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · OFFENE ENTSCHEIDUNGEN -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">06 · Offene Entscheidungen</p>
+      <h2>Vor dem Weiterbauen zu klären</h2>
+    </div>
+    <div class="dec">
+      <details open>
+        <summary>Naming konsolidieren</summary>
+        <p>Aktuell kursieren nebeneinander: „FlowKus-Methode“ (Funnel), „Flowkus“ als eigene Marke/Tool (Hierarchie),
+        „Die Methode“, „Goldfunken“ (Newsletter) und die kostenlose „Gruppe“. Vor dem Bau festlegen, wie jedes Angebot
+        öffentlich heißt — sonst zementiert der Neubau die Unklarheit.</p>
+      </details>
+      <details>
+        <summary>Flowkus — eigene Stufe oder Parallelmarke?</summary>
+        <p>In der Hierarchie ist Flowkus die dritte Karte mit eigener Kennung. Offen ist, ob es eine Preisstufe <em>zwischen</em>
+        Akademie und 1:1 ist oder ein paralleles, skalierbares Produkt. Das entscheidet, wo es in Navigation und Leiter sitzt.</p>
+      </details>
+      <details>
+        <summary>Design-Sprache &amp; Logo-Farben</summary>
+        <p>Die Startseiten nutzen Papier + Bordeaux (Cormorant/EB Garamond); <code>hierarchie.html</code> nutzt Navy + Gold (Fraunces).
+        Empfehlung: Papier + Bordeaux als echte Markenpalette. Logo-Hex-Werte liefern, dann ziehe ich Palette und Foliengold exakt nach.</p>
+      </details>
+      <details>
+        <summary>Startseiten-Richtung</summary>
+        <p>Empfehlung: A-Ästhetik (Editorial/Bibliothek) + C-Funnel-Logik — aber mit sichtbarer Angebots-Leiter statt eines
+        einzelnen „Coaching“-Blocks. Bestätigen, dann baue ich die gewählte Startseite entlang dieser Sitemap.</p>
+      </details>
+      <details>
+        <summary>Technik &amp; DSGVO</summary>
+        <p>WordPress weiterführen (Theme/Blocks) oder statisch (Astro/Eleventy/Next)? Unabhängig davon: Fonts selbst hosten
+        statt per Google-CDN — für eine deutsche Seite ein reales Abmahn-Risiko.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="wrap foot">
+  Informationsarchitektur · abgeleitet aus <code>hierarchie.html</code> &amp; den Startseiten-Entwürfen · Stand Juli 2026 ·
+  Quelle: evamaria-bast.de, kurs.evamaria-bast.de/gruppe
+</div>
+
+</body>
+</html>
