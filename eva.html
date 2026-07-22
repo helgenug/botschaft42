@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BoD-Kalkulator · Bast Medien</title>
+<meta name="theme-color" content="#2b4c7e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232b4c7e'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%82%AC%3C/text%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   BoD-Kalkulator — Bast Medien
+   Tokens · Design system
+   ============================================================ */
+:root{
+  /* Neutrals — warm, paper-biased (not pure grey) */
+  --bg:#f4f1ea;
+  --surface:#ffffff;
+  --surface-2:#faf8f3;
+  --ink:#211d17;
+  --ink-soft:#4f4a41;
+  --muted:#857e72;
+  --line:#e6e0d4;
+  --line-strong:#d6cfbf;
+  /* Accent — ink blue */
+  --accent:#2b4c7e;
+  --accent-bright:#3a6ea5;
+  --accent-tint:#eaf0f7;
+  /* Semantic — profit / loss (separate from accent) */
+  --good:#12724a;
+  --good-tint:#e4f2ea;
+  --bad:#b23a34;
+  --bad-tint:#f8e7e5;
+  /* Shape & motion */
+  --r:14px;
+  --r-sm:10px;
+  --shadow:0 1px 2px rgba(33,29,23,.05), 0 8px 24px -12px rgba(33,29,23,.18);
+  --shadow-lg:0 2px 6px rgba(33,29,23,.06), 0 20px 46px -18px rgba(33,29,23,.28);
+  --serif:Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#15171c;
+    --surface:#1e2128;
+    --surface-2:#23262e;
+    --ink:#eceae4;
+    --ink-soft:#c3bfb6;
+    --muted:#8f897e;
+    --line:#2e323b;
+    --line-strong:#3a3f4a;
+    --accent:#6f9fd6;
+    --accent-bright:#8ab4e4;
+    --accent-tint:#212b39;
+    --good:#57c98d;
+    --good-tint:#18291f;
+    --bad:#e8756c;
+    --bad-tint:#2c1d1c;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 2px 6px rgba(0,0,0,.35), 0 24px 50px -20px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f4f1ea;--surface:#ffffff;--surface-2:#faf8f3;--ink:#211d17;--ink-soft:#4f4a41;
+  --muted:#857e72;--line:#e6e0d4;--line-strong:#d6cfbf;--accent:#2b4c7e;--accent-bright:#3a6ea5;
+  --accent-tint:#eaf0f7;--good:#12724a;--good-tint:#e4f2ea;--bad:#b23a34;--bad-tint:#f8e7e5;
+  --shadow:0 1px 2px rgba(33,29,23,.05), 0 8px 24px -12px rgba(33,29,23,.18);
+  --shadow-lg:0 2px 6px rgba(33,29,23,.06), 0 20px 46px -18px rgba(33,29,23,.28);
+}
+:root[data-theme="dark"]{
+  --bg:#15171c;--surface:#1e2128;--surface-2:#23262e;--ink:#eceae4;--ink-soft:#c3bfb6;
+  --muted:#8f897e;--line:#2e323b;--line-strong:#3a3f4a;--accent:#6f9fd6;--accent-bright:#8ab4e4;
+  --accent-tint:#212b39;--good:#57c98d;--good-tint:#18291f;--bad:#e8756c;--bad-tint:#2c1d1c;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.35), 0 24px 50px -20px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.wrap{max-width:600px;margin:0 auto;padding:0 16px 64px}
+
+/* ---- Top bar ---- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  margin:0 -16px 18px;padding:14px 16px calc(14px + env(safe-area-inset-top));
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.brand{display:flex;flex-direction:column;line-height:1.15;margin-right:auto}
+.brand .pub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brand .app{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-.01em}
+.brand .app b{color:var(--accent)}
+
+/* ---- Segmented control ---- */
+.segmented{
+  display:inline-flex;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:999px;padding:3px;gap:2px;
+}
+.segmented button{
+  appearance:none;border:0;background:transparent;color:var(--ink-soft);
+  font:inherit;font-size:13px;font-weight:600;cursor:pointer;
+  padding:7px 14px;border-radius:999px;transition:background .15s,color .15s;
+  white-space:nowrap;
+}
+.segmented button[aria-selected="true"]{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .segmented button[aria-selected="true"],
+@media (prefers-color-scheme:dark){}
+
+/* ---- Cards ---- */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.eyebrow{
+  margin:0 0 14px;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.eyebrow .hint{margin-left:auto;font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;color:var(--muted)}
+
+/* ---- Inputs grid ---- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+.field .sub{font-size:11px;color:var(--muted);font-weight:500}
+.inputbox{
+  display:flex;align-items:center;background:var(--surface-2);
+  border:1px solid var(--line-strong);border-radius:var(--r-sm);
+  transition:border-color .15s,box-shadow .15s;
+}
+.inputbox:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint)}
+.inputbox input{
+  appearance:none;-moz-appearance:textfield;
+  border:0;background:transparent;color:var(--ink);
+  font:inherit;font-weight:600;font-variant-numeric:tabular-nums;
+  width:100%;min-width:0;padding:11px 12px;border-radius:var(--r-sm);
+}
+.inputbox input:focus{outline:none}
+.inputbox input::-webkit-outer-spin-button,.inputbox input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.inputbox .unit{padding:0 12px 0 0;color:var(--muted);font-weight:600;font-size:14px;white-space:nowrap}
+
+/* ---- Chip groups ---- */
+.group{margin-bottom:16px}
+.group:last-child{margin-bottom:0}
+.group>.gl{font-size:12.5px;font-weight:600;color:var(--ink-soft);margin:0 0 8px;display:flex;gap:8px;align-items:baseline}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  appearance:none;font:inherit;cursor:pointer;
+  background:var(--surface-2);color:var(--ink-soft);
+  border:1.5px solid var(--line-strong);border-radius:999px;
+  padding:9px 15px;font-size:13.5px;font-weight:600;
+  transition:border-color .15s,background .15s,color .15s;
+  display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.2;
+}
+.chip small{font-weight:500;font-size:11px;color:var(--muted);margin-top:2px}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-tint);color:var(--accent)}
+.chip[aria-pressed="true"] small{color:var(--accent-bright)}
+.chip:hover:not(:disabled){border-color:var(--accent-bright)}
+.chip:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.4)}
+.chip:focus-visible,.toggle:focus-visible,.btn:focus-visible,.segmented button:focus-visible,.linkbtn:focus-visible{
+  outline:2.5px solid var(--accent-bright);outline-offset:2px
+}
+
+/* ---- Toggles (HC extras) ---- */
+.hc-extras{margin-top:4px;padding-top:14px;border-top:1px dashed var(--line-strong);display:none;flex-direction:column;gap:10px}
+.hc-extras.show{display:flex}
+.toggle{
+  display:flex;align-items:center;gap:12px;cursor:pointer;
+  background:none;border:0;font:inherit;color:var(--ink);text-align:left;padding:0;width:100%;
+}
+.toggle:disabled{opacity:.45;cursor:not-allowed}
+.switch{
+  flex:0 0 auto;width:44px;height:26px;border-radius:999px;background:var(--line-strong);
+  position:relative;transition:background .18s;
+}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .18s}
+.toggle[aria-pressed="true"] .switch{background:var(--accent)}
+.toggle[aria-pressed="true"] .switch::after{transform:translateX(18px)}
+.toggle .tx{display:flex;flex-direction:column;line-height:1.25}
+.toggle .tx b{font-size:14px;font-weight:600}
+.toggle .tx span{font-size:12px;color:var(--muted)}
+.toggle .tprice{margin-left:auto;font-size:13px;font-weight:600;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+/* ---- Result card (hero) ---- */
+.result{position:relative;overflow:hidden;padding:0;border:0;box-shadow:var(--shadow-lg)}
+.result .rtop{padding:20px 20px 18px;background:var(--surface);border:1px solid var(--line);border-bottom:0;border-radius:var(--r) var(--r) 0 0;position:relative}
+.result .stripe{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--accent)}
+.result.good .stripe{background:var(--good)}
+.result.bad .stripe{background:var(--bad)}
+.rlabel{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.rmargin{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rmargin .big{
+  font-family:var(--sans);font-size:clamp(38px,11vw,54px);font-weight:800;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;line-height:1;color:var(--ink);
+}
+.result.good .rmargin .big{color:var(--good)}
+.result.bad .rmargin .big{color:var(--bad)}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;
+  padding:5px 11px;border-radius:999px;background:var(--accent-tint);color:var(--accent);
+  letter-spacing:.02em;
+}
+.result.good .pill{background:var(--good-tint);color:var(--good)}
+.result.bad .pill{background:var(--bad-tint);color:var(--bad)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.rquote{margin:10px 0 0;font-size:13.5px;color:var(--ink-soft)}
+.rquote b{font-variant-numeric:tabular-nums}
+.rspec{margin:14px 0 0;font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* breakdown */
+.rbreak{background:var(--surface-2);border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r)}
+.rbreak summary{
+  list-style:none;cursor:pointer;padding:13px 20px;font-size:13px;font-weight:600;color:var(--accent);
+  display:flex;align-items:center;gap:8px;user-select:none;
+}
+.rbreak summary::-webkit-details-marker{display:none}
+.rbreak summary .chev{transition:transform .18s;font-size:11px}
+.rbreak[open] summary .chev{transform:rotate(90deg)}
+.rows{padding:2px 20px 16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:13.5px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .k{color:var(--ink-soft)}
+.row .k small{color:var(--muted);font-weight:500}
+.row .v{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row.sum{border-top:2px solid var(--line-strong);margin-top:2px;font-size:14.5px}
+.row.sum .k{font-weight:700;color:var(--ink)}
+.row.sum .v{font-weight:800}
+.row.neg .v{color:var(--bad)}
+
+/* ---- Ziel-Marge ---- */
+.zeile{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.zeile .field{flex:1 1 130px}
+.zresult{
+  margin-top:14px;background:var(--accent-tint);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  border-radius:var(--r-sm);padding:14px 16px;
+}
+.zresult .zl{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.zresult .zv{font-size:26px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-top:2px}
+.zresult .zn{font-size:12.5px;color:var(--ink-soft);margin-top:4px}
+
+/* ---- Vergleich ---- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ccard{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;background:var(--surface-2)}
+.ccard.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-tint)}
+.ccard .ct{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.ccard .ct .now{font-size:10px;color:var(--accent);letter-spacing:.04em}
+.ccard .cm{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-top:8px;color:var(--ink)}
+.ccard.good .cm{color:var(--good)}.ccard.bad .cm{color:var(--bad)}
+.ccard .ck{font-size:12px;color:var(--muted);margin-top:2px}
+.ccard .cx{font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.4}
+.ccard.na{opacity:.7}
+.ccard.na .cm{font-size:15px;color:var(--muted);font-weight:600}
+
+/* ---- Actions ---- */
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 20px}
+.btn{
+  appearance:none;font:inherit;font-size:14px;font-weight:600;cursor:pointer;
+  border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink);
+  border-radius:var(--r-sm);padding:11px 16px;display:inline-flex;align-items:center;gap:8px;
+  transition:border-color .15s,background .15s,transform .05s;flex:1 1 auto;justify-content:center;
+}
+.btn:hover{border-color:var(--accent-bright)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-bright);border-color:var(--accent-bright)}
+.btn svg{width:16px;height:16px;flex:0 0 auto}
+
+.disclaimer{font-size:11.5px;color:var(--muted);text-align:center;line-height:1.6;margin:8px 0 0}
+
+/* ---- Toast ---- */
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);
+  background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;
+  font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.intern-only{display:block}
+body.extern .intern-only{display:none}
+
+/* theme toggle */
+.themebtn{appearance:none;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);
+  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;flex:0 0 auto}
+.themebtn:hover{border-color:var(--accent-bright)}
+
+/* print summary — hidden on screen */
+.printonly{display:none}
+
+@media (max-width:380px){
+  .grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ============================================================
+   PRINT — clean quote / Angebotsblatt
+   ============================================================ */
+@media print{
+  :root{--bg:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-soft:#222;--muted:#555;--line:#bbb;--line-strong:#999;--accent:#1a3a63;--accent-tint:#eef3f9}
+  body{background:#fff;font-size:12pt}
+  .topbar,.actions,.rbreak summary .chev,.themebtn,.hint,.toast{display:none!important}
+  .card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  .result{box-shadow:none}
+  .rbreak[open] summary{color:#000}
+  .printonly{display:block}
+  .wrap{max-width:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="pub">Bast Medien</span>
+      <span class="app">BoD-<b>Kalkulator</b></span>
+    </div>
+    <div class="segmented" role="tablist" aria-label="Ansicht">
+      <button role="tab" data-modus="intern" aria-selected="true">Intern</button>
+      <button role="tab" data-modus="extern" aria-selected="false">Extern</button>
+    </div>
+    <button class="themebtn" id="themebtn" title="Hell / Dunkel umschalten" aria-label="Hell/Dunkel umschalten">◐</button>
+  </header>
+
+  <!-- ── ECKDATEN ── -->
+  <section class="card">
+    <h2 class="eyebrow">Eckdaten</h2>
+    <div class="grid">
+      <div class="field">
+        <label for="i-seiten">Seiten gesamt</label>
+        <div class="inputbox"><input id="i-seiten" type="number" inputmode="numeric" min="1" step="1" value="300"></div>
+      </div>
+      <div class="field">
+        <label for="i-farb">davon Farbseiten</label>
+        <div class="inputbox"><input id="i-farb" type="number" inputmode="numeric" min="0" step="1" value="0"></div>
+      </div>
+      <div class="field">
+        <label for="i-lp">Ladenpreis <span class="sub">(brutto, inkl. 7 %)</span></label>
+        <div class="inputbox"><input id="i-lp" type="number" inputmode="decimal" min="0" step="0.5" value="16"><span class="unit">€</span></div>
+      </div>
+      <div class="field">
+        <label for="i-rabatt">Großhandelsrabatt</label>
+        <div class="inputbox"><input id="i-rabatt" type="number" inputmode="decimal" min="0" max="99" step="1" value="45"><span class="unit">%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AUSSTATTUNG ── -->
+  <section class="card">
+    <h2 class="eyebrow">Ausstattung <span class="hint" id="tier-hint"></span></h2>
+
+    <div class="group">
+      <p class="gl">Qualität</p>
+      <div class="segmented" id="g-tier" role="group" aria-label="Qualität">
+        <button class="tierbtn" data-tier="premium" aria-selected="true">Premium</button>
+        <button class="tierbtn" data-tier="standard" aria-selected="false">Standard</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="gl">Buchformat</p>
+      <div class="chips" id="g-format" role="group" aria-label="Buchformat"></div>
+    </div>
+
+    <div class="group">
+      <p class="gl">Cover</p>
+      <div class="chips" id="g-cover" role="group" aria-label="Cover"></div>
+    </div>
+
+    <div class="group">
+      <p class="gl">Papier</p>
+      <div class="chips" id="g-papier" role="group" aria-label="Papier"></div>
+    </div>
+
+    <div class="hc-extras" id="hc-extras">
+      <button class="toggle" id="t-laminat" aria-pressed="false">
+        <span class="switch"></span>
+        <span class="tx"><b>Strukturlaminat</b><span>Veredelte Cover-Oberfläche</span></span>
+        <span class="tprice">+ 0,19 €</span>
+      </button>
+      <button class="toggle" id="t-faden" aria-pressed="false">
+        <span class="switch"></span>
+        <span class="tx"><b>Fadenbindung</b><span>Nur Hardcover · nur Premium</span></span>
+        <span class="tprice">+ 2,50 €</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── ERGEBNIS ── -->
+  <section class="card result" id="result" aria-live="polite">
+    <div class="rtop">
+      <span class="stripe"></span>
+      <p class="rlabel" id="r-label">Marge je Exemplar</p>
+      <div class="rmargin">
+        <span class="big" id="r-big">–</span>
+        <span class="pill" id="r-pill"><span class="dot"></span><span id="r-pilltext">–</span></span>
+      </div>
+      <p class="rquote" id="r-quote"></p>
+      <p class="rspec" id="r-spec"></p>
+    </div>
+    <details class="rbreak intern-only" id="r-break">
+      <summary><span class="chev">▶</span><span>Rechenweg anzeigen</span></summary>
+      <div class="rows" id="r-rows"></div>
+    </details>
+  </section>
+
+  <!-- ── ZIEL-MARGE (rückwärts) ── -->
+  <section class="card intern-only">
+    <h2 class="eyebrow">Ziel-Marge → Ladenpreis</h2>
+    <div class="zeile">
+      <div class="field">
+        <label for="i-ziel">Wunsch-Marge je Exemplar</label>
+        <div class="inputbox"><input id="i-ziel" type="number" inputmode="decimal" min="0" step="0.5" value="3"><span class="unit">€</span></div>
+      </div>
+    </div>
+    <div class="zresult">
+      <div class="zl">Nötiger Ladenpreis (brutto)</div>
+      <div class="zv" id="z-lp">–</div>
+      <div class="zn" id="z-note"></div>
+    </div>
+  </section>
+
+  <!-- ── PREMIUM ↔ STANDARD ── -->
+  <section class="card intern-only">
+    <h2 class="eyebrow">Premium ↔ Standard <span class="hint">gleiche Ausstattung</span></h2>
+    <div class="compare" id="compare"></div>
+  </section>
+
+  <!-- ── AKTIONEN ── -->
+  <div class="actions">
+    <button class="btn primary" id="b-print">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      PDF / Drucken
+    </button>
+    <button class="btn" id="b-save">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Speichern
+    </button>
+    <button class="btn" id="b-share">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+      Link teilen
+    </button>
+    <button class="btn" id="b-reset">Zurücksetzen</button>
+  </div>
+
+  <!-- Print-only summary header -->
+  <div class="printonly card">
+    <p class="rlabel">Bast Medien · BoD-Kalkulation</p>
+    <p id="p-spec" style="font-size:13px;color:var(--ink-soft)"></p>
+  </div>
+
+  <p class="disclaimer">
+    Berechnung nach interner Preistabelle (Stand 22.07.2026). Ohne Gewähr für Formeln oder Berechnungsfehler.<br>
+    Bast Medien · Hamburg
+  </p>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   PREISDATEN — zentral gepflegt (aus Kalkulator-Excel 22.07.2026)
+   Werte je Buchformat: [ Format 0, Format 1, Format 2 ]
+   null = in dieser Qualität nicht verfügbar (NN)
+   ============================================================ */
+const FORMATE = [
+  {label:"12 × 19 bis 17 × 22 cm", kurz:"klein"},
+  {label:"17,1 × 22,1 bis 19 × 27 cm", kurz:"mittel"},
+  {label:"19,1 × 27,1 bis 21,0 × 29,7 cm", kurz:"groß"}
+];
+
+// Seitenpreise (S/W und Farbe) je Papiersorte
+const PAPIERE = [
+  { id:"p8090", label:"80 / 90 g", sub:"creme o. weiß",
+    sw:   { premium:[0.020,0.021,0.022], standard:[0.0115,0.012,0.0125] },
+    farbe:{ premium:[0.090,0.095,0.100], standard:[0.080,0.085,0.090] } },
+  { id:"p90fm", label:"90 g fotomatt", sub:"weiß",
+    sw:   { premium:[0.021,0.022,0.023], standard:null },
+    farbe:{ premium:[0.095,0.100,0.105], standard:null } },
+  { id:"p120", label:"120 g gestrichen matt", sub:"weiß",
+    sw:   { premium:[0.022,0.023,0.024], standard:null },
+    farbe:{ premium:[0.100,0.105,0.110], standard:null } },
+  { id:"p130", label:"130 g gestr. glänzend", sub:"weiß",
+    sw:   { premium:[0.025,0.026,0.027], standard:null },
+    farbe:{ premium:[0.110,0.115,0.120], standard:null } }
+];
+
+const COVER = [
+  { id:"pb40", label:"Paperback 4/0", sub:"Cover außen farbig", typ:"PB",
+    preis:{ premium:[1.1,1.2,1.3], standard:[1.1,1.2,1.3] } },
+  { id:"pb44", label:"Paperback 4/4", sub:"Cover innen + außen", typ:"PB",
+    preis:{ premium:[1.2,1.3,1.4], standard:[1.2,1.3,1.4] } },
+  { id:"hc", label:"Hardcover", sub:"runder/gerader Rücken", typ:"HC",
+    preis:{ premium:[5.5,5.7,5.9], standard:[5.5,5.7,5.9] } }
+];
+
+// Aufschläge — nur bei Hardcover
+const AUFSCHLAG = {
+  laminat: { premium:[0.19,0.19,0.19], standard:[0.19,0.19,0.19] }, // beide Qualitäten
+  faden:   { premium:[2.5,2.5,2.5],    standard:null }               // nur Premium
+};
+
+const MWST = 1.07; // 7 % Buch-MwSt
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const DEFAULTS = { seiten:300, farb:0, lp:16, rabatt:45, tier:"premium",
+                   format:0, cover:"pb40", papier:"p8090", laminat:false, faden:false,
+                   ziel:3, modus:"intern" };
+let S = {...DEFAULTS};
+
+/* ---- Helpers ---- */
+const $ = s => document.querySelector(s);
+const fmtE = new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2});
+const eur = x => fmtE.format(x);
+const eur3 = x => x.toLocaleString('de-DE',{minimumFractionDigits:3,maximumFractionDigits:3})+' €';
+const num = x => (Math.round(x*100)/100).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+function paperById(id){ return PAPIERE.find(p=>p.id===id); }
+function coverById(id){ return COVER.find(c=>c.id===id); }
+function paperAvailable(id,tier){ const p=paperById(id); return !!(p && p.sw[tier]); }
+
+/* ---- Kernrechnung ---- */
+function calc(tier){
+  const seiten=Math.max(1, S.seiten|0);
+  const farb=Math.min(Math.max(0,S.farb|0), seiten);
+  const sw2=seiten-farb;
+  const p=paperById(S.papier);
+  const isHC = coverById(S.cover).typ==="HC";
+
+  if(!p.sw[tier]) return { available:false, tier };
+
+  const swP = p.sw[tier][S.format];
+  const fbP = p.farbe[tier][S.format];
+  const covP = coverById(S.cover).preis[tier][S.format];
+  const lam = (isHC && S.laminat) ? AUFSCHLAG.laminat[tier][S.format] : 0;
+  const fadenAvail = isHC && !!AUFSCHLAG.faden[tier];
+  const fad = (isHC && S.faden && fadenAvail) ? AUFSCHLAG.faden[tier][S.format] : 0;
+
+  const swKosten = sw2*swP;
+  const fbKosten = farb*fbP;
+  const hk = swKosten + fbKosten + covP + lam + fad;
+
+  const netto = S.lp / MWST;
+  const rab = Math.min(Math.max(0,S.rabatt),99)/100;
+  const erloes = netto*(1-rab);            // Preis nach Rabatt = Verkaufserlös/Exemplar
+  const marge = erloes - hk;
+  const quote = erloes>0 ? marge/erloes : 0;
+
+  return { available:true, tier, seiten, farb, sw2, swP, fbP, covP, lam, fad,
+           swKosten, fbKosten, hk, netto, rab, erloes, marge, quote, isHC, fadenAvail };
+}
+
+/* ============================================================
+   RENDER: Ausstattungs-Chips (einmalig aufgebaut)
+   ============================================================ */
+function buildChips(){
+  // Format
+  $('#g-format').innerHTML = FORMATE.map((f,i)=>
+    `<button class="chip" data-k="format" data-v="${i}" aria-pressed="false">${f.kurz}<small>${f.label.replace(' bis ',' – ')}</small></button>`).join('');
+  // Cover
+  $('#g-cover').innerHTML = COVER.map(c=>
+    `<button class="chip" data-k="cover" data-v="${c.id}" aria-pressed="false">${c.label}<small>${c.sub}</small></button>`).join('');
+  // Papier
+  $('#g-papier').innerHTML = PAPIERE.map(p=>
+    `<button class="chip" data-k="papier" data-v="${p.id}" aria-pressed="false">${p.label}<small>${p.sub}</small></button>`).join('');
+}
+
+/* ============================================================
+   RENDER: alles aktualisieren
+   ============================================================ */
+function render(){
+  // --- Verfügbarkeiten sicherstellen ---
+  if(!paperAvailable(S.papier,S.tier)) S.papier="p8090";
+  const isHC = coverById(S.cover).typ==="HC";
+  if(!isHC){ S.laminat=false; S.faden=false; }
+  if(S.tier==="standard") S.faden=false; // Fadenbindung nur Premium
+
+  // --- Segmented: Modus & Tier ---
+  document.querySelectorAll('[data-modus]').forEach(b=>b.setAttribute('aria-selected', b.dataset.modus===S.modus));
+  document.querySelectorAll('.tierbtn').forEach(b=>b.setAttribute('aria-selected', b.dataset.tier===S.tier));
+  document.body.classList.toggle('extern', S.modus==="extern");
+  $('#tier-hint').textContent = S.tier==="standard" ? "Standard: nur 80/90 g, keine Fadenbindung" : "";
+
+  // --- Chips: pressed + disabled ---
+  document.querySelectorAll('.chip').forEach(b=>{
+    const k=b.dataset.k, v=b.dataset.v;
+    let sel = (k==="format" && +v===S.format) || (k==="cover" && v===S.cover) || (k==="papier" && v===S.papier);
+    b.setAttribute('aria-pressed', sel);
+    if(k==="papier"){
+      const avail=paperAvailable(v,S.tier);
+      b.disabled=!avail;
+      const small=b.querySelector('small');
+      if(small) small.textContent = avail ? paperById(v).sub : "nur Premium";
+    }
+  });
+
+  // --- HC-Extras sichtbar? ---
+  $('#hc-extras').classList.toggle('show', isHC);
+  $('#t-laminat').setAttribute('aria-pressed', S.laminat);
+  const tf=$('#t-faden');
+  tf.setAttribute('aria-pressed', S.faden);
+  tf.disabled = (S.tier==="standard");
+  tf.querySelector('span:nth-child(3) span, .tx span') && (tf.querySelector('.tx span').textContent =
+      S.tier==="standard" ? "Nur Premium — in Standard nicht verfügbar" : "Nur Hardcover · nur Premium");
+
+  // --- Sync Eingabefelder (falls per Link/Reset gesetzt) ---
+  syncInputs();
+
+  // --- Rechnung aktuelle Qualität ---
+  const r = calc(S.tier);
+  const res = $('#result');
+
+  const specText = ()=>{
+    const c=coverById(S.cover), p=paperById(S.papier), f=FORMATE[S.format];
+    let x=`${c.label} · ${p.label} · ${f.kurz} (${f.label})`;
+    x+=` · ${S.seiten} S.`+(S.farb>0?` (${S.farb} farbig)`:``);
+    if(isHC && S.laminat) x+=` · Strukturlaminat`;
+    if(isHC && S.faden) x+=` · Fadenbindung`;
+    x+=` · ${S.tier==="premium"?"Premium":"Standard"}`;
+    return x;
+  };
+  $('#r-spec').textContent = specText();
+  $('#p-spec') && ($('#p-spec').textContent = specText());
+
+  if(!r.available){
+    res.className="card result";
+    $('#r-big').textContent="—";
+    $('#r-pilltext').textContent="nicht verfügbar";
+    $('#r-quote').textContent="";
+    $('#r-rows').innerHTML="";
+    renderZiel(null); renderCompare();
+    persistToURL(); return;
+  }
+
+  // --- Ergebnis-Karte ---
+  if(S.modus==="extern"){
+    // Extern: Kosten & Marge verbergen — nur Verkaufspreise zeigen
+    res.className="card result";
+    res.querySelector('.stripe').style.background="var(--accent)";
+    $('#r-label').textContent="Ladenpreis (brutto)";
+    $('#r-big').textContent=eur(S.lp);
+    $('#r-pilltext').textContent="inkl. 7 % MwSt";
+    $('#r-pill').style.display="";
+    $('#r-quote').innerHTML=`Nettopreis: <b>${eur(r.netto)}</b> &nbsp;·&nbsp; ${FORMATE[S.format].kurz}es Format`;
+  } else {
+    const good = r.marge>=0;
+    res.className="card result "+(good?"good":"bad");
+    $('#r-label').textContent="Marge je Exemplar";
+    $('#r-big').textContent=(r.marge>=0?"+":"−")+eur(Math.abs(r.marge)).replace('€','').trim()+" €";
+    $('#r-pilltext').textContent=good?"Gewinn":"Verlust";
+    $('#r-pill').style.display="";
+    $('#r-quote').innerHTML=
+      `Herstellkosten <b>${eur(r.hk)}</b> &nbsp;·&nbsp; Verkaufserlös <b>${eur(r.erloes)}</b> &nbsp;·&nbsp; Marge-Quote <b>${(r.quote*100).toLocaleString('de-DE',{maximumFractionDigits:0})} %</b>`;
+
+    // Rechenweg
+    const rows=[];
+    rows.push(rowHTML(`S/W-Seiten <small>${r.sw2} × ${eur3(r.swP)}</small>`, eur(r.swKosten)));
+    if(r.farb>0) rows.push(rowHTML(`Farbseiten <small>${r.farb} × ${eur3(r.fbP)}</small>`, eur(r.fbKosten)));
+    rows.push(rowHTML(`Cover <small>${coverById(S.cover).label}</small>`, eur(r.covP)));
+    if(r.lam>0) rows.push(rowHTML(`Strukturlaminat`, eur(r.lam)));
+    if(r.fad>0) rows.push(rowHTML(`Fadenbindung`, eur(r.fad)));
+    rows.push(rowHTML(`<b>Herstellkosten je Exemplar</b>`, eur(r.hk), 'sum'));
+    rows.push(rowHTML(`Ladenpreis brutto`, eur(S.lp)));
+    rows.push(rowHTML(`Nettopreis <small>÷ 1,07 (7 % MwSt)</small>`, eur(r.netto)));
+    rows.push(rowHTML(`Großhandelsrabatt <small>${(r.rab*100).toLocaleString('de-DE',{maximumFractionDigits:0})} %</small>`, '− '+eur(r.netto-r.erloes), 'neg'));
+    rows.push(rowHTML(`Verkaufserlös je Exemplar`, eur(r.erloes)));
+    rows.push(rowHTML(`<b>Marge je Exemplar</b>`, (r.marge>=0?'+ ':'− ')+eur(Math.abs(r.marge)), 'sum'+(r.marge<0?' neg':'')));
+    $('#r-rows').innerHTML=rows.join('');
+  }
+
+  renderZiel(r);
+  renderCompare();
+  persistToURL();
+}
+
+function rowHTML(k,v,cls=''){ return `<div class="row ${cls}"><span class="k">${k}</span><span class="v">${v}</span></div>`; }
+
+/* ---- Ziel-Marge → Ladenpreis ---- */
+function renderZiel(r){
+  const box=$('#z-lp'), note=$('#z-note');
+  if(!r || !r.available){ box.textContent="—"; note.textContent="Konfiguration in dieser Qualität nicht verfügbar."; return; }
+  const rab=r.rab;
+  if(rab>=1){ box.textContent="—"; note.textContent="Rabatt zu hoch."; return; }
+  const ziel=Math.max(0,S.ziel||0);
+  const lp = (r.hk + ziel)/(1-rab)*MWST;
+  box.textContent=eur(lp);
+  const diff = lp - S.lp;
+  note.innerHTML = `bei Herstellkosten ${eur(r.hk)} und ${(rab*100).toLocaleString('de-DE',{maximumFractionDigits:0})} % Rabatt` +
+    (Math.abs(diff)>=0.005 ? ` &nbsp;·&nbsp; ${diff>0?'+':'−'}${eur(Math.abs(diff))} ggü. aktuell` : ` &nbsp;·&nbsp; = aktueller Ladenpreis`);
+}
+
+/* ---- Premium ↔ Standard ---- */
+function renderCompare(){
+  const wrap=$('#compare');
+  const build=(tier)=>{
+    const r=calc(tier);
+    const active = tier===S.tier ? ' active' : '';
+    const now = tier===S.tier ? '<span class="now">▸ gewählt</span>' : '';
+    if(!r.available){
+      return `<div class="ccard na${active}"><div class="ct">${tier==='premium'?'Premium':'Standard'}${now}</div>
+        <div class="cm">nicht verfügbar</div><div class="cx">Dieses Papier/diese Ausstattung gibt es nur in Premium.</div></div>`;
+    }
+    const good=r.marge>=0;
+    return `<div class="ccard ${good?'good':'bad'}${active}">
+      <div class="ct">${tier==='premium'?'Premium':'Standard'}${now}</div>
+      <div class="cm">${r.marge>=0?'+':'−'}${eur(Math.abs(r.marge)).replace('€','').trim()} €</div>
+      <div class="ck">Marge je Exemplar</div>
+      <div class="cx">Herstellkosten ${eur(r.hk)}</div>
+    </div>`;
+  };
+  wrap.innerHTML = build('premium')+build('standard');
+}
+
+/* ============================================================
+   EINGABEN ↔ STATE
+   ============================================================ */
+function syncInputs(){
+  const map={ 'i-seiten':'seiten','i-farb':'farb','i-lp':'lp','i-rabatt':'rabatt','i-ziel':'ziel' };
+  for(const id in map){ const el=document.getElementById(id); if(el && document.activeElement!==el) el.value=S[map[id]]; }
+}
+function readInput(id,key,int){
+  const el=document.getElementById(id); if(!el) return;
+  let v = int ? parseInt(el.value,10) : parseFloat(el.value.replace(',','.'));
+  if(isNaN(v)) v=0;
+  S[key]=v; render();
+}
+
+/* ============================================================
+   PERSISTENZ: URL-Hash + localStorage
+   ============================================================ */
+const LS_KEY='bast-bod-kalkulator';
+function persistToURL(){
+  const q=new URLSearchParams({
+    s:S.seiten, f:S.farb, lp:S.lp, r:S.rabatt, t:S.tier, fmt:S.format,
+    cov:S.cover, pap:S.papier, lam:S.laminat?1:0, fad:S.faden?1:0, z:S.ziel, m:S.modus
+  });
+  history.replaceState(null,'', '#'+q.toString());
+}
+function loadFromURL(){
+  if(!location.hash || location.hash.length<2) return false;
+  const q=new URLSearchParams(location.hash.slice(1));
+  if(![...q.keys()].length) return false;
+  const gi=(k,d)=>{ const v=q.get(k); return v==null?d:v; };
+  S.seiten=+gi('s',S.seiten); S.farb=+gi('f',S.farb); S.lp=+gi('lp',S.lp);
+  S.rabatt=+gi('r',S.rabatt); S.tier=gi('t',S.tier); S.format=+gi('fmt',S.format);
+  S.cover=gi('cov',S.cover); S.papier=gi('pap',S.papier);
+  S.laminat=gi('lam','0')==='1'; S.faden=gi('fad','0')==='1';
+  S.ziel=+gi('z',S.ziel); S.modus=gi('m',S.modus);
+  return true;
+}
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+function bind(){
+  // Modus
+  document.querySelectorAll('[data-modus]').forEach(b=>b.addEventListener('click',()=>{ S.modus=b.dataset.modus; render(); }));
+  // Tier
+  document.querySelectorAll('.tierbtn').forEach(b=>b.addEventListener('click',()=>{ S.tier=b.dataset.tier; render(); }));
+  // Chips (delegation)
+  document.querySelector('.wrap').addEventListener('click',e=>{
+    const chip=e.target.closest('.chip'); if(!chip||chip.disabled) return;
+    const k=chip.dataset.k, v=chip.dataset.v;
+    if(k==='format') S.format=+v; else S[k]=v;
+    render();
+  });
+  // HC toggles
+  $('#t-laminat').addEventListener('click',()=>{ S.laminat=!S.laminat; render(); });
+  $('#t-faden').addEventListener('click',()=>{ if(S.tier==='standard') return; S.faden=!S.faden; render(); });
+  // Inputs
+  $('#i-seiten').addEventListener('input',()=>readInput('i-seiten','seiten',true));
+  $('#i-farb').addEventListener('input',()=>readInput('i-farb','farb',true));
+  $('#i-lp').addEventListener('input',()=>readInput('i-lp','lp',false));
+  $('#i-rabatt').addEventListener('input',()=>readInput('i-rabatt','rabatt',false));
+  $('#i-ziel').addEventListener('input',()=>readInput('i-ziel','ziel',false));
+  // Actions
+  $('#b-print').addEventListener('click',()=>window.print());
+  $('#b-save').addEventListener('click',()=>{
+    localStorage.setItem(LS_KEY, JSON.stringify(S)); toast('Kalkulation gespeichert');
+  });
+  $('#b-share').addEventListener('click',async()=>{
+    persistToURL();
+    const url=location.href;
+    try{ await navigator.clipboard.writeText(url); toast('Link kopiert'); }
+    catch(_){ toast('Link: '+url); }
+  });
+  $('#b-reset').addEventListener('click',()=>{ S={...DEFAULTS}; render(); toast('Zurückgesetzt'); });
+  // Theme toggle
+  $('#themebtn').addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    const dark=cur ? cur==='dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+    document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  });
+}
+
+let toastT;
+function toast(msg){
+  const t=$('#toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* ---- Init ---- */
+function init(){
+  buildChips();
+  if(!loadFromURL()){
+    try{ const saved=localStorage.getItem(LS_KEY); if(saved) S={...DEFAULTS,...JSON.parse(saved)}; }catch(_){}
+  }
+  bind();
+  render();
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
