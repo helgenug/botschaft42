@@ -742,11 +742,13 @@ function readInput(id,key,int){
    ============================================================ */
 const LS_KEY='bast-bod-kalkulator';
 function persistToURL(){
-  const q=new URLSearchParams({
-    s:S.seiten, f:S.farb, lp:S.lp, r:S.rabatt, t:S.tier, fmt:S.format,
-    cov:S.cover, pap:S.papier, lam:S.laminat?1:0, fad:S.faden?1:0, z:S.ziel, m:S.modus
-  });
-  history.replaceState(null,'', '#'+q.toString());
+  try{
+    const q=new URLSearchParams({
+      s:S.seiten, f:S.farb, lp:S.lp, r:S.rabatt, t:S.tier, fmt:S.format,
+      cov:S.cover, pap:S.papier, lam:S.laminat?1:0, fad:S.faden?1:0, z:S.ziel, m:S.modus
+    });
+    history.replaceState(null,'', '#'+q.toString());
+  }catch(_){/* sandbox ohne History-Zugriff */}
 }
 function loadFromURL(){
   if(!location.hash || location.hash.length<2) return false;
@@ -788,7 +790,8 @@ function bind(){
   // Actions
   $('#b-print').addEventListener('click',()=>window.print());
   $('#b-save').addEventListener('click',()=>{
-    localStorage.setItem(LS_KEY, JSON.stringify(S)); toast('Kalkulation gespeichert');
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); toast('Kalkulation gespeichert'); }
+    catch(_){ toast('Speichern hier nicht möglich — Link teilen nutzen'); }
   });
   $('#b-share').addEventListener('click',async()=>{
     persistToURL();
