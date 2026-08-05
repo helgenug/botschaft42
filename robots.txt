@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://botschaft42.de/sitemap.xml
