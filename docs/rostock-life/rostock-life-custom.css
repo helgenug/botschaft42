@@ -1,0 +1,762 @@
+/* Rostock Life – projekteigenes Stylesheet
+   Extrahiert aus assets/index-nUNJFyPJ.css (MHT-Snapshot vom 7. September 2026).
+   Enthaelt ausschliesslich die handgeschriebenen Site-Styles (Zeilen 1401-2156);
+   Tailwind-Preflight, @layer theme/utilities und @property-Definitionen sind entfernt.
+   Werte liegen in der vom Browser normalisierten Form vor (rgb() statt Hex, Langschreibweise). */
+
+:root { --background: #f2f0eb; --foreground: #111923; --card: #fff; --card-foreground: #111923; --popover: #fff; --popover-foreground: #111923; --primary: #111923; --primary-foreground: #fff; --secondary: #e7e3dc; --secondary-foreground: #111923; --muted: #e7e3dc; --muted-foreground: #65707a; --accent: #aa2937; --accent-foreground: #fff; --destructive: #aa2937; --border: #d8d3cb; --input: #d8d3cb; --ring: #aa2937; --radius: .5rem; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { background: var(--background); color: var(--foreground); margin: 0px; font-family: Arial, Helvetica, sans-serif; }
+
+a { color: inherit; text-decoration: none; }
+
+.topline { color: rgb(255, 255, 255); background: rgb(170, 41, 55); align-items: center; gap: 1rem; min-height: 36px; padding: 0.45rem clamp(1.25rem, 5vw, 5rem); font-size: 0.72rem; display: flex; }
+
+.topline > span { letter-spacing: 0.12em; border-right: 1px solid rgba(255, 255, 255, 0.35); padding-right: 1rem; font-weight: 900; }
+
+.topline p { opacity: 0.85; margin: 0px; }
+
+.topline a { margin-left: auto; font-weight: 800; }
+
+.site-header { z-index: 40; background: rgb(255, 255, 255); border-bottom: 1px solid rgb(224, 220, 213); align-items: center; gap: 2.5rem; height: 82px; padding: 0px clamp(1.25rem, 5vw, 5rem); display: flex; position: sticky; top: 0px; }
+
+.logo-link { flex-shrink: 0; align-items: center; width: 215px; height: 70px; display: inline-flex; overflow: hidden; }
+
+.logo-link img { object-fit: contain; width: 100%; max-height: 64px; display: block; }
+
+.site-header nav { justify-content: center; align-items: center; gap: clamp(1rem, 2.3vw, 2rem); margin-left: auto; font-size: 0.84rem; font-weight: 800; display: flex; }
+
+.site-header nav a { border-bottom: 3px solid rgba(0, 0, 0, 0); padding: 1.9rem 0px; }
+
+.site-header nav a:hover { color: rgb(170, 41, 55); border-color: rgb(170, 41, 55); }
+
+.header-button { color: rgb(255, 255, 255); background: rgb(17, 25, 35); align-items: center; gap: 0.4rem; min-height: 42px; padding: 0px 1rem; font-size: 0.78rem; font-weight: 900; display: inline-flex; }
+
+.weekend { background: rgb(17, 25, 35); grid-template-columns: minmax(0px, 1fr) minmax(340px, 30vw); min-height: 610px; display: grid; }
+
+.weekend-photo { color: rgb(255, 255, 255); background: url("/rostock-city-skyline-daylight.png") 50% 52% / cover no-repeat; align-items: end; min-height: 610px; display: flex; position: relative; overflow: hidden; }
+
+.photo-shade { background: linear-gradient(90deg, rgba(8, 16, 25, 0.48) 0%, rgba(8, 16, 25, 0.18) 58%, rgba(8, 16, 25, 0.02)), linear-gradient(rgba(0, 0, 0, 0) 45%, rgba(8, 16, 25, 0.22)); position: absolute; inset: 0px; }
+
+.weekend-copy { z-index: 1; max-width: 760px; padding: clamp(3rem, 7vw, 7rem); position: relative; }
+
+.kicker { color: rgb(170, 41, 55); letter-spacing: 0.18em; text-transform: uppercase; margin: 0px 0px 0.9rem; font-size: 0.74rem; font-weight: 900; }
+
+.kicker-white { color: rgb(255, 186, 194); }
+
+.weekend h1 { letter-spacing: -0.075em; max-width: 680px; margin: 0px; font-size: clamp(3.4rem, 7vw, 7rem); line-height: 0.86; }
+
+.weekend-copy > p:not(.kicker) { max-width: 590px; margin: 1.4rem 0px 2rem; font-size: 1.12rem; line-height: 1.65; }
+
+.button { justify-content: center; align-items: center; gap: 0.6rem; min-height: 50px; padding: 0px 1.25rem; font-size: 0.86rem; font-weight: 900; transition: transform 0.2s; display: inline-flex; }
+
+.button:hover { transform: translateY(-2px); }
+
+.button-white { color: rgb(17, 25, 35); background: rgb(255, 255, 255); }
+
+.button-dark { color: rgb(255, 255, 255); background: rgb(17, 25, 35); }
+
+.button-red { color: rgb(255, 255, 255); background: rgb(170, 41, 55); }
+
+.today-panel { color: rgb(255, 255, 255); background: rgb(170, 41, 55); flex-direction: column; justify-content: flex-start; min-height: 610px; padding: 1.25rem 1.5rem; display: flex; }
+
+.panel-title { border-bottom: 1px solid rgba(255, 255, 255, 0.3); justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0px 0px 0.85rem; display: flex; }
+
+.panel-title span { letter-spacing: 0.12em; font-size: 0.6rem; font-weight: 900; }
+
+.panel-title h2 { letter-spacing: -0.045em; max-width: 330px; margin: 0.25rem 0px 0px; font-size: clamp(1.35rem, 2vw, 1.85rem); line-height: 1; }
+
+.top-ten-list { grid-template-rows: repeat(10, 1fr); min-height: 0px; display: grid; }
+
+.top-ten-list article { border-bottom: 1px solid rgba(255, 255, 255, 0.2); grid-template-columns: 29px 1fr; align-items: center; gap: 0.65rem; min-height: 0px; padding: 0.42rem 0px; display: grid; }
+
+.top-ten-list article > b { color: rgb(170, 41, 55); background: rgb(255, 255, 255); place-items: center; width: 29px; height: 29px; font-size: 0.62rem; display: grid; }
+
+.top-ten-list strong { color: rgb(255, 213, 218); letter-spacing: 0.08em; font-size: 0.57rem; display: block; }
+
+.top-ten-list h3 { margin: 0.08rem 0px; font-size: 0.76rem; line-height: 1.12; }
+
+.top-ten-list p { color: rgb(241, 203, 208); margin: 0px; font-size: 0.61rem; line-height: 1.15; }
+
+.quicknav { white-space: nowrap; background: rgb(255, 255, 255); border-bottom: 1px solid rgb(222, 217, 209); align-items: center; gap: 1.5rem; min-height: 60px; padding: 0.7rem clamp(1.25rem, 5vw, 5rem); font-size: 0.8rem; display: flex; overflow-x: auto; }
+
+.quicknav span { color: rgb(170, 41, 55); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 900; }
+
+.quicknav a { font-weight: 800; }
+
+.quicknav a:hover { color: rgb(170, 41, 55); }
+
+.section { padding: 6.5rem clamp(1.25rem, 7vw, 7.5rem); }
+
+.section-heading { justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2.7rem; display: flex; }
+
+.section-heading h2, .event-intro h2, .magazine-copy h2, .advertise h2 { letter-spacing: -0.06em; max-width: 760px; margin: 0px; font-size: clamp(2.5rem, 5vw, 4.9rem); line-height: 0.96; }
+
+.section-heading > p { color: rgb(104, 113, 122); max-width: 390px; margin: 0px; line-height: 1.6; }
+
+.text-link { border-bottom: 2px solid rgb(170, 41, 55); flex-shrink: 0; align-items: center; gap: 0.5rem; padding-bottom: 0.35rem; font-size: 0.82rem; font-weight: 900; display: inline-flex; }
+
+.topic-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; display: grid; }
+
+.topic-card { isolation: isolate; color: rgb(255, 255, 255); background: rgb(17, 25, 35); border-top: 6px solid rgb(170, 41, 55); grid-template-rows: auto 1fr auto; min-height: 250px; padding: 1.65rem; transition: transform 0.2s, box-shadow 0.2s; display: grid; position: relative; overflow: hidden; }
+
+.topic-card::after { content: ""; z-index: -1; background: linear-gradient(rgba(5, 11, 17, 0.3) 0%, rgba(5, 11, 17, 0.7) 48%, rgba(5, 11, 17, 0.94) 100%); position: absolute; inset: 0px; }
+
+.topic-image { z-index: -2; object-fit: cover; width: 100%; height: 100%; transition: transform 0.45s; position: absolute; inset: 0px; }
+
+.topic-card:hover .topic-image { transform: scale(1.045); }
+
+.topic-card:hover { transform: translateY(-4px); box-shadow: rgba(17, 25, 35, 0.11) 0px 18px 35px; }
+
+.topic-card h3 { letter-spacing: -0.035em; text-shadow: rgba(0, 0, 0, 0.55) 0px 2px 14px; margin: 1.5rem 0px 0.65rem; font-size: 1.45rem; }
+
+.topic-card p { color: rgb(241, 243, 245); text-shadow: rgba(0, 0, 0, 0.7) 0px 2px 12px; margin: 0px; font-size: 0.92rem; line-height: 1.55; }
+
+.topic-card > svg:last-child { margin-top: 1.3rem; }
+
+.topic-red, .topic-blue, .topic-dark, .topic-sand { color: rgb(255, 255, 255); border-color: rgb(170, 41, 55); }
+
+.topic-red p, .topic-dark p { color: rgb(241, 243, 245); }
+
+.restaurant-heading h2 { letter-spacing: -0.06em; margin: 0px; font-size: clamp(2.4rem, 4.5vw, 4.6rem); line-height: 0.97; }
+
+.weekly-section { background: rgb(255, 255, 255); }
+
+.weekly-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; display: grid; }
+
+.weekly-grid article { isolation: isolate; color: rgb(255, 255, 255); background: rgb(17, 25, 35); min-height: 410px; scroll-margin-top: 1rem; position: relative; overflow: hidden; }
+
+.weekly-grid article::after { content: ""; z-index: -1; background: linear-gradient(rgba(5, 11, 17, 0.18) 0%, rgba(5, 11, 17, 0.68) 40%, rgba(5, 11, 17, 0.96) 100%); position: absolute; inset: 0px; }
+
+.weekly-grid article > img { z-index: -2; object-fit: cover; width: 100%; height: 100%; transition: transform 0.45s; position: absolute; inset: 0px; }
+
+.weekly-grid article:hover > img { transform: scale(1.035); }
+
+.weekly-card-copy { flex-direction: column; justify-content: end; min-height: 410px; padding: 2.1rem; display: flex; }
+
+.weekly-card-copy h3 { letter-spacing: -0.045em; max-width: 520px; margin: 0px 0px 0.8rem; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1; }
+
+.weekly-card-copy > p:not(.story-kicker) { color: rgb(236, 240, 242); max-width: 590px; margin: 0px; font-size: 0.93rem; line-height: 1.6; }
+
+.weekly-card-copy a { align-items: center; gap: 0.45rem; margin-top: 1.2rem; font-size: 0.8rem; font-weight: 900; display: inline-flex; }
+
+.sail-recap { color: rgb(255, 255, 255); background: rgb(170, 41, 55); grid-template-columns: 220px 1fr auto; align-items: center; gap: 2rem; margin-top: 1rem; padding: 1.6rem 2rem; display: grid; }
+
+.sail-recap span { color: rgb(255, 210, 215); letter-spacing: 0.14em; font-size: 0.66rem; font-weight: 900; }
+
+.sail-recap h3 { margin: 0.25rem 0px 0px; font-size: 1.5rem; }
+
+.sail-recap p { color: rgb(255, 255, 255); margin: 0px; font-size: 0.88rem; line-height: 1.55; }
+
+.sail-recap a { white-space: nowrap; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 900; display: inline-flex; }
+
+.event-section { color: rgb(255, 255, 255); background: rgb(25, 45, 60); grid-template-columns: minmax(260px, 0.8fr) 1.7fr; gap: clamp(3rem, 7vw, 7rem); padding: 6rem clamp(1.25rem, 7vw, 7.5rem); display: grid; }
+
+.event-intro > p:not(.kicker) { color: rgb(185, 195, 202); line-height: 1.65; }
+
+.outline-link { border-bottom: 2px solid rgb(170, 41, 55); align-items: center; gap: 0.5rem; margin-top: 1.5rem; padding-bottom: 0.4rem; font-size: 0.82rem; font-weight: 900; display: inline-flex; }
+
+.event-cards { gap: 0.7rem; display: grid; }
+
+.event-cards article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); padding: 1.4rem 1.55rem; }
+
+.event-meta { color: rgb(170, 41, 55); letter-spacing: 0.08em; text-transform: uppercase; justify-content: space-between; font-size: 0.68rem; font-weight: 900; display: flex; }
+
+.event-cards h3 { letter-spacing: -0.03em; margin: 0.8rem 0px 0.55rem; font-size: 1.35rem; }
+
+.event-cards p { color: rgb(109, 117, 124); align-items: center; gap: 0.35rem; font-size: 0.8rem; display: flex; }
+
+.event-cards a { align-items: center; gap: 0.4rem; margin-top: 0.45rem; font-size: 0.78rem; font-weight: 900; display: inline-flex; }
+
+.city-section { background: rgb(255, 255, 255); }
+
+.city-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; display: grid; }
+
+.city-grid article { isolation: isolate; color: rgb(255, 255, 255); background: rgb(17, 25, 35); flex-direction: column; min-height: 360px; padding: 2rem; display: flex; position: relative; overflow: hidden; }
+
+.city-grid article::after { content: ""; z-index: -1; background: linear-gradient(rgba(5, 11, 17, 0.27) 0%, rgba(5, 11, 17, 0.73) 44%, rgba(5, 11, 17, 0.96) 100%); position: absolute; inset: 0px; }
+
+.story-image { z-index: -2; object-fit: cover; width: 100%; height: 100%; transition: transform 0.45s; position: absolute; inset: 0px; }
+
+.city-grid article:hover .story-image { transform: scale(1.04); }
+
+.story-icon { color: rgb(255, 255, 255); background: rgb(170, 41, 55); place-items: center; width: 50px; height: 50px; display: grid; }
+
+.story-kicker { letter-spacing: 0.12em; text-transform: uppercase; font-weight: 900; color: rgb(255, 187, 195) !important; margin: 2rem 0px 0.6rem !important; font-size: 0.68rem !important; }
+
+.city-grid h3 { letter-spacing: -0.035em; text-shadow: rgba(0, 0, 0, 0.65) 0px 2px 14px; margin: 0px 0px 0.85rem; font-size: 1.5rem; line-height: 1.15; }
+
+.city-grid article > p { color: rgb(240, 242, 244); text-shadow: rgba(0, 0, 0, 0.75) 0px 2px 12px; margin: 0px; font-size: 0.92rem; line-height: 1.6; }
+
+.city-grid article > a { color: rgb(255, 255, 255); align-items: center; gap: 0.45rem; margin-top: auto; padding-top: 1.4rem; font-size: 0.8rem; font-weight: 900; display: inline-flex; }
+
+.brotzeit-feature { background: rgb(242, 240, 235); grid-template-columns: minmax(290px, 0.8fr) minmax(480px, 1.35fr); align-items: center; gap: clamp(3rem, 6vw, 6rem); padding: 7rem clamp(1.25rem, 7vw, 7.5rem); scroll-margin-top: 2rem; display: grid; }
+
+.brotzeit-copy h2 { letter-spacing: -0.06em; margin: 0px; font-size: clamp(2.6rem, 4.5vw, 4.8rem); line-height: 0.96; }
+
+.brotzeit-lead { color: rgb(94, 104, 113); margin: 1.6rem 0px 2rem; font-size: 1.02rem; line-height: 1.7; }
+
+.brotzeit-facts { gap: 0.9rem; margin-bottom: 1.4rem; display: grid; }
+
+.brotzeit-facts > div { border-top: 1px solid rgb(214, 209, 201); grid-template-columns: 28px 1fr; gap: 0.6rem; padding: 1rem 0px; display: grid; }
+
+.brotzeit-facts svg { color: rgb(170, 41, 55); margin-top: 0.1rem; }
+
+.brotzeit-facts p, .brotzeit-contact { color: rgb(79, 89, 98); margin: 0px; font-size: 0.9rem; line-height: 1.55; }
+
+.brotzeit-facts strong { color: rgb(17, 25, 35); }
+
+.brotzeit-contact { margin: 0px 0px 1.7rem; }
+
+.brotzeit-contact a { color: rgb(170, 41, 55); font-weight: 800; }
+
+.brotzeit-gallery { gap: 0.75rem; display: grid; }
+
+.brotzeit-gallery img { object-fit: cover; width: 100%; height: 100%; display: block; }
+
+.brotzeit-main-image { aspect-ratio: 16 / 8.6; }
+
+.brotzeit-thumbs { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; display: grid; }
+
+.brotzeit-thumbs img { aspect-ratio: 1 / 1; }
+
+.restaurant-section { color: rgb(255, 255, 255); background: rgb(25, 45, 60); padding: 7rem clamp(1.25rem, 7vw, 7.5rem); scroll-margin-top: 1rem; }
+
+.restaurant-heading { grid-template-columns: 1.4fr 0.6fr; align-items: end; gap: 3rem; margin-bottom: 3rem; display: grid; }
+
+.restaurant-heading > p { color: rgb(186, 198, 206); margin: 0px; line-height: 1.65; }
+
+.restaurant-grid { grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 1rem; display: grid; }
+
+.restaurant-grid article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); grid-template-columns: minmax(190px, 0.8fr) minmax(260px, 1.2fr); min-height: 390px; display: grid; overflow: hidden; }
+
+.restaurant-image-wrap { background: rgb(213, 216, 217); min-height: 100%; position: relative; overflow: hidden; }
+
+.restaurant-image-wrap img { object-fit: cover; width: 100%; height: 100%; transition: transform 0.4s; display: block; }
+
+.restaurant-grid article:hover img { transform: scale(1.035); }
+
+.restaurant-image-wrap small { color: rgb(255, 255, 255); background: rgba(4, 10, 15, 0.7); padding: 0.24rem 0.4rem; font-size: 0.56rem; position: absolute; bottom: 0.55rem; left: 0.65rem; }
+
+.restaurant-copy { flex-direction: column; padding: 1.6rem; display: flex; }
+
+.restaurant-kind { color: rgb(170, 41, 55); letter-spacing: 0.1em; text-transform: uppercase; margin: 0px; font-size: 0.65rem; font-weight: 900; }
+
+.restaurant-copy h3 { letter-spacing: -0.04em; margin: 0.45rem 0px 0.7rem; font-size: 1.6rem; }
+
+.restaurant-description { color: rgb(102, 113, 122); margin: 0px 0px 1rem; font-size: 0.85rem; line-height: 1.55; }
+
+.restaurant-copy dl { gap: 0.55rem; margin: 0px; display: grid; }
+
+.restaurant-copy dl > div { grid-template-columns: 65px 1fr; gap: 0.65rem; display: grid; }
+
+.restaurant-copy dt { color: rgb(138, 146, 152); text-transform: uppercase; font-size: 0.66rem; font-weight: 900; }
+
+.restaurant-copy dd { color: rgb(63, 73, 81); margin: 0px; font-size: 0.76rem; line-height: 1.4; }
+
+.restaurant-copy dd a { color: rgb(170, 41, 55); font-weight: 800; }
+
+.restaurant-link { color: rgb(170, 41, 55); align-items: center; gap: 0.45rem; margin-top: auto; padding-top: 1rem; font-size: 0.78rem; font-weight: 900; display: inline-flex; }
+
+.restaurant-note { color: rgb(143, 160, 172); margin: 1.2rem 0px 0px; font-size: 0.7rem; }
+
+.restaurant-directory { color: rgb(17, 25, 35); background: rgb(255, 255, 255); padding: 7rem clamp(1.25rem, 7vw, 7.5rem); }
+
+.directory-heading { grid-template-columns: 1.35fr 0.65fr; align-items: end; gap: 3rem; margin-bottom: 2.8rem; display: grid; }
+
+.directory-heading h2 { letter-spacing: -0.06em; margin: 0px; font-size: clamp(2.5rem, 4.8vw, 4.8rem); line-height: 0.96; }
+
+.directory-heading > p { color: rgb(102, 113, 122); margin: 0px; font-size: 1rem; line-height: 1.65; }
+
+.directory-grid { grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 0.8rem; display: grid; }
+
+.directory-grid article { background: rgb(242, 240, 235); border-top: 4px solid rgb(170, 41, 55); flex-direction: column; min-height: 230px; padding: 1.5rem; display: flex; }
+
+.directory-cuisine { color: rgb(170, 41, 55); letter-spacing: 0.08em; text-transform: uppercase; margin: 0px; font-size: 0.75rem; font-weight: 900; }
+
+.directory-grid h3 { letter-spacing: -0.035em; margin: 0.55rem 0px 1.2rem; font-size: 1.35rem; line-height: 1.1; }
+
+.directory-grid dl { gap: 0.8rem; margin: auto 0px 0px; display: grid; }
+
+.directory-grid dl > div { gap: 0.2rem; display: grid; }
+
+.directory-grid dt { color: rgb(122, 132, 140); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; font-weight: 900; }
+
+.directory-grid dd { color: rgb(57, 68, 77); margin: 0px; font-size: 0.88rem; line-height: 1.5; }
+
+.directory-note { color: rgb(122, 132, 140); margin: 1.3rem 0px 0px; font-size: 0.75rem; }
+
+.magazine-section { background: rgb(229, 225, 218); grid-template-columns: 330px minmax(0px, 650px); justify-content: center; align-items: center; gap: clamp(3rem, 8vw, 8rem); padding: 7rem clamp(1.25rem, 10vw, 11rem); display: grid; }
+
+.edition-cover { aspect-ratio: 0.704 / 1; background: rgb(200, 223, 237); transition: transform 0.25s; overflow: hidden; box-shadow: rgba(17, 25, 35, 0.24) 0px 25px 55px; }
+
+.edition-cover:hover { transform: translateY(-5px) rotate(-0.5deg); }
+
+.edition-cover img { object-fit: cover; width: 100%; height: 100%; display: block; }
+
+.magazine-copy > p:not(.kicker) { color: rgb(100, 110, 119); margin: 1.5rem 0px; font-size: 1.03rem; line-height: 1.7; }
+
+.magazine-facts { flex-wrap: wrap; gap: 1.7rem; margin: 2rem 0px; display: flex; }
+
+.magazine-facts span { color: rgb(96, 106, 114); border-left: 3px solid rgb(170, 41, 55); padding-left: 1rem; font-size: 0.76rem; }
+
+.magazine-facts b { color: rgb(17, 25, 35); font-size: 1.45rem; display: block; }
+
+.advertise { color: rgb(255, 255, 255); background: rgb(17, 25, 35); grid-template-columns: 1.3fr 0.7fr; align-items: end; gap: 3rem; padding: 6rem clamp(1.25rem, 7vw, 7.5rem); display: grid; }
+
+.advertise > div:first-child > p:not(.kicker) { color: rgb(174, 184, 192); max-width: 720px; font-size: 1.05rem; line-height: 1.7; }
+
+.ad-actions { justify-items: start; gap: 1rem; display: grid; }
+
+.ad-actions p { color: rgb(141, 154, 164); align-items: center; gap: 0.5rem; margin: 0px; font-size: 0.75rem; display: flex; }
+
+footer { color: rgb(255, 255, 255); background: rgb(9, 15, 21); grid-template-columns: auto 1fr auto; align-items: center; gap: 1.5rem; padding: 3rem clamp(1.25rem, 5vw, 5rem); display: grid; }
+
+.footer-logo { filter: brightness(0) invert(); width: 180px; }
+
+footer p { color: rgb(142, 154, 163); font-size: 0.8rem; }
+
+footer div { gap: 1.2rem; font-size: 0.76rem; font-weight: 800; display: flex; }
+
+footer small { color: rgb(101, 113, 122); border-top: 1px solid rgba(255, 255, 255, 0.12); grid-column: 1 / -1; padding-top: 1.4rem; font-size: 0.68rem; }
+
+.section-jump { position: relative; }
+
+.section-jump summary { cursor: pointer; color: rgb(255, 255, 255); background: rgb(17, 25, 35); align-items: center; gap: 0.45rem; min-height: 42px; padding: 0px 1rem; font-size: 0.78rem; font-weight: 900; list-style: none; display: inline-flex; }
+
+.section-jump summary::-webkit-details-marker { display: none; }
+
+.section-jump > div { background: rgb(255, 255, 255); border-top: 4px solid rgb(170, 41, 55); grid-template-columns: 1fr 1fr; gap: 0.2rem; width: 270px; padding: 0.65rem; display: grid; position: absolute; top: calc(100% + 0.6rem); right: 0px; box-shadow: rgba(9, 15, 21, 0.22) 0px 18px 45px; }
+
+.section-jump > div a { color: rgb(17, 25, 35); padding: 0.7rem; font-size: 0.75rem; font-weight: 800; }
+
+.section-jump > div a:hover { color: rgb(170, 41, 55); background: rgb(241, 238, 232); }
+
+.weather { color: rgb(17, 39, 56); background: rgb(217, 236, 247); border-bottom: 1px solid rgb(190, 216, 231); grid-template-columns: minmax(310px, 0.75fr) 1.4fr; align-items: center; gap: 2rem; padding: 1.25rem clamp(1.25rem, 7vw, 7.5rem); scroll-margin-top: 90px; display: grid; position: relative; }
+
+.weather-now { grid-template-columns: auto auto 1fr; align-items: center; gap: 1rem; display: grid; }
+
+.weather-now > svg { color: rgb(170, 41, 55); }
+
+.weather-now span { color: rgb(170, 41, 55); letter-spacing: 0.12em; font-size: 0.62rem; font-weight: 900; }
+
+.weather-now h2 { margin: 0.12rem 0px 0px; font-size: 2.3rem; line-height: 1; }
+
+.weather-now p { border-left: 1px solid rgb(169, 198, 215); margin: 0px; padding-left: 1rem; font-size: 0.78rem; line-height: 1.55; }
+
+.weather-now p svg { vertical-align: middle; display: inline; }
+
+.weather-now button { cursor: pointer; background: rgb(255, 255, 255); border: 0px; align-items: center; gap: 0.4rem; padding: 0.7rem; display: inline-flex; }
+
+.forecast { grid-template-columns: repeat(4, 1fr); gap: 0.45rem; display: grid; }
+
+.forecast article { background: rgba(255, 255, 255, 0.62); grid-template-columns: 1fr auto; gap: 0.25rem 0.7rem; padding: 0.75rem; display: grid; }
+
+.forecast strong { text-transform: uppercase; font-size: 0.67rem; }
+
+.forecast span { color: rgb(97, 114, 125); font-size: 0.69rem; }
+
+.forecast b { font-size: 1.05rem; }
+
+.forecast b small { color: rgb(111, 126, 136); font-weight: 500; }
+
+.forecast em { color: rgb(82, 112, 137); align-items: center; gap: 0.2rem; font-size: 0.67rem; font-style: normal; display: flex; }
+
+.weather-source { color: rgb(109, 135, 151); font-size: 0.55rem; position: absolute; bottom: 0.2rem; right: clamp(1.25rem, 7vw, 7.5rem); }
+
+.month-calendar { color: rgb(255, 255, 255); background: rgb(17, 25, 35); grid-template-columns: minmax(280px, 0.7fr) 1.5fr; gap: clamp(3rem, 7vw, 7rem); padding: 6rem clamp(1.25rem, 7vw, 7.5rem); scroll-margin-top: 90px; display: grid; }
+
+.calendar-intro { align-self: start; position: sticky; top: 120px; }
+
+.calendar-intro h2 { letter-spacing: -0.065em; margin: 0px; font-size: clamp(3rem, 5vw, 5.2rem); line-height: 0.9; }
+
+.calendar-intro > p:not(.kicker) { color: rgb(170, 182, 191); margin: 1.5rem 0px; line-height: 1.65; }
+
+.calendar-legend { flex-wrap: wrap; gap: 0.45rem; display: flex; }
+
+.calendar-legend span { color: rgb(219, 226, 231); background: rgb(38, 53, 65); padding: 0.45rem 0.65rem; font-size: 0.66rem; font-weight: 800; }
+
+.month-event-list { grid-template-columns: repeat(2, 1fr); gap: 0.55rem; display: grid; }
+
+.month-event-list article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); border-top: 3px solid rgb(170, 41, 55); grid-template-columns: 58px 1fr; gap: 1rem; min-height: 118px; padding: 1rem; display: grid; }
+
+.calendar-day { background: rgb(240, 237, 231); flex-direction: column; justify-content: center; align-items: center; display: flex; }
+
+.calendar-day b { color: rgb(170, 41, 55); font-size: 1.65rem; }
+
+.calendar-day span { letter-spacing: 0.12em; font-size: 0.58rem; font-weight: 900; }
+
+.month-event-list p { color: rgb(170, 41, 55); text-transform: uppercase; margin: 0px 0px 0.35rem; font-size: 0.61rem; font-weight: 900; }
+
+.month-event-list h3 { margin: 0px 0px 0.55rem; font-size: 0.95rem; line-height: 1.2; }
+
+.month-event-list article > div:last-child > span { color: rgb(108, 119, 128); align-items: center; gap: 0.3rem; font-size: 0.7rem; display: flex; }
+
+.nightlife-section { background: rgb(238, 233, 225); scroll-margin-top: 80px; }
+
+.nightlife-grid { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; display: grid; }
+
+.nightlife-card { height: 100%; display: block; }
+
+.nightlife-grid article { color: rgb(255, 255, 255); background: rgb(21, 19, 33); border-top: 5px solid rgb(170, 41, 55); flex-direction: column; height: 100%; min-height: 310px; padding: 1.2rem; transition: transform 0.2s, box-shadow 0.2s; display: flex; }
+
+.nightlife-card:hover article { transform: translateY(-3px); box-shadow: rgba(13, 15, 22, 0.18) 0px 12px 28px; }
+
+.club-logo-wrap { background: rgb(255, 255, 255); border-radius: 3px; justify-content: center; align-items: center; height: 72px; padding: 0.7rem; display: flex; }
+
+.club-logo-wrap img { object-fit: contain; width: 100%; height: 100%; display: block; }
+
+.nightlife-grid p { color: rgb(255, 186, 194); text-transform: uppercase; margin: 1.25rem 0px 0.35rem; font-size: 0.68rem; font-weight: 900; }
+
+.nightlife-grid h3 { margin: 0px 0px 0.5rem; font-size: 1.22rem; line-height: 1.08; }
+
+.nightlife-grid span { color: rgb(191, 192, 202); font-size: 0.77rem; line-height: 1.45; }
+
+.nightlife-grid small { color: rgb(142, 144, 157); align-items: center; gap: 0.3rem; margin-top: auto; padding-top: 1rem; display: flex; }
+
+.nightlife-grid article > b { color: rgb(255, 186, 194); text-transform: uppercase; align-items: center; gap: 0.35rem; margin-top: 0.75rem; font-size: 0.7rem; display: flex; }
+
+.nightlife-card-muted article { background: rgb(52, 53, 64); border-top-color: rgb(119, 121, 134); }
+
+.nightlife-card-muted .club-logo-wrap { filter: grayscale(); }
+
+.sport-section { color: rgb(255, 255, 255); background: rgb(25, 45, 60); scroll-margin-top: 80px; }
+
+.sport-section .section-heading > p { color: rgb(189, 200, 207); }
+
+.sport-grid { grid-template-columns: repeat(4, 1fr); gap: 0.8rem; display: grid; }
+
+.sport-grid article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); border-bottom: 6px solid rgb(170, 41, 55); flex-direction: column; min-height: 310px; padding: 1.5rem; display: flex; }
+
+.sport-grid article > svg { color: rgb(170, 41, 55); }
+
+.sport-grid p { color: rgb(170, 41, 55); text-transform: uppercase; margin: 1.5rem 0px 0.45rem; font-size: 0.65rem; font-weight: 900; }
+
+.sport-grid h3 { margin: 0px 0px 1.5rem; font-size: 1.45rem; line-height: 1.05; }
+
+.sport-grid strong { font-size: 0.8rem; }
+
+.sport-grid span { margin-top: 0.3rem; font-size: 0.88rem; }
+
+.sport-grid small { color: rgb(115, 128, 138); margin-top: 0.3rem; }
+
+.sport-grid a { color: rgb(170, 41, 55); align-items: center; gap: 0.35rem; margin-top: auto; padding-top: 1.2rem; font-size: 0.75rem; font-weight: 900; display: inline-flex; }
+
+.cinema-section { background: rgb(255, 255, 255); scroll-margin-top: 80px; }
+
+.cinema-grid { grid-template-columns: repeat(4, 1fr); gap: 0.7rem; display: grid; }
+
+.cinema-grid article { background: rgb(240, 237, 231); border-top: 4px solid rgb(25, 45, 60); flex-direction: column; min-height: 170px; padding: 1.25rem; display: flex; }
+
+.cinema-grid svg { color: rgb(170, 41, 55); }
+
+.cinema-grid p { color: rgb(170, 41, 55); text-transform: uppercase; margin: 1rem 0px 0.35rem; font-size: 0.62rem; font-weight: 900; }
+
+.cinema-grid h3 { margin: 0px 0px 0.7rem; font-size: 1.08rem; line-height: 1.15; }
+
+.cinema-grid span { color: rgb(110, 120, 128); margin-top: auto; font-size: 0.74rem; }
+
+.source-actions { flex-wrap: wrap; gap: 1rem; margin-top: 1.2rem; display: flex; }
+
+.source-actions a { border-bottom: 2px solid rgb(170, 41, 55); align-items: center; gap: 0.4rem; padding-bottom: 0.3rem; font-size: 0.78rem; font-weight: 900; display: inline-flex; }
+
+.theater-section { color: rgb(255, 255, 255); background: rgb(143, 35, 48); scroll-margin-top: 80px; }
+
+.theater-section .section-heading > p { color: rgb(242, 203, 208); }
+
+.theater-list { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1.4rem; display: grid; }
+
+.theater-list article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); grid-template-columns: 115px 1fr auto; align-items: center; gap: 1rem; min-height: 105px; padding: 1rem 1.2rem; display: grid; }
+
+.theater-list article > div:first-child { flex-direction: column; display: flex; }
+
+.theater-list strong { color: rgb(170, 41, 55); font-size: 0.78rem; }
+
+.theater-list span { color: rgb(116, 128, 138); margin-top: 0.25rem; font-size: 0.68rem; }
+
+.theater-list h3 { margin: 0px 0px 0.4rem; font-size: 0.95rem; line-height: 1.25; }
+
+.theater-list p { color: rgb(106, 116, 125); align-items: center; gap: 0.3rem; margin: 0px; font-size: 0.69rem; display: flex; }
+
+.theater-list article > svg { color: rgb(170, 41, 55); }
+
+.sparre-section { background: rgb(255, 255, 255); scroll-margin-top: 80px; }
+
+.sparre-grid { grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 1.5rem; display: grid; }
+
+.sparre-grid article { background: rgb(240, 237, 231); border-left: 3px solid rgb(170, 41, 55); grid-template-columns: auto 1fr; gap: 0.8rem; min-height: 130px; padding: 1rem; display: grid; }
+
+.sparre-grid article > svg { color: rgb(170, 41, 55); }
+
+.sparre-grid h3 { margin: 0px 0px 0.5rem; font-size: 1rem; }
+
+.sparre-grid p, .sparre-grid span { color: rgb(101, 113, 122); align-items: flex-start; gap: 0.3rem; margin: 0.2rem 0px; font-size: 0.7rem; line-height: 1.4; display: flex; }
+
+.excursion-section { background: rgb(238, 242, 240); scroll-margin-top: 80px; }
+
+.info-card-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; display: grid; }
+
+.info-card-grid article { background: rgb(255, 255, 255); border-top: 5px solid rgb(170, 41, 55); flex-direction: column; min-height: 290px; padding: 1.4rem; display: flex; }
+
+.info-card-grid article > p { color: rgb(170, 41, 55); text-transform: uppercase; margin: 0px; font-size: 0.66rem; font-weight: 900; }
+
+.info-card-grid h3 { margin: 0.7rem 0px; font-size: 1.35rem; }
+
+.info-card-grid article > span { color: rgb(99, 112, 121); font-size: 0.82rem; line-height: 1.5; }
+
+.info-card-grid dl { gap: 0.6rem; margin: 1.2rem 0px; display: grid; }
+
+.info-card-grid dt { color: rgb(136, 145, 152); text-transform: uppercase; font-size: 0.62rem; font-weight: 900; }
+
+.info-card-grid dd { color: rgb(63, 74, 82); margin: 0.15rem 0px 0px; font-size: 0.75rem; }
+
+.info-card-grid a { color: rgb(170, 41, 55); align-items: center; gap: 0.35rem; margin-top: auto; font-size: 0.75rem; font-weight: 900; display: inline-flex; }
+
+.shopping-section { color: rgb(255, 255, 255); background: rgb(25, 45, 60); scroll-margin-top: 80px; }
+
+.shopping-section .section-heading > p { color: rgb(183, 195, 202); }
+
+.shopping-grid { grid-template-columns: repeat(4, 1fr); gap: 0.7rem; display: grid; }
+
+.shopping-grid article { color: rgb(17, 25, 35); background: rgb(255, 255, 255); grid-template-columns: auto 1fr; gap: 0.8rem; min-height: 205px; padding: 1.25rem; display: grid; }
+
+.shopping-grid article > svg { color: rgb(170, 41, 55); }
+
+.shopping-grid h3 { margin: 0px 0px 0.4rem; font-size: 1.05rem; }
+
+.shopping-grid p { color: rgb(105, 116, 124); margin: 0px 0px 0.9rem; font-size: 0.75rem; }
+
+.shopping-grid span, .shopping-grid small { color: rgb(83, 97, 106); align-items: flex-start; gap: 0.3rem; margin-top: 0.35rem; font-size: 0.68rem; line-height: 1.35; display: flex; }
+
+.light-note { color: rgb(148, 164, 175); }
+
+.market-section { background: rgb(255, 255, 255); scroll-margin-top: 80px; }
+
+.market-grid { grid-template-columns: repeat(5, 1fr); gap: 0.65rem; margin-bottom: 1.5rem; display: grid; }
+
+.market-grid article { background: rgb(238, 235, 229); border-bottom: 4px solid rgb(170, 41, 55); grid-template-columns: auto 1fr; gap: 0.7rem; min-height: 180px; padding: 1.1rem; display: grid; }
+
+.market-grid article > svg { color: rgb(170, 41, 55); }
+
+.market-grid h3 { margin: 0px 0px 0.65rem; font-size: 1rem; }
+
+.market-grid strong { color: rgb(170, 41, 55); font-size: 0.7rem; }
+
+.market-grid p { color: rgb(104, 116, 125); align-items: flex-start; gap: 0.25rem; margin: 0.55rem 0px 0px; font-size: 0.68rem; line-height: 1.4; display: flex; }
+
+.pharmacy-section { background: rgb(227, 239, 233); grid-template-columns: 0.7fr 1.4fr; gap: 5rem; padding: 6rem clamp(1.25rem, 7vw, 7.5rem); scroll-margin-top: 80px; display: grid; }
+
+.pharmacy-intro > svg { color: rgb(170, 41, 55); }
+
+.pharmacy-intro h2 { letter-spacing: -0.06em; margin: 0.6rem 0px 1rem; font-size: clamp(2.8rem, 5vw, 5rem); line-height: 0.93; }
+
+.pharmacy-intro > p:not(.kicker) { color: rgb(94, 109, 101); line-height: 1.6; }
+
+.pharmacy-content { gap: 1rem; display: grid; }
+
+.pharmacy-cards { grid-template-columns: 1fr 1fr; gap: 0.7rem; display: grid; }
+
+.pharmacy-cards article { background: rgb(255, 255, 255); border-top: 5px solid rgb(170, 41, 55); flex-direction: column; padding: 1.3rem; display: flex; }
+
+.pharmacy-cards strong { font-size: 1.05rem; }
+
+.pharmacy-cards span { color: rgb(100, 113, 106); margin: 0.6rem 0px; font-size: 0.76rem; }
+
+.pharmacy-cards a { color: rgb(170, 41, 55); font-size: 0.8rem; font-weight: 900; }
+
+.four-weeks { background: rgb(255, 255, 255); padding: 1.4rem; }
+
+.four-weeks h3 { margin: 0px 0px 0.5rem; font-size: 1.3rem; }
+
+.four-weeks > p { color: rgb(102, 115, 107); font-size: 0.8rem; line-height: 1.5; }
+
+.four-weeks > div { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; margin: 1rem 0px; display: grid; }
+
+.four-weeks > div span { color: rgb(64, 81, 72); text-align: center; background: rgb(237, 243, 239); padding: 0.65rem; font-size: 0.68rem; font-weight: 900; }
+
+.four-weeks > small { color: rgb(116, 128, 120); margin-top: 1rem; font-size: 0.67rem; display: block; }
+
+.scroll-top { z-index: 35; color: rgb(255, 255, 255); background: rgb(170, 41, 55); border-radius: 50%; place-items: center; width: 48px; height: 48px; font-size: 1.4rem; font-weight: 900; display: grid; position: fixed; bottom: 1.1rem; right: 1.1rem; box-shadow: rgba(9, 15, 21, 0.28) 0px 8px 25px; }
+
+.rubric-shell { background: rgb(255, 255, 255); border-width: 0px 0px 1px; border-style: none none solid; border-color: currentcolor currentcolor rgb(214, 209, 200); border-image: none; scroll-margin-top: 92px; }
+
+.rubric-shell > summary { cursor: pointer; background: linear-gradient(120deg, rgb(255, 255, 255) 0%, rgb(241, 238, 232) 100%); justify-content: space-between; align-items: center; gap: 3rem; min-height: 190px; padding: 2.7rem clamp(1.25rem, 7vw, 7.5rem); list-style: none; display: flex; }
+
+.rubric-shell > summary::-webkit-details-marker { display: none; }
+
+.rubric-shell > summary > div { max-width: 880px; }
+
+.rubric-shell > summary p { color: rgb(170, 41, 55); letter-spacing: 0.16em; text-transform: uppercase; margin: 0px 0px 0.65rem; font-size: 0.7rem; font-weight: 900; }
+
+.rubric-shell > summary h2 { letter-spacing: -0.055em; margin: 0px 0px 0.65rem; font-size: clamp(2rem, 4vw, 4rem); line-height: 0.94; }
+
+.rubric-shell > summary > div > span { color: rgb(101, 113, 122); max-width: 720px; line-height: 1.55; display: block; }
+
+.rubric-shell > summary > b { color: rgb(255, 255, 255); text-transform: uppercase; letter-spacing: 0.05em; background: rgb(170, 41, 55); justify-content: space-between; align-items: center; gap: 0.65rem; min-width: 156px; padding: 0.9rem 1rem; font-size: 0.72rem; display: flex; }
+
+.rubric-shell > summary > b svg { transition: transform 0.25s; }
+
+.rubric-shell[open] > summary > b svg { transform: rotate(180deg); }
+
+.rubric-shell[open] > summary { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.rubric-dark > summary, .rubric-blue > summary, .rubric-red > summary { color: rgb(255, 255, 255); }
+
+.rubric-dark > summary { background: linear-gradient(120deg, rgb(13, 21, 29), rgb(32, 46, 57)); }
+
+.rubric-blue > summary { background: linear-gradient(120deg, rgb(20, 42, 58), rgb(40, 75, 97)); }
+
+.rubric-red > summary { background: linear-gradient(120deg, rgb(127, 30, 42), rgb(170, 41, 55)); }
+
+.rubric-dark > summary > div > span, .rubric-blue > summary > div > span, .rubric-red > summary > div > span { color: rgb(198, 208, 214); }
+
+.rubric-red > summary p, .rubric-dark > summary p, .rubric-blue > summary p { color: rgb(255, 186, 194); }
+
+.rubric-red > summary > b { color: rgb(143, 35, 48); background: rgb(255, 255, 255); }
+
+.rubric-body > .month-calendar > .calendar-intro, .rubric-body > .nightlife-section > .section-heading, .rubric-body > .sport-section > .section-heading, .rubric-body > .cinema-section > .section-heading, .rubric-body > .theater-section > .section-heading, .rubric-body > .restaurant-section > .restaurant-heading, .rubric-body > .excursion-section > .section-heading, .rubric-body > .shopping-section > .section-heading, .rubric-body > .market-section > .section-heading, .rubric-body > .restaurant-directory > .directory-heading { display: none; }
+
+.rubric-body > .month-calendar { grid-template-columns: 1fr; padding-top: 4rem; }
+
+.rubric-body > .restaurant-section, .rubric-body > .restaurant-directory, .rubric-body > .section { padding-top: 4rem; }
+
+.sport-grid article { padding: 0px; overflow: hidden; }
+
+.sport-visual { background: rgb(220, 227, 231); height: 165px; position: relative; }
+
+.sport-photo { object-fit: cover; width: 100%; height: 100%; display: block; }
+
+.sport-logo { object-fit: contain; background: rgb(255, 255, 255); border-radius: 50%; width: 72px; height: 72px; padding: 0.45rem; position: absolute; bottom: -1rem; right: 1rem; box-shadow: rgba(9, 15, 21, 0.22) 0px 8px 22px; }
+
+.sport-copy { flex-direction: column; min-height: 235px; padding: 1.35rem; display: flex; }
+
+.sport-copy p { margin: 0.2rem 0px 0.45rem; }
+
+.sport-copy h3 { margin: 0px 0px 1.2rem; }
+
+.sport-copy a { margin-top: auto; }
+
+.info-card-grid article { padding: 0px; overflow: hidden; }
+
+.tile-image { object-fit: cover; background: rgb(216, 216, 216); width: 100%; height: 155px; display: block; }
+
+.tile-copy { flex-direction: column; flex: 1 1 0%; padding: 1.25rem; display: flex; }
+
+.tile-copy > p { color: rgb(170, 41, 55); text-transform: uppercase; margin: 0px; font-size: 0.66rem; font-weight: 900; }
+
+.tile-copy > a { margin-top: auto; }
+
+.shopping-grid > a, .market-grid > a { display: block; }
+
+.shopping-grid article, .market-grid article { flex-direction: column; height: 100%; padding: 0px; display: flex; overflow: hidden; }
+
+.shopping-grid .tile-copy, .market-grid .tile-copy { flex-direction: column; display: flex; }
+
+.shopping-grid .tile-copy b, .market-grid .tile-copy b { color: rgb(170, 41, 55); align-items: center; gap: 0.35rem; margin-top: auto; padding-top: 0.9rem; font-size: 0.7rem; display: flex; }
+
+.market-grid .tile-image { height: 120px; }
+
+.brotzeit-ad { background: rgb(16, 24, 32); padding: 1.15rem clamp(1.25rem, 5vw, 5rem); }
+
+.brotzeit-ad > a { color: rgb(255, 255, 255); min-height: 360px; display: block; position: relative; overflow: hidden; }
+
+.brotzeit-ad > a > img { object-fit: cover; object-position: center 52%; width: 100%; height: 100%; transition: transform 0.45s; position: absolute; inset: 0px; }
+
+.brotzeit-ad > a:hover > img { transform: scale(1.025); }
+
+.brotzeit-ad-shade { background: linear-gradient(90deg, rgba(12, 19, 20, 0.94) 0%, rgba(12, 19, 20, 0.76) 42%, rgba(12, 19, 20, 0.08) 75%); position: absolute; inset: 0px; }
+
+.brotzeit-ad-copy { z-index: 1; max-width: 690px; padding: 2.2rem clamp(1.4rem, 4vw, 4rem); position: relative; }
+
+.brotzeit-ad-copy > small { letter-spacing: 0.14em; border: 1px solid rgba(255, 255, 255, 0.45); margin-bottom: 1rem; padding: 0.35rem 0.55rem; font-size: 0.58rem; font-weight: 900; display: inline-block; }
+
+.brotzeit-mark { grid-template-rows: auto auto; grid-template-columns: 48px 1fr; align-items: center; column-gap: 0.7rem; display: grid; }
+
+.brotzeit-mark > span { color: rgb(21, 32, 31); background: rgb(200, 151, 79); border-radius: 50%; grid-row: 1 / 3; place-items: center; width: 48px; height: 48px; font: 900 1.8rem Georgia, serif; display: grid; }
+
+.brotzeit-mark > b { letter-spacing: 0.08em; font: 900 1.55rem Georgia, serif; }
+
+.brotzeit-mark > i { color: rgb(232, 210, 177); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; font-style: normal; }
+
+.brotzeit-ad h2 { letter-spacing: -0.04em; margin: 1.1rem 0px 0.7rem; font: 700 clamp(2rem, 4vw, 4.4rem) / 0.94 Georgia, serif; }
+
+.brotzeit-ad p { color: rgb(240, 218, 192); margin: 0px 0px 1rem; }
+
+.brotzeit-ad-copy > strong { color: rgb(21, 32, 31); text-transform: uppercase; background: rgb(200, 151, 79); align-items: center; gap: 0.45rem; padding: 0.75rem 1rem; font-size: 0.76rem; display: inline-flex; }
+
+@media (width <= 1050px) {
+  .site-header nav { display: none; }
+  .weekend { grid-template-columns: 1fr; }
+  .today-panel { min-height: auto; padding: 1.5rem clamp(1.25rem, 5vw, 4rem); }
+  .top-ten-list { grid-template-rows: repeat(5, 1fr); grid-template-columns: repeat(2, 1fr); gap: 0px 1.5rem; }
+  .topic-grid { grid-template-columns: repeat(2, 1fr); }
+  .event-section, .restaurant-grid { grid-template-columns: 1fr; }
+  .directory-grid { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+  .brotzeit-feature { grid-template-columns: 1fr; }
+  .advertise { grid-template-columns: 1fr; align-items: start; }
+  .weather, .month-calendar, .pharmacy-section { grid-template-columns: 1fr; }
+  .calendar-intro { position: static; }
+  .nightlife-grid, .sport-grid, .cinema-grid, .shopping-grid, .sparre-grid, .info-card-grid { grid-template-columns: repeat(2, 1fr); }
+  .market-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (width <= 700px) {
+  .topline p { display: none; }
+  .topline a { font-size: 0.66rem; }
+  .site-header { gap: 1rem; height: 72px; }
+  .logo-link { width: 150px; height: 62px; }
+  .header-button { margin-left: auto; padding: 0px 0.75rem; font-size: 0.7rem; }
+  .section-jump { margin-left: auto; }
+  .section-jump summary { padding: 0px 0.7rem; font-size: 0.7rem; }
+  .section-jump > div { width: calc(-1rem + 100vw); position: fixed; top: 72px; right: 0.5rem; }
+  .weekend, .weekend-photo { min-height: 570px; }
+  .weekend-copy { padding: 3rem 1.25rem; }
+  .weekend h1 { font-size: 3.7rem; }
+  .top-ten-list { grid-template-rows: none; grid-template-columns: 1fr; }
+  .top-ten-list article { padding: 0.65rem 0px; }
+  .section, .event-section, .advertise, .restaurant-section, .restaurant-directory { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .section-heading { flex-direction: column; align-items: start; }
+  .topic-grid, .city-grid { grid-template-columns: 1fr; }
+  .topic-card { min-height: 190px; }
+  .weekly-grid { grid-template-columns: 1fr; }
+  .weekly-grid article, .weekly-card-copy { min-height: 370px; }
+  .sail-recap { grid-template-columns: 1fr; gap: 1rem; }
+  .restaurant-heading, .directory-heading { grid-template-columns: 1fr; align-items: start; gap: 1rem; }
+  .directory-grid, .restaurant-grid article { grid-template-columns: 1fr; }
+  .restaurant-image-wrap { min-height: 280px; }
+  .brotzeit-feature { padding: 4.5rem 1.25rem; }
+  .brotzeit-thumbs { grid-template-columns: repeat(2, 1fr); }
+  .magazine-section { grid-template-columns: minmax(230px, 315px); padding: 5rem 1.25rem; }
+  .magazine-copy { padding-top: 1rem; }
+  footer { grid-template-columns: 1fr; }
+  footer small { grid-column: 1; }
+  footer div { flex-wrap: wrap; }
+  .weather { padding: 1.25rem; }
+  .weather-now { grid-template-columns: auto 1fr; }
+  .weather-now p { border: 0px; grid-column: 1 / -1; padding: 0px; }
+  .forecast { grid-template-columns: repeat(2, 1fr); }
+  .month-calendar, .pharmacy-section { padding: 4.5rem 1.25rem; }
+  .month-event-list, .nightlife-grid, .sport-grid, .cinema-grid, .theater-list, .sparre-grid, .info-card-grid, .shopping-grid, .market-grid, .pharmacy-cards { grid-template-columns: 1fr; }
+  .theater-list article { grid-template-columns: 90px 1fr; }
+  .theater-list article > svg { display: none; }
+  .four-weeks > div { grid-template-columns: repeat(2, 1fr); }
+  .rubric-shell > summary { flex-direction: column; align-items: flex-start; gap: 1.2rem; min-height: 170px; padding: 2rem 1.25rem; }
+  .rubric-shell > summary > b { min-width: 150px; }
+  .rubric-body > .month-calendar { padding-top: 3rem; }
+  .sport-visual { height: 210px; }
+  .brotzeit-ad { padding: 0.75rem; }
+  .brotzeit-ad > a { min-height: 500px; }
+  .brotzeit-ad > a > img { object-position: 58% center; }
+  .brotzeit-ad-shade { background: linear-gradient(rgba(12, 19, 20, 0.08) 0%, rgba(12, 19, 20, 0.8) 45%, rgba(12, 19, 20, 0.98) 100%); }
+  .brotzeit-ad-copy { padding: 1.5rem; position: absolute; bottom: 0px; left: 0px; right: 0px; }
+}
+
+@media (width <= 410px) {
+  .header-button { display: none; }
+  .weekend h1 { font-size: 3.25rem; }
+  .magazine-facts { gap: 1rem; }
+}
