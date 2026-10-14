@@ -1,0 +1,419 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Captain's Schnitzel Datenmodell</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: Kopf, dann das Datenmodell als große Seekarte, darunter Rechte, Abläufe, Sicherheit, offene Fragen */
+:root{
+  --bg:#F1F4F6; --surface:#FFFFFF; --ink:#14263A; --muted:#566879; --line:#8597A9; --rule:#D5DDE4;
+  --accent:#D9481C; --warn:#A8670F; --warn-bg:#FBF0DE;
+  --core-bg:#14263A; --core-fg:#F1F4F6;
+  --z-sec:#E2E9F2; --z-arr:#E3EFE7; --z-chef:#ECE5F3; --z-know:#E6EEF1; --z-work:#EEF0E2; --z-guest:#E0EEF0; --z-cmp:#F7E9DD;
+  --box-stroke:#B9C6D2;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1823; --surface:#162331; --ink:#E4EBF2; --muted:#9BACBD; --line:#6C8095; --rule:#253547;
+    --accent:#F2804F; --warn:#E2A94D; --warn-bg:#2B2316;
+    --core-bg:#E4EBF2; --core-fg:#0E1823;
+    --z-sec:#16263A; --z-arr:#15291F; --z-chef:#221B30; --z-know:#16262D; --z-work:#22251A; --z-guest:#132A2D; --z-cmp:#2C1F17;
+    --box-stroke:#33475C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1823; --surface:#162331; --ink:#E4EBF2; --muted:#9BACBD; --line:#6C8095; --rule:#253547;
+  --accent:#F2804F; --warn:#E2A94D; --warn-bg:#2B2316;
+  --core-bg:#E4EBF2; --core-fg:#0E1823;
+  --z-sec:#16263A; --z-arr:#15291F; --z-chef:#221B30; --z-know:#16262D; --z-work:#22251A; --z-guest:#132A2D; --z-cmp:#2C1F17;
+  --box-stroke:#33475C; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:.005em}
+h2{font-size:1.9rem}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0}
+.eyebrow{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+header{display:grid;gap:14px;max-width:760px}
+.lede{font-size:1.1rem;color:var(--ink);max-width:66ch}
+.sec{display:grid;gap:18px}
+.sec-head{display:grid;gap:6px;max-width:70ch}
+.sec-head p{color:var(--muted)}
+
+/* Karte */
+figure{margin:0;display:grid;gap:12px}
+.map{background:var(--surface);border:1px solid var(--rule);border-radius:6px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.map svg{display:block;width:100%;min-width:980px;height:auto}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.hint{font-size:.92rem;color:var(--muted)}
+button{font:inherit;font-size:.9rem;font-weight:600;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--ink)}
+button:focus-visible,.ent:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figcaption{font-size:.92rem;color:var(--muted);max-width:80ch}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:28px;height:0;border-top:1.5px solid var(--line)}
+.legend i.w{border-top:1.5px dashed var(--warn)}
+.legend i.x{width:14px;height:14px;border:1.5px dashed var(--line);border-radius:2px}
+
+/* SVG */
+.bgclick{fill:transparent}
+.zone rect{stroke:none}
+.zone.ext rect{fill:transparent;stroke:var(--line);stroke-width:1.2;stroke-dasharray:5 4}
+.z-sec rect{fill:var(--z-sec)} .z-arr rect{fill:var(--z-arr)} .z-chef rect{fill:var(--z-chef)}
+.z-know rect{fill:var(--z-know)} .z-work rect{fill:var(--z-work)} .z-guest rect{fill:var(--z-guest)} .z-cmp rect{fill:var(--z-cmp)}
+.zl{font-family:var(--f-body);font-size:11px;font-weight:600;letter-spacing:.11em;fill:var(--muted)}
+.znote{font-size:11.5px;fill:var(--muted)}
+.ent{cursor:pointer;transition:opacity .2s}
+.ent rect{fill:var(--surface);stroke:var(--box-stroke);stroke-width:1.2}
+.ent.ext rect{stroke-dasharray:5 4;stroke:var(--line)}
+.eh{font-family:var(--f-display);font-size:17px;font-weight:700;fill:var(--ink)}
+.ef{font-family:var(--f-body);font-size:11.5px;fill:var(--muted)}
+.ent.core rect{fill:var(--core-bg);stroke:var(--core-bg)}
+.ent.core .eh{fill:var(--core-fg);font-size:21px}
+.ent.core .ef{fill:var(--core-fg);opacity:.82}
+.ln{fill:none;stroke:var(--line);stroke-width:1.4;marker-end:url(#ah)}
+.edge.warn .ln{stroke:var(--warn);stroke-dasharray:6 4;marker-end:url(#ah-warn)}
+.el{font-family:var(--f-body);font-size:11px;font-weight:500;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.edge.warn .el{fill:var(--warn);font-weight:600}
+.mk{fill:var(--line)} .mk-on{fill:var(--accent)} .mk-warn{fill:var(--warn)}
+.edge{transition:opacity .2s}
+svg.focus .ent,svg.focus .edge{opacity:.18}
+svg.focus .ent.on,svg.focus .edge.on{opacity:1}
+svg.focus .ent.on rect{stroke:var(--accent);stroke-width:2}
+svg.focus .ent.core.on rect{stroke:var(--accent)}
+svg.focus .edge.on .ln{stroke:var(--accent);stroke-width:2;marker-end:url(#ah-on)}
+svg.focus .edge.on.warn .ln{stroke:var(--warn);marker-end:url(#ah-warn)}
+.detail{min-height:3.2em;font-size:.98rem;padding:12px 14px;border-left:3px solid var(--accent);background:var(--surface);border-radius:0 4px 4px 0}
+.detail strong{font-family:var(--f-display);font-size:1.1rem;font-weight:700;margin-right:6px}
+
+/* Rechte */
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.95rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{font-family:var(--f-display);font-size:1.05rem;font-weight:700;background:var(--bg);position:sticky;top:0}
+tbody th{font-weight:600}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.c{display:inline-block;font-size:.84rem;font-weight:600;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.c-all{background:var(--core-bg);color:var(--core-fg)}
+.c-loc{background:var(--z-sec);color:var(--ink)}
+.c-own{background:var(--z-arr);color:var(--ink)}
+.c-no{color:var(--muted);padding-left:0}
+.note{font-size:.9rem;color:var(--muted)}
+
+/* Abläufe */
+.flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.flow{display:grid;gap:12px;align-content:start;min-width:0}
+.flow ol{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.flow li{counter-increment:s;position:relative;padding:0 0 14px 34px;font-size:.96rem}
+.flow li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--ink);font-size:.78rem;font-weight:600;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.flow li::after{content:"";position:absolute;left:11px;top:26px;bottom:2px;border-left:1.5px solid var(--rule)}
+.flow li:last-child::after{display:none}
+.flow li:last-child{padding-bottom:0}
+
+/* Sicherheit */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px 32px}
+.item{display:grid;gap:4px;padding-top:12px;border-top:2px solid var(--ink);min-width:0}
+.item p{color:var(--muted);font-size:.96rem}
+
+/* Klärung */
+.open{background:var(--warn-bg);border-radius:6px;padding:22px clamp(16px,3vw,28px);display:grid;gap:16px}
+.open h2{color:var(--ink)}
+.open ul{margin:0;padding-left:1.1em;display:grid;gap:10px;max-width:80ch}
+.open li::marker{color:var(--warn)}
+footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+@media (prefers-reduced-motion: reduce){.ent,.edge{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Personal-App · Entwurf zur Abstimmung · Stand 14. Oktober 2026</p>
+    <h1>Captain's Schnitzel Datenmodell</h1>
+    <p class="lede">Website, Gäste-App und Personal-App nutzen eine gemeinsame Datenbank. Die Karte zeigt den Teil für das Personal und die Stellen, an denen er mit der Gäste-Seite verbunden ist. Jeder Kasten ist eine Tabelle, jede Linie eine Verbindung zwischen zwei Tabellen.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-karte">
+    <div class="sec-head">
+      <h2 id="h-karte">Die Karte</h2>
+      <p>Im Mittelpunkt steht der Mitarbeiter. Alles andere hängt an ihm, an seiner Rolle oder an seinem Standort.</p>
+    </div>
+    <figure>
+      <div class="bar">
+        <p class="hint">Tippe auf eine Tabelle, um ihre Verbindungen hervorzuheben.</p>
+        <button type="button" id="reset">Alles zeigen</button>
+      </div>
+      <div class="map">
+<svg id="dm" viewBox="0 0 1300 960" role="img" aria-label="Datenmodell der Personal-App: Mitarbeiter in der Mitte, verbunden mit Login, Rolle, Standort, Schulungen, Aufgaben, Schichten, Begrüßung, Tagesbriefing für den Chef, Beschwerden aus der Gäste-App und dem Export der Arbeitszeiten an die Lohnbuchhaltung.">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ah-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk-on" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk-warn" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bgclick" x="0" y="0" width="1300" height="960"/>
+
+  <!-- Zonen -->
+  <g class="zone z-sec"><rect x="20" y="40" width="270" height="240" rx="6"/><text class="zl" x="36" y="64">ZUGANG &amp; SICHERHEIT</text></g>
+  <g class="zone z-arr"><rect x="340" y="40" width="560" height="155" rx="6"/><text class="zl" x="356" y="64">ANKOMMEN NACH DEM LOGIN</text></g>
+  <g class="zone z-chef"><rect x="960" y="40" width="300" height="240" rx="6"/><text class="zl" x="976" y="64">CHEFSACHEN</text></g>
+  <g class="zone z-know"><rect x="20" y="320" width="270" height="335" rx="6"/><text class="zl" x="36" y="344">WISSEN &amp; SCHULUNG</text></g>
+  <g class="zone z-work"><rect x="960" y="320" width="300" height="335" rx="6"/><text class="zl" x="976" y="344">ARBEIT</text></g>
+  <g class="zone z-guest"><rect x="20" y="700" width="580" height="240" rx="6"/><text class="zl" x="36" y="724">GÄSTE-SEITE · APP &amp; WEBSITE</text>
+    <text class="znote" x="40" y="862">Kundenkonto, Punkte und Bestellungen entstehen in der Gäste-App</text>
+    <text class="znote" x="40" y="880">und auf der Website. Die Personal-App greift nur lesend darauf zu.</text></g>
+  <g class="zone z-cmp"><rect x="640" y="700" width="280" height="240" rx="6"/><text class="zl" x="656" y="724">BESCHWERDEMANAGEMENT</text></g>
+  <g class="zone ext"><rect x="960" y="700" width="300" height="240" rx="6"/><text class="zl" x="976" y="724">LOHNBUCHHALTUNG · EXTERN</text></g>
+
+  <!-- Verbindungen -->
+  <g class="edge" data-a="login" data-b="mitarbeiter"><path class="ln" d="M270,117 H315 V270 H360"/><text class="el" x="322" y="228">meldet sich an</text></g>
+  <g class="edge" data-a="begruessung" data-b="mitarbeiter"><path class="ln" d="M420,240 V160"/><text class="el" x="428" y="214">nach jedem Login</text></g>
+  <g class="edge" data-a="spruch" data-b="begruessung"><path class="ln" d="M630,160 V177 H500 V161"/><text class="el" x="720" y="191" text-anchor="middle">erscheinen in der Begrüßung</text></g>
+  <g class="edge" data-a="neuigkeiten" data-b="begruessung"><path class="ln" d="M805,160 V177 H500 V161"/></g>
+  <g class="edge" data-a="mitarbeiter" data-b="rolle"><path class="ln" d="M470,330 V420"/><text class="el" x="478" y="380">hat</text></g>
+  <g class="edge" data-a="mitarbeiter" data-b="standort"><path class="ln" d="M770,330 V420"/><text class="el" x="778" y="380">arbeitet in</text></g>
+  <g class="edge" data-a="nachweis" data-b="mitarbeiter"><path class="ln" d="M270,397 H330 V315 H360"/><text class="el" x="336" y="368">absolviert</text></g>
+  <g class="edge" data-a="schulung" data-b="nachweis"><path class="ln" d="M155,465 V435"/><text class="el" x="163" y="455">ergibt</text></g>
+  <g class="edge" data-a="schulung" data-b="rolle"><path class="ln" d="M270,485 H360"/><text class="el" x="315" y="477" text-anchor="middle">Pflicht für</text></g>
+  <g class="edge" data-a="anweisung" data-b="rolle"><path class="ln" d="M270,602 H420 V500"/><text class="el" x="345" y="595" text-anchor="middle">gilt für</text></g>
+  <g class="edge" data-a="mitarbeiter" data-b="briefing"><path class="ln" d="M880,255 H980"/><text class="el" x="930" y="248" text-anchor="middle">nur Chef</text></g>
+  <g class="edge" data-a="aufgabe" data-b="mitarbeiter"><path class="ln" d="M980,397 H945 V300 H880"/><text class="el" x="912" y="293" text-anchor="middle">zugewiesen</text></g>
+  <g class="edge" data-a="aufgabe" data-b="briefing"><path class="ln" d="M1110,360 V260"/><text class="el" x="1118" y="316">fließt ein</text></g>
+  <g class="edge" data-a="schicht" data-b="mitarbeiter"><path class="ln" d="M980,475 H915 V322 H880"/><text class="el" x="948" y="468" text-anchor="middle">Schicht</text></g>
+  <g class="edge" data-a="schicht" data-b="standort"><path class="ln" d="M980,495 H880"/><text class="el" x="930" y="512" text-anchor="middle">Standort</text></g>
+  <g class="edge" data-a="checkliste" data-b="schicht"><path class="ln" d="M1110,565 V540"/><text class="el" x="1118" y="557">pro Schicht</text></g>
+  <g class="edge" data-a="gast" data-b="bestellung"><path class="ln" d="M270,785 H330"/><text class="el" x="300" y="777" text-anchor="middle">bestellt</text></g>
+  <g class="edge" data-a="bestellung" data-b="standort"><path class="ln" d="M540,745 V565 H700 V500"/><text class="el" x="620" y="558" text-anchor="middle">an Standort</text></g>
+  <g class="edge" data-a="beschwerde" data-b="bestellung"><path class="ln" d="M660,785 H580"/><text class="el" x="620" y="777" text-anchor="middle">betrifft</text></g>
+  <g class="edge" data-a="beschwerde" data-b="standort"><path class="ln" d="M780,745 V500"/><text class="el" x="788" y="645">Standort</text></g>
+  <g class="edge" data-a="beschwerde" data-b="schicht"><path class="ln" d="M900,765 H935 V552 H1000 V540"/><text class="el" x="943" y="686">welche Schicht</text></g>
+  <g class="edge" data-a="beschwerde" data-b="massnahme"><path class="ln" d="M780,825 V850"/><text class="el" x="788" y="842">führt zu</text></g>
+  <g class="edge" data-a="schicht" data-b="lohn"><path class="ln" d="M1240,502 H1278 V785 H1240"/><text class="el" x="1270" y="682" text-anchor="end">Arbeitszeiten</text></g>
+  <g class="edge warn" data-a="beschwerde" data-b="lohn"><path class="ln" d="M900,805 H980"/><text class="el" x="940" y="797" text-anchor="middle">Prämie?</text></g>
+  <g class="edge" data-a="lohn" data-b="steuer"><path class="ln" d="M1110,825 V850"/><text class="el" x="1118" y="842">Export</text></g>
+
+  <!-- Tabellen -->
+  <g class="ent" data-id="login" tabindex="0" role="button" aria-label="Login"><rect x="40" y="80" width="230" height="75" rx="4"/>
+    <text class="eh" x="54" y="104">Login</text><text class="ef" x="54" y="125">E-Mail, Passwort nur verschlüsselt</text><text class="ef" x="54" y="142">2-Faktor, aktiv oder gesperrt</text></g>
+  <g class="ent" data-id="protokoll" tabindex="0" role="button" aria-label="Protokoll"><rect x="40" y="180" width="230" height="75" rx="4"/>
+    <text class="eh" x="54" y="204">Protokoll</text><text class="ef" x="54" y="225">wer, was, wann</text><text class="ef" x="54" y="242">Anmeldungen, Änderungen, Löschungen</text></g>
+
+  <g class="ent" data-id="begruessung" tabindex="0" role="button" aria-label="Begrüßung"><rect x="360" y="80" width="170" height="80" rx="4"/>
+    <text class="eh" x="374" y="104">Begrüßung</text><text class="ef" x="374" y="125">Name, Schicht heute</text><text class="ef" x="374" y="142">offene Aufgaben</text></g>
+  <g class="ent" data-id="spruch" tabindex="0" role="button" aria-label="Spruch des Tages"><rect x="550" y="80" width="160" height="80" rx="4"/>
+    <text class="eh" x="564" y="104">Spruch des Tages</text><text class="ef" x="564" y="125">Text, Datum</text><text class="ef" x="564" y="142">von der Zentrale</text></g>
+  <g class="ent" data-id="neuigkeiten" tabindex="0" role="button" aria-label="Neuigkeiten"><rect x="730" y="80" width="150" height="80" rx="4"/>
+    <text class="eh" x="744" y="104">Neuigkeiten</text><text class="ef" x="744" y="125">Text, für wen</text><text class="ef" x="744" y="142">Lesebestätigung</text></g>
+
+  <g class="ent" data-id="briefing" tabindex="0" role="button" aria-label="Tagesbriefing"><rect x="980" y="80" width="260" height="180" rx="4"/>
+    <text class="eh" x="994" y="104">Tagesbriefing</text>
+    <text class="ef" x="994" y="125">jeden Morgen, nur für den Chef</text>
+    <text class="ef" x="994" y="150">· Umsatz und Bestellungen gestern</text>
+    <text class="ef" x="994" y="169">· neue Beschwerden</text>
+    <text class="ef" x="994" y="188">· offene und überfällige Aufgaben</text>
+    <text class="ef" x="994" y="207">· Schulungsstand je Standort</text>
+    <text class="ef" x="994" y="226">· Personal und Schichten heute</text></g>
+
+  <g class="ent core" data-id="mitarbeiter" tabindex="0" role="button" aria-label="Mitarbeiter"><rect x="360" y="240" width="520" height="90" rx="4"/>
+    <text class="eh" x="380" y="270">Mitarbeiter</text><text class="ef" x="380" y="294">Name, Kontakt, Eintrittsdatum, Standort, Rolle</text><text class="ef" x="380" y="313">Status: aktiv, gesperrt oder ausgeschieden</text></g>
+  <g class="ent" data-id="rolle" tabindex="0" role="button" aria-label="Rolle"><rect x="360" y="420" width="220" height="80" rx="4"/>
+    <text class="eh" x="374" y="444">Rolle</text><text class="ef" x="374" y="465">Chef, Standortleitung,</text><text class="ef" x="374" y="482">Schichtleitung, Mitarbeiter</text></g>
+  <g class="ent" data-id="standort" tabindex="0" role="button" aria-label="Standort"><rect x="660" y="420" width="220" height="80" rx="4"/>
+    <text class="eh" x="674" y="444">Standort</text><text class="ef" x="674" y="465">Rostock-City, Warnemünde,</text><text class="ef" x="674" y="482">Stralsund, Hamburg-Ottensen</text></g>
+
+  <g class="ent" data-id="nachweis" tabindex="0" role="button" aria-label="Schulungsnachweis"><rect x="40" y="360" width="230" height="75" rx="4"/>
+    <text class="eh" x="54" y="384">Schulungsnachweis</text><text class="ef" x="54" y="405">wer, Ergebnis, Datum</text><text class="ef" x="54" y="422">gültig bis</text></g>
+  <g class="ent" data-id="schulung" tabindex="0" role="button" aria-label="Schulung"><rect x="40" y="465" width="230" height="75" rx="4"/>
+    <text class="eh" x="54" y="489">Schulung</text><text class="ef" x="54" y="510">Titel, Video, Test</text><text class="ef" x="54" y="527">Werbung, Service, Hygiene</text></g>
+  <g class="ent" data-id="anweisung" tabindex="0" role="button" aria-label="Arbeitsanweisung"><rect x="40" y="565" width="230" height="75" rx="4"/>
+    <text class="eh" x="54" y="589">Arbeitsanweisung</text><text class="ef" x="54" y="610">Rezepte, Abläufe, Hygiene</text><text class="ef" x="54" y="627">je Rolle und Standort</text></g>
+
+  <g class="ent" data-id="aufgabe" tabindex="0" role="button" aria-label="Aufgabe"><rect x="980" y="360" width="260" height="75" rx="4"/>
+    <text class="eh" x="994" y="384">Aufgabe</text><text class="ef" x="994" y="405">Titel, fällig am, erledigt</text><text class="ef" x="994" y="422">von wem, für wen</text></g>
+  <g class="ent" data-id="schicht" tabindex="0" role="button" aria-label="Schicht"><rect x="980" y="465" width="260" height="75" rx="4"/>
+    <text class="eh" x="994" y="489">Schicht</text><text class="ef" x="994" y="510">Datum, Beginn, Ende</text><text class="ef" x="994" y="527">Mitarbeiter, Standort</text></g>
+  <g class="ent" data-id="checkliste" tabindex="0" role="button" aria-label="Checkliste"><rect x="980" y="565" width="260" height="75" rx="4"/>
+    <text class="eh" x="994" y="589">Checkliste</text><text class="ef" x="994" y="610">Öffnen, Schließen</text><text class="ef" x="994" y="627">Hygieneprotokoll, abgehakt von</text></g>
+
+  <g class="ent" data-id="gast" tabindex="0" role="button" aria-label="Gast"><rect x="40" y="745" width="230" height="80" rx="4"/>
+    <text class="eh" x="54" y="769">Gast</text><text class="ef" x="54" y="790">Kundenkonto, Punkte</text><text class="ef" x="54" y="807">Einwilligungen</text></g>
+  <g class="ent" data-id="bestellung" tabindex="0" role="button" aria-label="Bestellung"><rect x="330" y="745" width="250" height="80" rx="4"/>
+    <text class="eh" x="344" y="769">Bestellung</text><text class="ef" x="344" y="790">Standort, Uhrzeit, Positionen</text><text class="ef" x="344" y="807">Status, Bon-Nummer</text></g>
+
+  <g class="ent" data-id="beschwerde" tabindex="0" role="button" aria-label="Beschwerde"><rect x="660" y="745" width="240" height="80" rx="4"/>
+    <text class="eh" x="674" y="769">Beschwerde</text><text class="ef" x="674" y="790">App, Website oder vor Ort</text><text class="ef" x="674" y="807">Text, Status, bearbeitet von</text></g>
+  <g class="ent" data-id="massnahme" tabindex="0" role="button" aria-label="Maßnahme"><rect x="660" y="850" width="240" height="75" rx="4"/>
+    <text class="eh" x="674" y="874">Maßnahme</text><text class="ef" x="674" y="895">Gespräch, Schulung zuweisen</text><text class="ef" x="674" y="912">Gutschrift an den Gast</text></g>
+
+  <g class="ent" data-id="lohn" tabindex="0" role="button" aria-label="Lohnexport"><rect x="980" y="745" width="260" height="80" rx="4"/>
+    <text class="eh" x="994" y="769">Lohnexport</text><text class="ef" x="994" y="790">Arbeitszeiten je Monat</text><text class="ef" x="994" y="807">vereinbarte Prämien</text></g>
+  <g class="ent ext" data-id="steuer" tabindex="0" role="button" aria-label="Steuerbüro"><rect x="980" y="850" width="260" height="75" rx="4"/>
+    <text class="eh" x="994" y="874">Steuerbüro · DATEV</text><text class="ef" x="994" y="895">Lohnabrechnung</text><text class="ef" x="994" y="912">außerhalb der App</text></g>
+</svg>
+      </div>
+      <p class="detail" id="detail" aria-live="polite"><strong>Mitarbeiter</strong>Die zentrale Tabelle. Jeder Datensatz in der Personal-App gehört zu einem Mitarbeiter, einer Rolle oder einem Standort.</p>
+      <div class="legend">
+        <span><i></i>Verbindung zwischen zwei Tabellen</span>
+        <span><i class="w"></i>Verbindung, die vorher geklärt werden muss</span>
+        <span><i class="x"></i>außerhalb der App</span>
+      </div>
+      <figcaption>Die Gäste-Seite liefert Bestellungen und Beschwerden. Beschwerden werden einer Schicht und einem Standort zugeordnet. Aus den Schichten entstehen die Arbeitszeiten für die Lohnbuchhaltung. Das Tagesbriefing des Chefs liest aus allen Bereichen.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rechte">
+    <div class="sec-head">
+      <h2 id="h-rechte">Wer darf was</h2>
+      <p>Die Rechte stehen in der Datenbank selbst. Jede Abfrage wird gegen Rolle und Standort geprüft, egal ob sie aus der App, der Website oder der Personal-App kommt. Die Tabelle ist ein Vorschlag und wird mit Captain's Schnitzel festgelegt.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Bereich</th><th scope="col">Chef</th><th scope="col">Standortleitung</th><th scope="col">Schichtleitung</th><th scope="col">Mitarbeiter</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Begrüßung, Spruch des Tages</th><td><span class="c c-all">alles</span></td><td><span class="c c-own">sieht</span></td><td><span class="c c-own">sieht</span></td><td><span class="c c-own">sieht</span></td></tr>
+          <tr><th scope="row">Spruch und Neuigkeiten schreiben</th><td><span class="c c-all">alle Standorte</span></td><td><span class="c c-loc">eigener Standort</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Schulungen</th><td><span class="c c-all">anlegen, alle Nachweise</span></td><td><span class="c c-loc">Nachweise eigener Standort</span></td><td><span class="c c-loc">Stand der Schicht</span></td><td><span class="c c-own">eigene absolvieren</span></td></tr>
+          <tr><th scope="row">Aufgaben</th><td><span class="c c-all">alle</span></td><td><span class="c c-loc">eigener Standort</span></td><td><span class="c c-loc">in der Schicht verteilen</span></td><td><span class="c c-own">eigene erledigen</span></td></tr>
+          <tr><th scope="row">Schichten und Arbeitszeiten</th><td><span class="c c-all">alle</span></td><td><span class="c c-loc">eigener Standort</span></td><td><span class="c c-loc">eigene Schicht</span></td><td><span class="c c-own">eigene</span></td></tr>
+          <tr><th scope="row">Beschwerden</th><td><span class="c c-all">alle</span></td><td><span class="c c-loc">eigener Standort, bearbeiten</span></td><td><span class="c c-loc">eigene Schicht, lesen</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Lohnexport</th><td><span class="c c-all">erstellen</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Tagesbriefing</th><td><span class="c c-all">jeden Morgen</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Mitarbeiter anlegen, sperren, entfernen</th><td><span class="c c-all">alle</span></td><td><span class="c c-loc">eigener Standort</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Protokoll einsehen</th><td><span class="c c-all">alles</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td><td><span class="c c-no">–</span></td></tr>
+          <tr><th scope="row">Eigene Daten und Passwort</th><td><span class="c c-own">ja</span></td><td><span class="c c-own">ja</span></td><td><span class="c c-own">ja</span></td><td><span class="c c-own">ja</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ablauf">
+    <div class="sec-head">
+      <h2 id="h-ablauf">Drei Abläufe</h2>
+      <p>So wandern die Daten durch die Tabellen der Karte.</p>
+    </div>
+    <div class="flows">
+      <div class="flow">
+        <h3>Morgens beim Login</h3>
+        <ol>
+          <li>Der Mitarbeiter meldet sich mit E-Mail und Passwort an.</li>
+          <li>Die Begrüßung zeigt seinen Namen und seine Schicht heute.</li>
+          <li>Darunter steht der Spruch des Tages.</li>
+          <li>Neue Neuigkeiten erscheinen und werden mit einem Klick als gelesen bestätigt.</li>
+          <li>Zum Schluss folgen offene Aufgaben und fällige Schulungen.</li>
+        </ol>
+      </div>
+      <div class="flow">
+        <h3>Eine Beschwerde kommt rein</h3>
+        <ol>
+          <li>Ein Gast meldet sich in der App oder auf der Website zu seiner Bestellung.</li>
+          <li>Die Beschwerde übernimmt Bestellung, Standort und Uhrzeit automatisch.</li>
+          <li>Über die Uhrzeit wird sie der passenden Schicht zugeordnet.</li>
+          <li>Die Standortleitung legt eine Maßnahme fest, etwa ein Gespräch, eine Schulung oder eine Gutschrift.</li>
+          <li>Die Maßnahme wird zur Aufgabe und erscheint am nächsten Morgen im Tagesbriefing.</li>
+        </ol>
+      </div>
+      <div class="flow">
+        <h3>Ein Mitarbeiter verlässt das Unternehmen</h3>
+        <ol>
+          <li>Chef oder Standortleitung klicken auf „Entfernen“.</li>
+          <li>Der Login ist sofort gesperrt.</li>
+          <li>Offene Aufgaben gehen an die Standortleitung zurück.</li>
+          <li>Arbeitszeiten und Schulungsnachweise bleiben für die gesetzlichen Aufbewahrungsfristen erhalten.</li>
+          <li>Danach werden die Daten automatisch gelöscht.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-sicher">
+    <div class="sec-head">
+      <h2 id="h-sicher">Sicherheit und Updates</h2>
+    </div>
+    <div class="grid2">
+      <div class="item"><h3>Passwörter</h3><p>Werden nur verschlüsselt gespeichert. Auch der Chef sieht kein Passwort. Ein vergessenes Passwort setzt der Mitarbeiter selbst über einen Link per E-Mail zurück.</p></div>
+      <div class="item"><h3>Zwei-Faktor-Anmeldung</h3><p>Für Chef und Standortleitung zusätzlich ein Code vom Handy. Für alle anderen wählbar.</p></div>
+      <div class="item"><h3>Rechte</h3><p>Jede Abfrage wird in der Datenbank gegen Rolle und Standort geprüft. Ein Mitarbeiter in Stralsund sieht keine Daten aus Hamburg.</p></div>
+      <div class="item"><h3>Protokoll</h3><p>Anmeldungen, Änderungen und Löschungen werden mit Person und Zeitpunkt festgehalten.</p></div>
+      <div class="item"><h3>Server und Sicherung</h3><p>Geplanter Serverstandort Frankfurt, tägliche Sicherungen und Wiederherstellung auf die Sekunde.</p></div>
+      <div class="item"><h3>Updates</h3><p>Neuigkeiten aus der Zentrale gehen an alle oder an einzelne Standorte, mit Lesebestätigung. Neue Versionen der webbasierten Personal-App stehen allen sofort zur Verfügung, ohne Installation.</p></div>
+    </div>
+  </section>
+
+  <section class="open" aria-labelledby="h-offen">
+    <h2 id="h-offen">Vor dem Bau zu klären</h2>
+    <ul>
+      <li><strong>Beschwerde und Lohn.</strong> Lohnabzüge wegen Beschwerden sind arbeitsrechtlich heikel. Die Verbindung zur Lohnbuchhaltung läuft nur über vorher schriftlich vereinbarte Prämienregeln. Das sollte ein Fachanwalt für Arbeitsrecht prüfen.</li>
+      <li><strong>Betriebsrat und Datenschutz.</strong> Falls es einen Betriebsrat gibt, hat er bei Systemen, die Leistung oder Verhalten von Mitarbeitern erfassen können, ein Mitbestimmungsrecht nach § 87 Abs. 1 Nr. 6 BetrVG. Beschwerden mit Personenbezug fallen unter den Beschäftigtendatenschutz.</li>
+      <li><strong>Lohnbuchhaltung.</strong> Die Abrechnung bleibt beim Steuerbüro. Die App liefert Arbeitszeiten und vereinbarte Prämien als Export. Format und Ansprechpartner sind offen.</li>
+      <li><strong>Zeiterfassung.</strong> Eigene Lösung in der Personal-App oder das vorhandene Zeiterfassungsmodul von gastronovi.</li>
+      <li><strong>Tagesbriefing.</strong> Nur für den Chef oder zusätzlich ein Briefing je Standort für die Standortleitung.</li>
+    </ul>
+  </section>
+
+  <footer>Entwurf zur Abstimmung, keine Rechtsberatung. Stand 14. Oktober 2026.</footer>
+</div>
+
+<script>
+(function(){
+  var svg=document.getElementById('dm');
+  var detail=document.getElementById('detail');
+  var edges=[].slice.call(svg.querySelectorAll('.edge'));
+  var ents=[].slice.call(svg.querySelectorAll('.ent'));
+  var info={
+    login:['Login','Zugang mit E-Mail und Passwort. Das Passwort liegt nur verschlüsselt vor. Ein gesperrter Login kommt nicht mehr hinein.'],
+    protokoll:['Protokoll','Hält fest, wer sich wann angemeldet und was geändert oder gelöscht hat. Nur der Chef kann es einsehen.'],
+    begruessung:['Begrüßung','Erscheint nach jedem Login mit Namen, Schicht, Spruch des Tages, Neuigkeiten und offenen Aufgaben.'],
+    spruch:['Spruch des Tages','Ein Satz pro Tag, von der Zentrale geplant. Erscheint in der Begrüßung.'],
+    neuigkeiten:['Neuigkeiten','Mitteilungen an alle oder an einzelne Standorte. Jeder Mitarbeiter bestätigt das Lesen.'],
+    briefing:['Tagesbriefing','Jeden Morgen für den Chef. Liest aus Bestellungen, Beschwerden, Aufgaben, Schichten und Schulungsnachweisen.'],
+    mitarbeiter:['Mitarbeiter','Die zentrale Tabelle. Jeder Datensatz in der Personal-App gehört zu einem Mitarbeiter, einer Rolle oder einem Standort.'],
+    rolle:['Rolle','Legt fest, was jemand sehen und ändern darf. Schulungen und Arbeitsanweisungen hängen an der Rolle.'],
+    standort:['Standort','Verbindet Personal und Gäste-Seite. Bestellungen, Beschwerden und Schichten gehören immer zu einem Standort.'],
+    nachweis:['Schulungsnachweis','Belegt, wer welche Schulung mit welchem Ergebnis abgeschlossen hat und bis wann sie gilt.'],
+    schulung:['Schulung','Inhalte mit Video und Test. Jede Rolle hat Pflichtschulungen.'],
+    anweisung:['Arbeitsanweisung','Rezepte, Abläufe und Hygieneregeln, passend zu Rolle und Standort.'],
+    aufgabe:['Aufgabe','Wer soll was bis wann erledigen. Maßnahmen aus Beschwerden werden ebenfalls zu Aufgaben.'],
+    schicht:['Schicht','Wer wann an welchem Standort arbeitet. Grundlage für die Arbeitszeiten im Lohnexport und für die Zuordnung von Beschwerden.'],
+    checkliste:['Checkliste','Öffnen, Schließen und Hygieneprotokoll, pro Schicht abgehakt.'],
+    gast:['Gast','Kundenkonto aus der Gäste-App und der Website mit Punkten und Einwilligungen.'],
+    bestellung:['Bestellung','Kommt aus App oder Website und gehört zu einem Standort. Beschwerden beziehen sich darauf.'],
+    beschwerde:['Beschwerde','Kommt vom Gast und wird Bestellung, Standort und Schicht zugeordnet. Die Verbindung zum Lohn muss vorher rechtlich geklärt werden.'],
+    massnahme:['Maßnahme','Was auf eine Beschwerde folgt: Gespräch, Schulung oder Gutschrift an den Gast.'],
+    lohn:['Lohnexport','Arbeitszeiten je Monat und vereinbarte Prämien als Datei für das Steuerbüro.'],
+    steuer:['Steuerbüro · DATEV','Die Lohnabrechnung selbst läuft außerhalb der App.']
+  };
+  var extra={briefing:['bestellung','beschwerde','aufgabe','schicht','nachweis'],protokoll:['login','mitarbeiter']};
+  function show(id){
+    var on={}; on[id]=1;
+    edges.forEach(function(e){
+      var hit=e.dataset.a===id||e.dataset.b===id;
+      e.classList.toggle('on',hit);
+      if(hit){on[e.dataset.a]=1;on[e.dataset.b]=1;}
+    });
+    (extra[id]||[]).forEach(function(x){on[x]=1;});
+    ents.forEach(function(n){n.classList.toggle('on',!!on[n.dataset.id]);});
+    svg.classList.add('focus');
+    var t=info[id]; if(t){detail.innerHTML='<strong></strong>';detail.firstChild.textContent=t[0];detail.appendChild(document.createTextNode(t[1]));}
+  }
+  function reset(){
+    svg.classList.remove('focus');
+    edges.forEach(function(e){e.classList.remove('on');});
+    ents.forEach(function(n){n.classList.remove('on');});
+    var t=info.mitarbeiter;detail.innerHTML='<strong></strong>';detail.firstChild.textContent=t[0];detail.appendChild(document.createTextNode(t[1]));
+  }
+  ents.forEach(function(n){
+    n.addEventListener('click',function(ev){ev.stopPropagation();show(n.dataset.id);});
+    n.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();show(n.dataset.id);}});
+  });
+  svg.addEventListener('click',reset);
+  document.getElementById('reset').addEventListener('click',reset);
+})();
+</script>
+
+</body></html>
